@@ -2,7 +2,7 @@
 
 //TODO: Prevent special characters from being uploaded
 
-    $target_dir = "/tmp/uploads/";
+    $target_dir = "http://18.189.30.30/uploads\\";
     $target_file = $target_dir.basename($_FILES["musicFile"]["name"]);
     echo "<script type='text/javascript'> alert('".$target_file."');</script>";
 

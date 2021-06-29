@@ -4,7 +4,7 @@
 
     $target_dir = "http://18.189.30.30/uploads\\";
     $target_file = $target_dir.basename($_FILES["musicFile"]["name"]);
-    echo "<script type='text/javascript'> alert('".$target_file."');</script>";
+    //echo "<script type='text/javascript'> alert('".$target_file."');</script>";
 
     $uploadOK = 1;
     $fileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -32,7 +32,4 @@ if(isset($_POST['submit'])){
 }
 
 echo "<script type='text/javascript'>location.replace('http://18.189.30.30');</script>"
-//TODO: Change to url
-//flush();
-//die();
 ?>

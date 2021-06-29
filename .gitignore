@@ -120,3 +120,4 @@ dist
 #ignore batch files
 npx_babel.bat
 start_server.bat
+gitclone.sh

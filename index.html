@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>Music Player</title>
+        <!--jquery library-->
+        <script src="jquery-3.6.0.js"></script>
+    </head>
+    <body>
+        <div>
+            <div id="menu">
+                <button onclick="backPanel.ChangeCurrentState(BackPanelState.MyMusic);">My Music</button>
+                <button onclick="backPanel.ChangeCurrentState(BackPanelState.Playlists);">Playlists</button>
+                <button onclick="backPanel.ChangeCurrentState(BackPanelState.Upload);">Upload</button>
+            </div>
+            <!--Back Panel that can be changed with React-->
+            <div id="back_panel"></div>
+        </div>
+
+
+        <!--React Library Scripts-->
+        <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+        
+        <!--JSX library (Babel)-->
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+        <!--My React script(s)-->
+        <!--Todo: Convert JSX from SRC and use back_panel.js-->
+        <script src="back_panel.js"></script>
+    </body>
+</html>

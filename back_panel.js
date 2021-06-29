@@ -73,7 +73,7 @@ var BackPanel = function (_React$Component) {
                     }
                 }
             });
-            xhr.open("GET", "http://localhost/playlist_displayer.php", true);
+            xhr.open("GET", "http://18.189.30.30/playlist_displayer.php", true);
             xhr.send();
         }
 
@@ -99,7 +99,7 @@ var BackPanel = function (_React$Component) {
         value: function RenderUpload() {
             return React.createElement(
                 "form",
-                { action: "http://localhost/upload_music.php", method: "POST", encType: "multipart/form-data" },
+                { action: "http://18.189.30.30/upload_music.php", method: "POST", encType: "multipart/form-data" },
                 React.createElement(
                     "p",
                     null,

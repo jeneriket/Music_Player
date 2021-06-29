@@ -2,9 +2,7 @@
 
 //TODO: Prevent special characters from being uploaded
 
-//header('Location: http://localhost:8080/index.html');
-
-    $target_dir = "E:\wamp64\www\uploads\\";
+    $target_dir = "http://18.189.30.30/uploads\\";
     $target_file = $target_dir.basename($_FILES["musicFile"]["name"]);
     echo "<script type='text/javascript'> alert('".$target_file."');</script>";
 
@@ -33,7 +31,7 @@ if(isset($_POST['submit'])){
     }
 }
 
-echo "<script type='text/javascript'>location.replace('http://localhost:8080/index.html');</script>"
+echo "<script type='text/javascript'>location.replace('http://18.189.30.30/index.html');</script>"
 //TODO: Change to url
 //flush();
 //die();

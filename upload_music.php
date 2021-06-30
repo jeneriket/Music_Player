@@ -26,7 +26,7 @@ if(isset($_POST['submit'])){
         {
             echo "<script type='text/javascript'> alert('The file ".htmlspecialchars(basename($_FILES["musicFile"]["name"]))." has been uploaded.');</script>";
         } else {
-            echo "<script type='text/javascript'> alert('The file ".htmlspecialchars(basename($_FILES["musicFile"]["name"]))." could not be uploaded.');</script>";
+            echo "The file ".htmlspecialchars(basename($_FILES["musicFile"]["name"]))." could not be uploaded.";
             //echo "<script type='text/javascript'> alert('Sorry, there was an error uploading your file.');</script>";
         }
     }

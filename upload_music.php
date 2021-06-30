@@ -14,7 +14,8 @@ if(isset($_POST['submit'])){
     //TODO: Add asking if you want to add duplicate file name
     if(file_exists($target_file))
     {
-        echo "<script type='text/javascript'> alert('Sorry, the file already exists');</script>";
+        //echo "<script type='text/javascript'> alert('Sorry, the file already exists');</script>";
+        echo "Super Didn't Win";
         $uploadOK = 0;
     }
     
@@ -24,12 +25,14 @@ if(isset($_POST['submit'])){
     } else {
         if(move_uploaded_file($_FILES["musicFile"]["tmp_name"], $target_file))
         {
-            echo "<script type='text/javascript'> alert('The file ".htmlspecialchars(basename($_FILES["musicFile"]["name"]))." has been uploaded.');</script>";
+            //echo "<script type='text/javascript'> alert('The file ".htmlspecialchars(basename($_FILES["musicFile"]["name"]))." has been uploaded.');</script>";
+            echo "WIN";
         } else {
-            echo "<script type='text/javascript'> alert('Sorry, there was an error uploading your file.');</script>";
+            //echo "<script type='text/javascript'> alert('Sorry, there was an error uploading your file.');</script>";
+            echo "DIDN'T WIN";
         }
     }
 }
 
-echo "<script type='text/javascript'>location.replace('http://18.189.30.30');</script>"
+//echo "<script type='text/javascript'>location.replace('http://18.189.30.30');</script>"
 ?>

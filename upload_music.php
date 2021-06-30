@@ -17,6 +17,8 @@ if(isset($_POST['submit'])){
         echo "<script type='text/javascript'> alert('Sorry, the file already exists');</script>";
         $uploadOK = 0;
     }
+
+    error_log($target_file);
     
     if($uploadOK == 0)
     {

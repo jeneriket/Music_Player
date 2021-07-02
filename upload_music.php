@@ -36,7 +36,7 @@ if(isset($_POST['submit'])){
     {
         //echo "<script type='text/javascript'> alert('Sorry, your file was not uploaded');</script>";
     } else {
-        if(move_uploaded_file($_FILES["musicFile"]["tmp_name"], $target_file))
+        if(copy($_FILES["musicFile"]["tmp_name"], $target_file))
         {
             //echo "<script type='text/javascript'> alert('The file ".htmlspecialchars(basename($_FILES["musicFile"]["name"]))." has been uploaded.');</script>";
         } else {

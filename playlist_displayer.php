@@ -1,6 +1,6 @@
 <?php
 
-$musicFiles = scandir("http://18.189.30.30/uploads");
+$musicFiles = scandir("/var/www/html/uploads");
 
 echo "<div name='playlist' key='playlist'>";
 foreach($musicFiles as $value)
@@ -8,7 +8,7 @@ foreach($musicFiles as $value)
     if($value == "." || $value == "..")
         continue;
 
-    echo nl2br($value."<br><audio controls><source src='http://18.189.30.30/uploads/".strval($value)."'></audio><br>");
+    echo nl2br($value."<br><audio controls><source src='/var/www/html/uploads/".strval($value)."'></audio><br>");
 
 }
 echo "</div>";

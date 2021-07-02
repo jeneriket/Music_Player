@@ -1,7 +1,7 @@
 <?php
 
 //TODO: Prevent special characters from being uploaded
-$target_dir = "/tmp/uploads/";
+$target_dir = "/var/www/html/uploads/";
 $target_filename = basename($_FILES["musicFile"]["name"]);
 echo "Basename: " . $_FILES["musicFile"]["name"]."<br>";
 echo "Target dir: " . $target_dir."<br>";

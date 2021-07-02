@@ -4,7 +4,7 @@
 
     $target_dir = "/var/www/html/uploads/";
     $target_file = $target_dir.basename($_FILES["musicFile"]["name"]);
-    if($is_writable($target_file)) {
+    if(is_writable($target_file)) {
         echo "Writeable!<br>";
     } else {
         echo "Not writeable!<br>";

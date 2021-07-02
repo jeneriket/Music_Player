@@ -1,11 +1,11 @@
 <?php
 
 //TODO: Prevent special characters from being uploaded
-$target_dir = "/var/www/html/uploads/";
+$target_dir = "/tmp/uploads/";
     $target_filename = basename($_FILES["musicFile"]["name"]);
-    echo "Basename: " . $_FILES["musicFile"]["name"];
-    echo "Target dir: " . $target_dir;
-    echo "Target filename: " . $target_filename;
+    echo "Basename: " . $_FILES["musicFile"]["name"]."<br>";
+    echo "Target dir: " . $target_dir."<br>";
+    echo "Target filename: " . $target_filename."<br>";
 
     $target_file = $target_dir.$target_filename;
     echo "Target file: " . $target_file;

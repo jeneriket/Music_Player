@@ -1,9 +1,14 @@
 <?php
 
 //TODO: Prevent special characters from being uploaded
+$target_dir = "/var/www/html/uploads/";
+    $target_filename = basename($_FILES["musicFile"]["name"]);
+    echo "Basename: " . $_FILES["musicFile"]["name"];
+    echo "Target dir: " . $target_dir;
+    echo "Target filename: " . $target_filename;
 
-    $target_dir = "/var/www/html/uploads/";
-    $target_file = $target_dir.basename($_FILES["musicFile"]["name"]);
+    $target_file = $target_dir.$target_filename;
+    echo "Target file: " . $target_file;
     if(is_writable($target_file)) {
         echo "Writeable!<br>";
     } else {

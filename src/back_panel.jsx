@@ -66,7 +66,7 @@ class BackPanel extends React.Component
                 }
             }
         });
-        xhr.open("GET", "http://18.189.30.30/playlist_displayer.php", true);
+        xhr.open("GET", "/playlist_displayer.php", true);
         xhr.send();
     }
 
@@ -87,7 +87,7 @@ class BackPanel extends React.Component
     RenderUpload()
     {
         return (
-            <form action="http://18.189.30.30/upload_music.php" method="POST" encType="multipart/form-data">
+            <form action="upload_music.php" method="POST" encType="multipart/form-data">
                 <p>Upload your music!</p>
                 <input type="file" accept="audio/mp3,audio/*,audio/ogg" name="musicFile"/>
                 <input type="submit" value="submit" name="submit"/>

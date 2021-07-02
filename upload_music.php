@@ -8,7 +8,7 @@ $target_dir = "/tmp/uploads/";
     echo "Target filename: " . $target_filename."<br>";
 
     $target_file = $target_dir.$target_filename;
-    echo "Target file: " . $target_file;
+    echo "Target file: " . $target_file."<br>";
     if(is_writable($target_file)) {
         echo "Writeable!<br>";
     } else {

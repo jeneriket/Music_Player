@@ -1,6 +1,9 @@
 <html>
     <head>
         <title>Music Player</title>
+
+        <!--include jquery-->
+        <script type="text/javascript" src="jquery-3.6.0.js"></script>
     </head>
     <body>
         <div>
@@ -11,6 +14,11 @@
             </div>
             <!--Back Panel that can be changed with React-->
             <div id="back_panel"></div>
+
+            <!--Status Area for displaying statuses from PHP-->
+            <div id="status">
+                <iframe style="display: none;" name="target"></iframe>
+            </div>
         </div>
 
 

@@ -10,7 +10,7 @@ foreach($musicFiles as $value)
     echo nl2br($value."<br><audio controls><source src='/uploads/".strval($value)."'></audio><button onclick='$.ajax({
         url: \'delete_song.php\', 
         success: function(data) { 
-            alert('Deleted.');}
+            alert(\'Deleted.\');}
         })'>Delete?</button><br>");
 
 }

@@ -4,7 +4,8 @@
 
     $target_dir = "/var/www/html/uploads/";
     $target_file = $target_dir.basename($_FILES["musicFile"]["name"]);
-    echo $_FILES["musicFile"]["name"];
+    echo "Writeable: " . is_writable($target_file)."<br>";
+    echo $_FILES["musicFile"]["name"]."<br>";
     //echo "<script type='text/javascript'> alert('".$target_file."');</script>";
 
     $uploadOK = 1;

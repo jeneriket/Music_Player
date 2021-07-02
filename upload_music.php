@@ -3,7 +3,7 @@
 //TODO: Prevent special characters from being uploaded
 
     $target_dir = "/var/www/html/uploads/";
-    $target_file = $target_dir.basename($_FILES["musicFile"]["tmp_name"]);
+    $target_file = $target_dir.basename($_FILES["musicFile"]["name"]);
     //echo "<script type='text/javascript'> alert('".$target_file."');</script>";
 
     $uploadOK = 1;

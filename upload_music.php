@@ -15,7 +15,7 @@ if(isset($_POST['submit'])){
     //TODO: Add asking if you want to add duplicate file name
     if(file_exists($target_file))
     {
-        echo "<script type='text/javascript'> alert('Sorry, the file already exists');</script>";
+        //echo "<script type='text/javascript'> alert('Sorry, the file already exists');</script>";
         $uploadOK = 0;
     }
 
@@ -23,13 +23,13 @@ if(isset($_POST['submit'])){
     
     if($uploadOK == 0)
     {
-        echo "<script type='text/javascript'> alert('Sorry, your file was not uploaded');</script>";
+        //echo "<script type='text/javascript'> alert('Sorry, your file was not uploaded');</script>";
     } else {
         if(move_uploaded_file($_FILES["musicFile"]["tmp_name"], $target_file))
         {
-            echo "<script type='text/javascript'> alert('The file ".htmlspecialchars(basename($_FILES["musicFile"]["name"]))." has been uploaded.');</script>";
+            //echo "<script type='text/javascript'> alert('The file ".htmlspecialchars(basename($_FILES["musicFile"]["name"]))." has been uploaded.');</script>";
         } else {
-            echo "<script type='text/javascript'> alert('Sorry, there was an error uploading your file.');</script>";
+            //echo "<script type='text/javascript'> alert('Sorry, there was an error uploading your file.');</script>";
         }
     }
 }

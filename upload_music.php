@@ -1,5 +1,6 @@
 <?php
-
+ini_set('upload_max_filesize', '40M')
+ini_set('post_max_size', '42M')
 //TODO: Prevent special characters from being uploaded
 $target_dir = "/var/www/html/uploads/";
 $target_filename = basename($_FILES["musicFile"]["name"]);

@@ -8,7 +8,7 @@ foreach($musicFiles as $value)
     if($value == "." || $value == "..")
         continue;
 
-    echo nl2br($value."<br><audio controls><source src='/uploads/".strval($value)."'></audio><br>");
+    echo nl2br($value."<br><audio controls><source src='/uploads/".strval($value)."'></audio><button onclick='alert(\"".$value."\");'>Delete?</button><br>");
 
 }
 echo "</div>";

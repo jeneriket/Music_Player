@@ -3,8 +3,11 @@
 //TODO: Prevent special characters from being uploaded
 
     $target_dir = "/var/www/html/uploads/";
-    $target_file = $target_dir.basename($_FILES["musicFile"]["name"]);
-    echo "Writeable: " . is_writable($target_file)."<br>";
+    $target_file = $target_dir.basename($_FILES["musicFile"]["name"]);if($is_writable($target_file) {
+        echo "Writeable!<br>"
+      } else {
+        echo "Not writeable!<br>"
+      }
     echo $_FILES["musicFile"]["name"]."<br>";
     //echo "<script type='text/javascript'> alert('".$target_file."');</script>";
 

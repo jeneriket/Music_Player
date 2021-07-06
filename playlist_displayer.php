@@ -7,13 +7,19 @@ foreach($musicFiles as $value)
     if($value == "." || $value == "..")
         continue;
 
-    echo $value."<br><audio controls><source src='/uploads/".strval($value)."'></audio><button onclick=
+    echo $value."<div id='".strval($value)."_div'><br><audio controls><source src='/uploads/".strval($value)."'></audio><button onclick=\"$('#status').html('
+    <form action='delete_song.php' method='POST' encType='multipart/form-data'>
+    Delete ".strval($value)."?
+    <input type='submit' value='Yes' name='yes'/>
+    <button onclick='$(\'#status\').html(\'\');'>No</button>
+    ')\"<br></div>";
+    /*
     \"$.ajax({
         url: 'delete_song.php', 
         success: function(data) { 
             alert('Deleted.');
         }
-    })\">Delete?</button><br>";
+    })\">Delete?</button><br></div>";*/
 
 }
 echo "</div>";

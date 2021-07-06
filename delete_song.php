@@ -1,4 +1,6 @@
 <?php
-    echo "<script>alert('".$_POST['filename']."')</script>";
-    unlink($_POST['filename']);
+    if(unlink("/var/www/html/".$_POST['filename']))
+    {
+        echo "Success!";
+    }
 ?>

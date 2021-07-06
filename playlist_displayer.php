@@ -8,7 +8,7 @@ foreach($musicFiles as $value)
         continue;
 
     echo $value."<div id='".strval($value)."_div'><br><audio controls><source src='/uploads/".strval($value)."'></audio>
-        <button onclick='confirmDelete(\"".strval($value)."\"');>
+        <button onclick='confirmDelete(\"".strval($value)."\");'>
             Delete?
         </button>
     </div>";

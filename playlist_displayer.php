@@ -12,7 +12,7 @@ foreach($musicFiles as $value)
     Delete ".strval($value)."?
     <input type='submit' value='Yes' name='yes'/>
     <button onclick='$(\'#status\').html(\'\');'>No</button>
-    ')\"<br></div>";
+    ')>Delete?</button><br>\"<br></div>";
     /*
     \"$.ajax({
         url: 'delete_song.php', 

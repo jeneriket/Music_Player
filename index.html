@@ -26,12 +26,19 @@
             {
                 if(confirm("Delete "+fileName + "?"))
                 {
-                    location.replace('delete_song.php');
-                    /*$.ajax({
+                    $.ajax({
                         type :"POST",
                         url: 'delete_song.php',
-                        data : fileName
-                    });*/
+                        data : fileName,
+                        success: function(data) 
+                            { 
+                            alert("Sucess"); 
+                            }, 
+                        error: function(data) 
+                        { 
+                            alert("error"); 
+                        } 
+                    });
                 }
             }
         </script>

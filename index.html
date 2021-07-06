@@ -27,10 +27,9 @@
                 if(confirm("Delete "+fileName + "?"))
                 {
                     $.ajax({
-                        url: 'delete_song.php', 
-                        success: function(data) { 
-                            alert('Deleted.');
-                        }
+                        type :"POST",
+                        url: 'delete_song.php',
+                        data : fileName
                     });
                 }
             }

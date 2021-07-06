@@ -1,3 +1,4 @@
 <?php
-    echo "DS";
+    echo "<script>alert('".$_POST['filename']."')</script>";
+    unlink($_POST['filename']);
 ?>

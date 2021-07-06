@@ -20,6 +20,21 @@
             </div>
         </div>
 
+        <!--Delete file function-->
+        <script type="text/javascript">
+            function confirmDelete(fileName)
+            {
+                if(confirm("Delete "+fileName + "?"))
+                {
+                    $.ajax({
+                        url: 'delete_song.php', 
+                        success: function(data) { 
+                            alert('Deleted.');
+                        }
+                    });
+                }
+            }
+        </script>
 
         <!--React Library Scripts-->
         <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>

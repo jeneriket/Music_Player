@@ -73,7 +73,7 @@ var BackPanel = function (_React$Component) {
                     }
                 }
             });
-            xhr.open("GET", "playlist_displayer.php", true);
+            xhr.open("GET", "/playlist_displayer.php", true);
             xhr.send();
         }
 

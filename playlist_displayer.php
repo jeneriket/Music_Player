@@ -25,7 +25,7 @@ foreach($musicFiles as $value)
 
     $id = GenerateID();
     //make the div for each playlist button
-    echo "<div id='".$id."_div'>".$value."<br><audio controls><source src='/uploads/".strval($value)."'></audio>
+    echo "<div id='".$id."_div'>".$value."<br><audio><source src='/uploads/".strval($value)."'></audio>
         <button onclick='confirmDelete(\"".strval($value)."\", ".$id.");'>
             Delete?
         </button>

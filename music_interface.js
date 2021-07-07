@@ -48,8 +48,7 @@ var MusicInterface = function (_React$Component) {
     return MusicInterface;
 }(React.Component);
 
-MakeMusicInterface(id);
-{
+function MakeMusicInterface(id) {
     alert("SD");
     ReactDom.render(React.createElement(MusicInterface, { id: id }), document.getElementById("root"));
 }

@@ -29,7 +29,7 @@
                     $.ajax({
                         type :"POST",
                         url: 'delete_song.php',
-                        data : fileName,
+                        data : {'filename':fileName},
                         success: function(data) 
                         { 
                             alert(data); 

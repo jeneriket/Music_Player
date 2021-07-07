@@ -63,10 +63,11 @@ var BackPanel = function (_React$Component) {
             xhr.addEventListener("readystatechange", function () {
                 if (xhr.readyState === 4) {
                     if (xhr.status == 200) {
+
                         //request successful
                         var music_data = new Array();
-                        eval(_this2.response);
-                        alert(_this2.response);
+                        //eval(this.response);
+                        alert(xhr.response);
                         _this2.playlist = MakePlaylist(music_data);
                         _this2.forceUpdate();
                     } else {

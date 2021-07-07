@@ -53,10 +53,11 @@ class BackPanel extends React.Component
             {
                 if(xhr.status == 200)
                 {
+
                     //request successful
                     var music_data = new Array();
-                    eval(this.response);
-                    alert(this.response);
+                    //eval(this.response);
+                    alert(xhr.response);
                     this.playlist = MakePlaylist(music_data);
                     this.forceUpdate();
                 }

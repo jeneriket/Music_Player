@@ -25,7 +25,7 @@ var MusicInterface = function (_React$Component) {
         value: function render() {
             var m_Interface = "";
 
-            m_Interface += MakePlayPauseButton();
+            m_Interface += this.MakePlayPauseButton();
             //MakeScrollBar(interface);
 
             alert(m_Interface);

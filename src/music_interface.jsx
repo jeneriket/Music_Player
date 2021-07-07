@@ -13,7 +13,7 @@ class MusicInterface extends React.Component
     {
         var m_Interface = "";
 
-        m_Interface += MakePlayPauseButton();
+        m_Interface += this.MakePlayPauseButton();
         //MakeScrollBar(interface);
 
         alert(m_Interface);

@@ -32,8 +32,8 @@ foreach($musicFiles as $value)
             Delete?
         </button>
     </div>";*/
-    echo "
-    MakeMusicInterface(".$id.");";
+    echo "data_".$id." = {id: ".$id.", name: '".$value."'};\n
+    music_data.push(data_".$id.");";
 }
 //echo "</div>";
 ?>

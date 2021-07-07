@@ -36,7 +36,15 @@ class MusicInterface extends React.Component
     }
 }
 
-function MakeMusicInterface(id)
+function MakeMusicInterface(id, playli)
 {
     ReactDOM.render(<MusicInterface id={id}/>, document.getElementById('back_panel'));
+}
+
+function MakePlaylist(music_data)
+{
+    const playlistDiv = document.createElement("div");
+    playlistDiv.id = "playlist";
+    ReactDOM.render(<MusicInterface id={id}/>, playlistDiv);
+    return playlistDiv;
 }

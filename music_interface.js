@@ -50,6 +50,13 @@ var MusicInterface = function (_React$Component) {
     return MusicInterface;
 }(React.Component);
 
-function MakeMusicInterface(id) {
+function MakeMusicInterface(id, playli) {
     ReactDOM.render(React.createElement(MusicInterface, { id: id }), document.getElementById('back_panel'));
+}
+
+function MakePlaylist(music_data) {
+    var playlistDiv = document.createElement("div");
+    playlistDiv.id = "playlist";
+    ReactDOM.render(React.createElement(MusicInterface, { id: id }), playlistDiv);
+    return playlistDiv;
 }

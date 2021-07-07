@@ -12,17 +12,44 @@ var MusicInterface = function (_React$Component) {
     function MusicInterface(_props) {
         _classCallCheck(this, MusicInterface);
 
-        return _possibleConstructorReturn(this, (MusicInterface.__proto__ || Object.getPrototypeOf(MusicInterface)).call(this, _props));
+        var _this = _possibleConstructorReturn(this, (MusicInterface.__proto__ || Object.getPrototypeOf(MusicInterface)).call(this, _props));
+
+        _this.state = { playing: false };
+        return _this;
     }
 
     _createClass(MusicInterface, [{
         key: "render",
         value: function render() {
-            var player = "";
+            var m_Interface = "";
 
-            MakePlayPauseButton(player);
+            m_Interface += MakePlayPauseButton();
+            //MakeScrollBar(interface);
+
+            alert(m_Interface);
+            return m_Interface;
+        }
+    }, {
+        key: "MakePlayPauseButton",
+        value: function MakePlayPauseButton() {
+            if (this.state.playing) {
+                //make pause button
+            } else {
+                //make play button
+                return React.createElement(
+                    "button",
+                    { onClick: "$('#" + this.props.id + "_audio').trigger('play');" },
+                    "Play"
+                );
+            }
         }
     }]);
 
     return MusicInterface;
 }(React.Component);
+
+MakeMusicInterface(id);
+{
+    alert("SD");
+    ReactDom.render(React.createElement(MusicInterface, { id: id }), document.getElementById("root"));
+}

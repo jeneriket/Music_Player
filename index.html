@@ -32,11 +32,12 @@
                         data : {'filename':fileName},
                         success: function(data) 
                         { 
-                            alert(data); 
+                            alert("Deleted " + fileName +"!"); 
+                            $("#"+fileName).html("");
                         }, 
                         error: function(data) 
                         { 
-                            alert("error"); 
+                            alert("Error deleting " + filename); 
                         } 
                     });
                 }

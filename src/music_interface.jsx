@@ -38,5 +38,5 @@ class MusicInterface extends React.Component
 
 function MakeMusicInterface(id)
 {
-    ReactDom.render(<MusicInterface id={id}/>, document.getElementById("root"));
+    ReactDOM.render(<MusicInterface id={id}/>, document.getElementById("root"));
 }

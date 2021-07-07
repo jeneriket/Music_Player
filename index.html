@@ -30,12 +30,12 @@
                         type :"POST",
                         url: 'delete_song.php',
                         data : {'filename':fileName},
-                        success: function(data) 
+                        success: function(response) 
                         { 
-                            alert("#"+fileName+"_div"); 
-                            Document.getElementById(fileName+"_div").remove();
+                            alert($("#"+fileName+"_div")); 
+                            $("#"+fileName+"_div").remove();
                         }, 
-                        error: function(data) 
+                        error: function(response) 
                         { 
                             alert("Error deleting " + filename); 
                         } 

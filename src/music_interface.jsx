@@ -1,3 +1,5 @@
+'use strict'
+
 class MusicInterface extends React.Component
 {
 

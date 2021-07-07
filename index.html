@@ -33,7 +33,7 @@
                         success: function(data) 
                         { 
                             alert(data); 
-                            $("#"+fileName+"+_div").html("");
+                            document.getElementById(fileName+"+_div").remove();
                         }, 
                         error: function(data) 
                         { 

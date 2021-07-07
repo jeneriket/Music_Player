@@ -51,5 +51,5 @@ var MusicInterface = function (_React$Component) {
 }(React.Component);
 
 function MakeMusicInterface(id) {
-    ReactDOM.render(React.createElement(MusicInterface, { id: id }), document.getElementById("root"));
+    ReactDOM.render(React.createElement(MusicInterface, { id: id }), document.getElementById('back_panel'));
 }

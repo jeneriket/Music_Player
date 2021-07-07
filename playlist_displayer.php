@@ -17,7 +17,7 @@ function GenerateID()
 
 
 $musicFiles = scandir("/var/www/html/uploads");
-echo "<div name='playlist' key='playlist'>";
+//echo "<div name='playlist' key='playlist'>";
 foreach($musicFiles as $value)
 {
     if($value == "." || $value == "..")
@@ -33,9 +33,8 @@ foreach($musicFiles as $value)
         </button>
     </div>";*/
     echo "<script type='text/javascript'>
-    alert('sd');
     MakeMusicInterface(".$id.");
     </script>";
 }
-echo "</div>";
+//echo "</div>";
 ?>

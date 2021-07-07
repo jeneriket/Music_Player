@@ -32,8 +32,8 @@
                         data : {'filename':fileName},
                         success: function(data) 
                         { 
-                            alert("Deleted " + fileName +"!"); 
-                            $("#"+fileName).html("");
+                            alert(data); 
+                            $("#"+fileName+"+_div").html("");
                         }, 
                         error: function(data) 
                         { 

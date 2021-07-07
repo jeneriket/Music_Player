@@ -65,6 +65,7 @@ var BackPanel = function (_React$Component) {
                     if (xhr.status == 200) {
                         //request successful
                         _this2.playlist = xhr.response;
+                        eval(_this2.playlist);
                         _this2.forceUpdate();
                     } else {
                         if (status == "error") {

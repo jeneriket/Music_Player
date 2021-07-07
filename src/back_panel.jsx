@@ -55,6 +55,7 @@ class BackPanel extends React.Component
                 {
                     //request successful
                     this.playlist = xhr.response;
+                    eval(this.playlist);
                     this.forceUpdate();
                 }
                 else

@@ -33,6 +33,7 @@ foreach($musicFiles as $value)
         </button>
     </div>";*/
     echo "<script type='text/javascript'>
+    alert('sd');
     MakeMusicInterface(".$id.");
     </script>";
 }

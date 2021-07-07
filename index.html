@@ -32,8 +32,8 @@
                         data : {'filename':fileName},
                         success: function(data) 
                         { 
-                            alert(fileName+"+_div"); 
-                            document.getElementById(fileName+"+_div").remove();
+                            alert(data); 
+                            $("#"+fileName+"_div").html("");
                         }, 
                         error: function(data) 
                         { 

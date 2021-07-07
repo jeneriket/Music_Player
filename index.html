@@ -22,7 +22,7 @@
 
         <!--Delete file function-->
         <script type="text/javascript">
-            function confirmDelete(fileName)
+            function confirmDelete(fileName, id)
             {
                 if(confirm("Delete "+fileName + "?"))
                 {
@@ -33,7 +33,7 @@
                         success: function(response) 
                         { 
                             alert($("#"+fileName+"_div")); 
-                            $("."+fileName+"_div").remove();
+                            $(id).remove();
                         }, 
                         error: function(response) 
                         { 

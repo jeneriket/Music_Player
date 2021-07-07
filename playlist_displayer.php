@@ -32,7 +32,9 @@ foreach($musicFiles as $value)
             Delete?
         </button>
     </div>";*/
-    echo "<script></script>"
+    echo "<script>
+        MakeMusicInterface(".$id.");
+    </script>";
 }
 echo "</div>";
 ?>

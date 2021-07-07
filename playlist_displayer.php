@@ -27,7 +27,7 @@ foreach($musicFiles as $value)
     //make the div for each playlist button
     echo "<div id='".$id."_div'>".$value."<br>
         <audio id='".$id."_audio'><source src='/uploads/".strval($value)."'></audio>
-        <button onclick=\"$('#".$id."_audio').play();\" id='".$id."_play'>Play</play>
+        <button onclick=\"$('#".$id."_audio').trigger('play');;\" id='".$id."_play'>Play</play>
         <button onclick='confirmDelete(\"".strval($value)."\", ".$id.");'>
             Delete?
         </button>

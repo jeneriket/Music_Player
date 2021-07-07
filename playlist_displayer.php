@@ -32,7 +32,7 @@ foreach($musicFiles as $value)
             Delete?
         </button>
     </div>";*/
-    echo "var data_".$id." = {id: ".$id.", name: '".$value."'};\n
+    echo "var data_".$id." = {id: ".$id.", name: '".$value."'};
     alert(data_".$id.");
     music_data.push(data_".$id.");";
 }

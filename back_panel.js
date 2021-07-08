@@ -140,7 +140,9 @@ var BackPanel = function (_React$Component) {
                     React.createElement(MusicInterface, { id: id }),
                     React.createElement(
                         "button",
-                        { onClick: confirmDelete(name, id) },
+                        { onClick: function onClick() {
+                                confirmDelete(name, id);
+                            } },
                         "Delete?"
                     )
                 ));

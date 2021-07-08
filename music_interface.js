@@ -36,11 +36,6 @@ var MusicInterface = function (_React$Component) {
     }, {
         key: 'PlayPauseMusic',
         value: function PlayPauseMusic() {
-            //pause all other audiosources
-            var playButtons = document.getElementsByClassName('audio_button');
-            for (var i = 0; i < playButtons.length; i++) {
-                playButtons[i].click();
-            }
 
             var value = this.state.playing ? 'pause' : 'play';
             this.setState({ playing: !this.state.playing });

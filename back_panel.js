@@ -67,7 +67,7 @@ var BackPanel = function (_React$Component) {
                         //request successful
                         var music_data = new Array();
                         eval(xhr.response);
-                        alert(music_data.length);
+                        alert(music_data[0].id);
                         //alert(xhr.response);
                         _this2.playlist = MakePlaylist(music_data);
                         _this2.forceUpdate();

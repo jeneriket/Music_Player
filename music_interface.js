@@ -34,16 +34,15 @@ var MusicInterface = function (_React$Component) {
     }, {
         key: "MakePlayPauseButton",
         value: function MakePlayPauseButton() {
-            if (this.state.playing) {
-                //make pause button
-            } else {
-                //make play button
-                return React.createElement(
-                    "button",
-                    { onClick: "$('#" + this.props.id + "_audio').trigger('play');" },
-                    "Play"
-                );
-            }
+            if (this.state.playing) {}
+            //make pause button
+
+            //make play button
+            return React.createElement(
+                "button",
+                { onClick: "$('#" + this.props.id + "_audio').trigger('play');" },
+                "Play"
+            );
         }
     }]);
 

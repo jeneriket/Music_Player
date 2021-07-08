@@ -25,14 +25,12 @@ class MusicInterface extends React.Component
         if(this.state.playing)
         {
             //make pause button
+            
         }
-        else
-        {
             //make play button
-            return(
-                <button onClick={"$('#"+this.props.id+"_audio').trigger('play');"}>Play</button>
-            );
-        }
+        return(
+            <button onClick={"$('#"+this.props.id+"_audio').trigger('play');"}>Play</button>
+        );
     }
 }
 

@@ -20,7 +20,7 @@ class MusicInterface extends React.Component
         var playButtons = document.getElementsByClassName('audio_button');
         for(var i = 0; i < audioSources.length; i++)
         {
-            audioSources[i].click();
+            playButtons[i].click();
         }
 
         var value = this.state.playing? 'pause' : 'play';

@@ -33,7 +33,7 @@ foreach($musicFiles as $value)
         </button>
     </div>";*/
     echo "var data_".$id." = {id: ".$id.", name: '".$value."'};
-    music_data.push(data_".$id.");";
+    this.music_data.push(data_".$id.");";
 }
 //echo "</div>";
 ?>

@@ -137,7 +137,12 @@ var BackPanel = function (_React$Component) {
                         { id: id + "_audio" },
                         React.createElement("source", { src: "/uploads/" + name })
                     ),
-                    React.createElement(MusicInterface, { id: id })
+                    React.createElement(MusicInterface, { id: id }),
+                    React.createElement(
+                        "button",
+                        { onClick: confirmDelete(name, id) },
+                        "Delete?"
+                    )
                 ));
             }
 

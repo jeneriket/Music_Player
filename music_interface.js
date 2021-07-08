@@ -58,5 +58,4 @@ function MakePlaylist(music_data) {
     );
     //todo: loop to add
     ReactDOM.render(playlistDiv, domContainer);
-    return playlistDiv;
 }

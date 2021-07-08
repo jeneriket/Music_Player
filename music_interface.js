@@ -27,7 +27,7 @@ var MusicInterface = function (_React$Component) {
 
             return React.createElement(
                 'button',
-                { onClick: function onClick() {
+                { 'class': 'audio_button', onClick: function onClick() {
                         _this2.PlayPauseMusic();
                     } },
                 this.state.playing ? 'Pause' : 'Play'

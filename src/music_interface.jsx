@@ -11,7 +11,7 @@ class MusicInterface extends React.Component
 
     render()
     {
-        return (<button onClick={() => {this.PlayPauseMusic()}}>{this.state.playing? 'Pause' : 'Play'}</button>);
+        return (<button class="audio_button" onClick={() => {this.PlayPauseMusic()}}>{this.state.playing? 'Pause' : 'Play'}</button>);
     }
 
     PlayPauseMusic()

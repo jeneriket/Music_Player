@@ -16,6 +16,11 @@ class MusicInterface extends React.Component
 
     PlayPauseMusic()
     {
+        //pause all other audiosources
+        audioSources.forEach(element => {
+            element.trigger('pause');
+        });
+
         var value = this.state.playing? 'pause' : 'play';
         this.setState({playing : !this.state.playing});
         $('#'+this.props.id+'_audio').trigger(value);

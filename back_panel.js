@@ -66,6 +66,7 @@ var BackPanel = function (_React$Component) {
 
                         //request successful
                         _this2.music_data = new Array();
+                        var this_ = _this2;
                         eval(xhr.response);
                         _this2.forceUpdate();
                     } else {

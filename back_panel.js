@@ -127,11 +127,6 @@ var BackPanel = function (_React$Component) {
                 React.createElement(MusicInterface, { id: this.music_data[0].id })
             );
         }
-    }, {
-        key: "componentDidUpdate",
-        value: function componentDidUpdate() {
-            if (this.music_data != null) MakePlaylist(this.music_data);
-        }
     }]);
 
     return BackPanel;

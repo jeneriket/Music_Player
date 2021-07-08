@@ -33,10 +33,3 @@ class MusicInterface extends React.Component
         );
     }
 }
-
-function MakePlaylist(music_data)
-{
-    var playlistDiv = <div id="playlist"><MusicInterface id={music_data[0].id}/></div>;
-    //todo: loop to add
-    ReactDOM.render(playlistDiv, domContainer);
-}

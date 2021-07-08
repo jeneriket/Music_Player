@@ -22,11 +22,8 @@ var BackPanelState = {
     Playlists: 1,
     Upload: 2
 
-    //a list of audio sources to keep track of the audio 
-};var audioSources = [];
-
-//Class for back panel
-
+    //Class for back panel
+};
 var BackPanel = function (_React$Component) {
     _inherits(BackPanel, _React$Component);
 
@@ -126,23 +123,21 @@ var BackPanel = function (_React$Component) {
             if (this.music_data == null) return "Loading...";
 
             var playlist = [];
-            audioSources = [];
+            this.audioSources = [];
             for (var i = 0; i < this.music_data.length; i++) {
                 var id = this.music_data[i].id;
                 var name = this.music_data[i].name;
 
-                var audioSource = React.createElement(
-                    "audio",
-                    { id: id + "_audio" },
-                    React.createElement("source", { src: "/uploads/" + name })
-                );
-                audioSources.push(audioSource);
                 playlist.push(React.createElement(
                     "div",
                     { id: id + "_div" },
                     name,
                     React.createElement("br", null),
-                    audioSource,
+                    React.createElement(
+                        "audio",
+                        { id: id + "_audio" },
+                        React.createElement("source", { src: "/uploads/" + name })
+                    ),
                     React.createElement(MusicInterface, { id: id }),
                     React.createElement(
                         "button",

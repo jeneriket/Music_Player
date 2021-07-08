@@ -17,6 +17,7 @@ class MusicInterface extends React.Component
     PlayPauseMusic()
     {
         //pause all other audiosources
+        var audioSources = getElementsByTagName('audio');
         audioSources.forEach(element => {
             element.pause();
         });

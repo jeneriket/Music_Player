@@ -15,9 +15,6 @@ const BackPanelState = {
     Upload:2
 }
 
-//a list of audio sources to keep track of the audio 
-var audioSources = [];
-
 //Class for back panel
 class BackPanel extends React.Component
 {
@@ -110,18 +107,16 @@ class BackPanel extends React.Component
             return "Loading...";
 
         var playlist = [];
-        audioSources = [];
+        this.audioSources = [];
         for(let i = 0; i < this.music_data.length; i++)
         {
             var id = this.music_data[i].id;
             var name = this.music_data[i].name;
 
-            var audioSource = <audio id={id+"_audio"}><source src={"/uploads/"+name}/></audio>;
-            audioSources.push(audioSource);
             playlist.push(
             <div id={id+"_div"}>
                 {name}<br/>
-                {audioSource}
+                <audio id={id+"_audio"}><source src={"/uploads/"+name}/></audio>
                 <MusicInterface id={id}/>
                 <button onClick={() =>{confirmDelete(name, id)}}>
                     Delete?

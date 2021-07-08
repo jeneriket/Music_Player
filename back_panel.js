@@ -124,7 +124,7 @@ var BackPanel = function (_React$Component) {
         value: function RenderMusic() {
             if (this.playlist == null) return "Loading...";
 
-            return React.createElement("div", { dangerouslySetInnerHTML: { __html: this.playlist } });
+            return this.playlist;
         }
     }]);
 

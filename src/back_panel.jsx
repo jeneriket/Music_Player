@@ -110,14 +110,14 @@ class BackPanel extends React.Component
         for(let i = 0; i < this.music_data.length; i++)
         {
             var id = this.music_data[i].id;
-            var name = this.music_data.name;
+            var name = this.music_data[i].name;
 
             playlist.push(
             <div id={id+"_div"}>
                 {name}<br/>
                 <audio id={id+"_audio"}><source src={"/uploads/"+name}/></audio>
                 <MusicInterface id={id}/>
-                <button onclick={confirmDelete(name, id)}>
+                <button onClick={confirmDelete(name, id)}>
                     Delete?
                 </button>
             </div>);

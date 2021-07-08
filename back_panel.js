@@ -125,7 +125,7 @@ var BackPanel = function (_React$Component) {
             var playlist = [];
             for (var i = 0; i < this.music_data.length; i++) {
                 var id = this.music_data[i].id;
-                var name = this.music_data.name;
+                var name = this.music_data[i].name;
 
                 playlist.push(React.createElement(
                     "div",
@@ -140,7 +140,7 @@ var BackPanel = function (_React$Component) {
                     React.createElement(MusicInterface, { id: id }),
                     React.createElement(
                         "button",
-                        { onclick: confirmDelete(name, id) },
+                        { onClick: confirmDelete(name, id) },
                         "Delete?"
                     )
                 ));

@@ -26,7 +26,7 @@ var MusicInterface = function (_React$Component) {
             return React.createElement(
                 'button',
                 { onClick: this.PlayPauseMusic() },
-                this.state.playing ? 'Play' : 'Pause'
+                this.state.playing ? 'Pause' : 'Play'
             );
         }
     }, {

@@ -121,10 +121,35 @@ var BackPanel = function (_React$Component) {
         key: "RenderMusic",
         value: function RenderMusic() {
             if (this.music_data == null) return "Loading...";
+
+            var playlist = [];
+            for (var i = 0; i < this.music_data.length; i++) {
+                var id = this.music_data[i].id;
+                var name = this.music_data.name;
+
+                playlist.push(React.createElement(
+                    "div",
+                    { id: id + "_div" },
+                    name,
+                    React.createElement("br", null),
+                    React.createElement(
+                        "audio",
+                        { id: id + "_audio" },
+                        React.createElement("source", { src: "/uploads/" + name })
+                    ),
+                    React.createElement(MusicInterface, { id: id }),
+                    React.createElement(
+                        "button",
+                        { onclick: confirmDelete(name, id) },
+                        "Delete?"
+                    )
+                ));
+            }
+
             return React.createElement(
                 "div",
                 { id: "playlist" },
-                React.createElement(MusicInterface, { id: this.music_data[0].id })
+                playlist
             );
         }
     }]);

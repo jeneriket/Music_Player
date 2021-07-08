@@ -105,7 +105,27 @@ class BackPanel extends React.Component
     {
         if(this.music_data == null)
             return "Loading...";
-        return <div id="playlist"><MusicInterface id={this.music_data[0].id}/></div>;
+
+        var playlist = [];
+        for(let i = 0; i < this.music_data.length; i++)
+        {
+            var id = this.music_data[i].id;
+            var name = this.music_data.name;
+
+            playlist.push(
+            <div id={id+"_div"}>
+                {name}<br/>
+                <audio id={id+"_audio"}><source src={"/uploads/"+name}/></audio>
+                <MusicInterface id={id}/>
+                <button onclick={confirmDelete(name, id)}>
+                    Delete?
+                </button>
+            </div>);
+        }
+
+        return <div id="playlist">
+            {playlist}
+            </div>;
     }
     
 }

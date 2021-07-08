@@ -13,11 +13,11 @@ class MusicInterface extends React.Component
     {
         var m_Interface = "";
 
-        m_Interface += this.MakePlayPauseButton();
+        //m_Interface += this.MakePlayPauseButton();
         //MakeScrollBar(interface);
 
         //alert(m_Interface);
-        return m_Interface;
+        return this.MakePlayPauseButton;
     }
 
     MakePlayPauseButton()
@@ -34,11 +34,6 @@ class MusicInterface extends React.Component
             );
         }
     }
-}
-
-function MakeMusicInterface(id, playli)
-{
-    ReactDOM.render(<MusicInterface id={id}/>, document.getElementById('back_panel'));
 }
 
 function MakePlaylist(music_data)

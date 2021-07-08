@@ -25,11 +25,11 @@ var MusicInterface = function (_React$Component) {
         value: function render() {
             var m_Interface = "";
 
-            m_Interface += this.MakePlayPauseButton();
+            //m_Interface += this.MakePlayPauseButton();
             //MakeScrollBar(interface);
 
             //alert(m_Interface);
-            return m_Interface;
+            return this.MakePlayPauseButton;
         }
     }, {
         key: "MakePlayPauseButton",
@@ -49,10 +49,6 @@ var MusicInterface = function (_React$Component) {
 
     return MusicInterface;
 }(React.Component);
-
-function MakeMusicInterface(id, playli) {
-    ReactDOM.render(React.createElement(MusicInterface, { id: id }), document.getElementById('back_panel'));
-}
 
 function MakePlaylist(music_data) {
     var playlistDiv = React.createElement(

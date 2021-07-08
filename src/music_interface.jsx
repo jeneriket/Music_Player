@@ -9,7 +9,7 @@ class MusicInterface extends React.Component
         this.state = {playing: false};
     }
 
-    componentDidMount()
+    render()
     {
         var m_Interface = "";
 

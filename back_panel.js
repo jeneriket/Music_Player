@@ -5,7 +5,6 @@ Add cookie that keeps track of back panel state
 'use strict';
 
 //React object
-alert("CHANGE");
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -68,7 +67,7 @@ var BackPanel = function (_React$Component) {
                         //request successful
                         var music_data = new Array();
                         eval(xhr.response);
-                        //alert(music_data.length);
+                        alert(music_data.length);
                         //alert(xhr.response);
                         _this2.playlist = MakePlaylist(music_data);
                         _this2.forceUpdate();

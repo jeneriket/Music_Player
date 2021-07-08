@@ -57,7 +57,7 @@ class BackPanel extends React.Component
                     //request successful
                     var music_data = new Array(); 
                     eval(xhr.response);
-                    //alert(music_data.length);
+                    alert(music_data.length);
                     //alert(xhr.response);
                     this.playlist = MakePlaylist(music_data);
                     this.forceUpdate();
@@ -113,6 +113,5 @@ class BackPanel extends React.Component
     
 }
 
-alert("CHANGE");
 const domContainer = document.querySelector("#back_panel");
 var backPanel = ReactDOM.render(e(BackPanel), domContainer);

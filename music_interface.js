@@ -21,8 +21,8 @@ var MusicInterface = function (_React$Component) {
     }
 
     _createClass(MusicInterface, [{
-        key: "render",
-        value: function render() {
+        key: "componentDidMount",
+        value: function componentDidMount() {
             var m_Interface = "";
 
             //m_Interface += this.MakePlayPauseButton();

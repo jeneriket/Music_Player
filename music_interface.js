@@ -21,32 +21,19 @@ var MusicInterface = function (_React$Component) {
     }
 
     _createClass(MusicInterface, [{
-        key: "render",
+        key: 'render',
         value: function render() {
-            var m_Interface = "";
-
-            //m_Interface += this.MakePlayPauseButton();
-            //MakeScrollBar(interface);
-
-            //alert(m_Interface);
             return React.createElement(
-                "button",
-                { onClick: "$('#" + this.props.id + "_audio').trigger('play');" },
-                "Play"
+                'button',
+                { onClick: this.PlayPauseMusic() },
+                this.state.playing ? 'Play' : 'Pause'
             );
         }
     }, {
-        key: "MakePlayPauseButton",
-        value: function MakePlayPauseButton() {
-            if (this.state.playing) {}
-            //make pause button
-
-            //make play button
-            return React.createElement(
-                "button",
-                { onClick: "$('#" + this.props.id + "_audio').trigger('play');" },
-                "Play"
-            );
+        key: 'PlayPauseMusic',
+        value: function PlayPauseMusic() {
+            var value = this.state.playing ? 'pause' : 'play';
+            $('#' + this.props.id + '_audio').trigger(value);
         }
     }]);
 

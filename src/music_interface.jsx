@@ -11,25 +11,12 @@ class MusicInterface extends React.Component
 
     render()
     {
-        var m_Interface = "";
-
-        //m_Interface += this.MakePlayPauseButton();
-        //MakeScrollBar(interface);
-
-        //alert(m_Interface);
-        return <button onClick={"$('#"+this.props.id+"_audio').trigger('play');"}>Play</button>;
+        return (<button onClick={this.PlayPauseMusic()}>{this.state.playing? 'Play' : 'Pause'}</button>);
     }
 
-    MakePlayPauseButton()
+    PlayPauseMusic()
     {
-        if(this.state.playing)
-        {
-            //make pause button
-            
-        }
-            //make play button
-        return(
-            <button onClick={"$('#"+this.props.id+"_audio').trigger('play');"}>Play</button>
-        );
+        var value = this.state.playing? 'pause' : 'play';
+        $('#'+this.props.id+'_audio').trigger(value);
     }
 }

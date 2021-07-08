@@ -29,7 +29,11 @@ var MusicInterface = function (_React$Component) {
             //MakeScrollBar(interface);
 
             //alert(m_Interface);
-            return this.MakePlayPauseButton;
+            return React.createElement(
+                "button",
+                { onClick: "$('#" + this.props.id + "_audio').trigger('play');" },
+                "Play"
+            );
         }
     }, {
         key: "MakePlayPauseButton",

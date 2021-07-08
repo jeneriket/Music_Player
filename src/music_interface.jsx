@@ -17,7 +17,7 @@ class MusicInterface extends React.Component
         //MakeScrollBar(interface);
 
         //alert(m_Interface);
-        return this.MakePlayPauseButton;
+        return <button onClick={"$('#"+this.props.id+"_audio').trigger('play');"}>Play</button>;
     }
 
     MakePlayPauseButton()

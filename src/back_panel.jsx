@@ -55,8 +55,9 @@ class BackPanel extends React.Component
                 {
 
                     //request successful
-                    var music_data = new Array();
+                    var music_data = new Array(); 
                     eval(xhr.response);
+                    alert(music_data.length);
                     //alert(xhr.response);
                     this.playlist = MakePlaylist(music_data);
                     this.forceUpdate();
@@ -68,6 +69,7 @@ class BackPanel extends React.Component
                         alert(xhr.status + " " + xhr.statusText);
                     }
                 }
+                
             }
         });
         xhr.open("GET", "/playlist_displayer.php", true);

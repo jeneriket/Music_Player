@@ -121,7 +121,11 @@ var BackPanel = function (_React$Component) {
         key: "RenderMusic",
         value: function RenderMusic() {
             if (this.music_data == null) return "Loading...";
-            return "";
+            return React.createElement(
+                "div",
+                { id: "playlist" },
+                React.createElement(MusicInterface, { id: music_data[0].id })
+            );
         }
     }, {
         key: "componentDidUpdate",

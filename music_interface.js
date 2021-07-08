@@ -55,9 +55,9 @@ function MakeMusicInterface(id, playli) {
 }
 
 function MakePlaylist(music_data) {
-    alert(music_data[0].id);
     var playlistDiv = React.createElement("div", { id: "playlist" });
     //todo: loop to add
+    ReactDOM.render(playlistDiv, document.getElementById("root"));
     ReactDOM.render(React.createElement(MusicInterface, { id: music_data[0].id }), playlistDiv);
     return playlistDiv;
 }

@@ -65,9 +65,8 @@ var BackPanel = function (_React$Component) {
                     if (xhr.status == 200) {
 
                         //request successful
-                        var music_data = new Array();
+                        _this2.music_data = new Array();
                         eval(xhr.response);
-                        _this2.playlist = MakePlaylist(music_data);
                         _this2.forceUpdate();
                     } else {
                         if (status == "error") {
@@ -120,9 +119,9 @@ var BackPanel = function (_React$Component) {
     }, {
         key: "RenderMusic",
         value: function RenderMusic() {
-            if (this.playlist == null) return "Loading...";
+            if (this.music_data == null) return "Loading...";
 
-            return this.playlist;
+            return "";
         }
     }]);
 

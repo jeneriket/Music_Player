@@ -55,9 +55,8 @@ class BackPanel extends React.Component
                 {
 
                     //request successful
-                    var music_data = new Array(); 
+                    this.music_data = new Array(); 
                     eval(xhr.response);
-                    this.playlist = MakePlaylist(music_data);
                     this.forceUpdate();
                 }
                 else
@@ -103,10 +102,10 @@ class BackPanel extends React.Component
     //Function to render the backpanel as the music player
     RenderMusic()
     {
-        if(this.playlist == null)
+        if(this.music_data == null)
             return "Loading...";
 
-        return this.playlist;
+        return "";
     }
     
 }

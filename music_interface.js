@@ -37,7 +37,7 @@ var MusicInterface = function (_React$Component) {
         key: 'PlayPauseMusic',
         value: function PlayPauseMusic() {
             var value = this.state.playing ? 'pause' : 'play';
-            this.setState({ playing: !playing });
+            this.setState({ playing: !this.state.playing });
             $('#' + this.props.id + '_audio').trigger(value);
             this.forceUpdate();
         }

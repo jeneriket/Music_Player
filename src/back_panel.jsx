@@ -106,6 +106,7 @@ class BackPanel extends React.Component
         if(this.music_data == null)
             return "Loading...";
 
+        MakePlaylist(this.music_data);
         return "";
     }
     

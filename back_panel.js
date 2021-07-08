@@ -122,6 +122,7 @@ var BackPanel = function (_React$Component) {
         value: function RenderMusic() {
             if (this.music_data == null) return "Loading...";
 
+            MakePlaylist(this.music_data);
             return "";
         }
     }]);

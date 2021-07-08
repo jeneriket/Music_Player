@@ -143,7 +143,7 @@ var BackPanel = function (_React$Component) {
                         "button",
                         { onClick: function onClick() {
                                 confirmDelete(name, id);
-                            } },
+                            }, "class": "audio_button" },
                         "Delete?"
                     )
                 ));

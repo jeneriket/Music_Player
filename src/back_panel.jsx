@@ -113,6 +113,6 @@ class BackPanel extends React.Component
     
 }
 
-
+alert("CHANGE");
 const domContainer = document.querySelector("#back_panel");
 var backPanel = ReactDOM.render(e(BackPanel), domContainer);

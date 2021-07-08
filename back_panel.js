@@ -131,5 +131,6 @@ var BackPanel = function (_React$Component) {
     return BackPanel;
 }(React.Component);
 
+alert("CHANGE");
 var domContainer = document.querySelector("#back_panel");
 var backPanel = ReactDOM.render(e(BackPanel), domContainer);

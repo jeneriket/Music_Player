@@ -124,7 +124,7 @@ var BackPanel = function (_React$Component) {
             return React.createElement(
                 "div",
                 { id: "playlist" },
-                React.createElement(MusicInterface, { id: music_data[0].id })
+                React.createElement(MusicInterface, { id: this.music_data[0].id })
             );
         }
     }, {

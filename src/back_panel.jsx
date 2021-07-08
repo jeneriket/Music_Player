@@ -105,7 +105,7 @@ class BackPanel extends React.Component
     {
         if(this.music_data == null)
             return "Loading...";
-        return <div id="playlist"><MusicInterface id={music_data[0].id}/></div>;
+        return <div id="playlist"><MusicInterface id={this.music_data[0].id}/></div>;
     }
 
     componentDidUpdate()

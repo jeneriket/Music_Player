@@ -116,7 +116,7 @@ class BackPanel extends React.Component
             var id = this.music_data[i].id;
             var name = this.music_data[i].name;
 
-            audioSource = <audio id={id+"_audio"}><source src={"/uploads/"+name}/></audio>;
+            var audioSource = <audio id={id+"_audio"}><source src={"/uploads/"+name}/></audio>;
             audioSources.push(audioSource);
             playlist.push(
             <div id={id+"_div"}>

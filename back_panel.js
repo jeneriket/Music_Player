@@ -131,7 +131,7 @@ var BackPanel = function (_React$Component) {
                 var id = this.music_data[i].id;
                 var name = this.music_data[i].name;
 
-                audioSource = React.createElement(
+                var audioSource = React.createElement(
                     "audio",
                     { id: id + "_audio" },
                     React.createElement("source", { src: "/uploads/" + name })

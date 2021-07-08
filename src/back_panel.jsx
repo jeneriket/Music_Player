@@ -108,7 +108,7 @@ class BackPanel extends React.Component
         if(this.playlist == null)
             return "Loading...";
 
-        return <div dangerouslySetInnerHTML={this.playlist } />
+        return <div dangerouslySetInnerHTML={{ __html: this.playlist} } />
     }
     
 }

@@ -18,7 +18,7 @@ class MusicInterface extends React.Component
     {
         //pause all other audiosources
         var playButtons = document.getElementsByClassName('audio_button');
-        for(var i = 0; i < audioSources.length; i++)
+        for(var i = 0; i < playButtons.length; i++)
         {
             playButtons[i].click();
         }

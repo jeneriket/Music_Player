@@ -38,6 +38,7 @@ var MusicInterface = function (_React$Component) {
         value: function PlayPauseMusic() {
             var value = this.state.playing ? 'pause' : 'play';
             $('#' + this.props.id + '_audio').trigger(value);
+            this.forceUpdate();
         }
     }]);
 

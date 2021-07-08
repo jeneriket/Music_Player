@@ -43,6 +43,7 @@ function MakeMusicInterface(id, playli)
 
 function MakePlaylist(music_data)
 {
+    alert(music_data[0].id);
     const playlistDiv = document.createElement("div");
     playlistDiv.id = "playlist";
     //todo: loop to add

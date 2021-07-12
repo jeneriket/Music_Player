@@ -117,7 +117,7 @@ class BackPanel extends React.Component
             <div id={id+"_div"}>
                 {name}<br/>
                 <audio id={id+"_audio"} controls><source src={"/uploads/"+name}/></audio>
-                <MusicInterface id={id}/>
+                <MusicInterface id={id}/> 
                 <button onClick={() =>{confirmDelete(name, id)}}>
                     Delete?
                 </button>

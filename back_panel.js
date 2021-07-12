@@ -138,7 +138,6 @@ var BackPanel = function (_React$Component) {
                         { id: id + "_audio", controls: true },
                         React.createElement("source", { src: "/uploads/" + name })
                     ),
-                    React.createElement(MusicInterface, { id: id }),
                     React.createElement(
                         "button",
                         { onClick: function onClick() {

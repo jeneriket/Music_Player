@@ -116,7 +116,7 @@ class BackPanel extends React.Component
             playlist.push(
             <div id={id+"_div"}>
                 {name}<br/>
-                <audio id={id+"_audio"}><source src={"/uploads/"+name}/></audio>
+                <audio id={id+"_audio"} controls><source src={"/uploads/"+name}/></audio>
                 <MusicInterface id={id}/>
                 <button onClick={() =>{confirmDelete(name, id)}}>
                     Delete?

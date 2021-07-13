@@ -41,8 +41,7 @@ if(isset($_POST['submit'])){
             $response = curl_exec($ch);
 
             curl_close($ch);
-            echo strval($response);
-$conn->close();
+            $conn->close();
         } else {
             echo "<script type='text/javascript'> alert('Sorry, there was an error uploading your file.');</script>";
         }

@@ -18,9 +18,9 @@ switch($_POST['operation'])
         break;
 }
 if ($conn->query($sql) === TRUE) {
-    echo "<script type='text/javascript'> alert('Database created!');</script>";
+    //echo "<script type='text/javascript'> alert('Database created!');</script>";
   } else {
-    echo "<script type='text/javascript'> alert('Error!');</script>";
+    //echo "<script type='text/javascript'> alert('Error!');</script>";
   }
 $conn->close();
 

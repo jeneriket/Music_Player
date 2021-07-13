@@ -28,16 +28,16 @@ if(isset($_POST['submit'])){
             echo "<script type='text/javascript'> alert('The file ".htmlspecialchars(basename($_FILES["musicFile"]["name"]))." has been uploaded.');</script>";
 
             //post to database_interface.php
-            /*$fields = array(
+            $fields = array(
                 'filename' => $target_filename,
                 'operation' => 'upload'
             );
             $ch = curl_init();
             curl_setopt($ch, "/database_interface.php")
             curl_setopt($ch, CURLOPT_POST, 2);
-            curl_setopt($chm, CURLOPT_POSTFIELDS, $fields);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
             curl_exec();
-            curl_close();*/
+            curl_close();
         } else {
             echo "<script type='text/javascript'> alert('Sorry, there was an error uploading your file.');</script>";
         }

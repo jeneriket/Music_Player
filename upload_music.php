@@ -53,12 +53,7 @@ if ($conn->connect_error) {
 }
 echo "Connected successfully";
 
-switch($_POST['operation'])
-{
-    case 'upload' :
         $sql = "CREATE DATABASE myDB";
-        break;
-}
 if ($conn->query($sql) === TRUE) {
     echo "Database created successfully";
   } else {

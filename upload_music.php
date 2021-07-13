@@ -36,8 +36,8 @@ if(isset($_POST['submit'])){
             curl_setopt($ch, "/database_interface.php")
             curl_setopt($ch, CURLOPT_POST, 2);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
-            curl_exec();
-            curl_close();
+            curl_exec($ch);
+            curl_close($ch);
         } else {
             echo "<script type='text/javascript'> alert('Sorry, there was an error uploading your file.');</script>";
         }

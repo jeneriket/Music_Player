@@ -39,9 +39,9 @@ if(isset($_POST['submit'])){
             curl_setopt($ch, CURLOPT_POST, 2);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $postvars);
             $response = curl_exec($ch);
-            curl_close($ch);
 
-            echo($response);
+            curl_close($ch);
+            echo(strval($response));
         } else {
             echo "<script type='text/javascript'> alert('Sorry, there was an error uploading your file.');</script>";
         }

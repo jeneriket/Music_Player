@@ -1,4 +1,7 @@
 <?php
+
+include 'sql_interface.php';
+
 //TODO: Prevent special characters from being uploaded
 $target_dir = "/var/www/html/uploads/";
 $target_filename = basename($_FILES["musicFile"]["name"]);
@@ -27,25 +30,21 @@ if(isset($_POST['submit'])){
         {
             //echo "<script type='text/javascript'> alert('The file ".htmlspecialchars(basename($_FILES["musicFile"]["name"]))." has been uploaded.');</script>";
 
-            //post to database_interface.php
-           $fields = array(
-                'filename' => $target_filename,
-                'operation' => 'upload',
-            );
-            $postvars = http_build_query($fields);
+            uploadSong();
+            //generate song id
+            //get all id values
+            
+            //get list position
 
-            $ch = curl_init();
-            curl_setopt($ch, "http://18.189.30.30/database_interface.php");
-            curl_setopt($ch, CURLOPT_POST, 2);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $postvars);
-            $response = curl_exec($ch);
-
-            curl_close($ch);
+            $sql = "USE Music_Player;
+            INSERT INTO songs ()";
+            $conn->query($sql);
+            $conn->close();
         } else {
             echo "<script type='text/javascript'> alert('Sorry, there was an error uploading your file.');</script>";
         }
     }
 }
 
-//echo "<script type='text/javascript'>location.replace('http://18.189.30.30');</script>"
+echo "<script type='text/javascript'>location.replace('http://18.189.30.30');</script>"
 ?>

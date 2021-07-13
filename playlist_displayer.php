@@ -1,18 +1,7 @@
 <?php
 
-//todo: delete and add to sql database
-$ids = [];
+include 'sql_interface';
 
-function GenerateID()
-{
-    $ID = rand();
-    while(in_array($ID, $ids))
-    {
-        $ID = rand();
-    }
-
-    return $ID;
-}
 
 
 
@@ -23,7 +12,7 @@ foreach($musicFiles as $value)
     if($value == "." || $value == "..")
         continue;
 
-    $id = GenerateID();
+    $id = generateID();
     //make the div for each playlist button
     /*echo "<div id='".$id."_div'>".$value."<br>
         <audio id='".$id."_audio'><source src='/uploads/".strval($value)."'></audio>

@@ -1,6 +1,5 @@
 <?php
-//php file to interact with sql database based on post parameters
-
+//php file to interact with sql database based on post parameters  
 $servername = "localhost";
 $username = "jeneriket";
 $password = "bigjumbo999";
@@ -19,6 +18,7 @@ switch($_POST['operation'])
         break;
 }
 
+$conn->query($sql);
 $conn->close();
 
 ?>

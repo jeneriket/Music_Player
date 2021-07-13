@@ -35,7 +35,7 @@ if(isset($_POST['submit'])){
             $postvars = http_build_query($fields);
 
             $ch = curl_init();
-            curl_setopt($ch, "/var/www/html/database_interface.php");
+            curl_setopt($ch, "http://18.189.30.30/database_interface.php");
             curl_setopt($ch, CURLOPT_POST, 2);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $postvars);
             $response = curl_exec($ch);

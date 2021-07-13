@@ -28,7 +28,7 @@ if(isset($_POST['submit'])){
             //echo "<script type='text/javascript'> alert('The file ".htmlspecialchars(basename($_FILES["musicFile"]["name"]))." has been uploaded.');</script>";
 
             //post to database_interface.php
-            /*$fields = array(
+            $fields = array(
                 'filename' => $target_filename,
                 'operation' => 'upload',
             );
@@ -41,26 +41,7 @@ if(isset($_POST['submit'])){
             $response = curl_exec($ch);
 
             curl_close($ch);
-            echo strval($response);*/
-            $servername = "localhost";
-$username = "jeneriket";
-$password = "bigjumbo999";
-
-$conn = new mysqli($servername, $username, $password);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-echo "Connected successfully";
-if(true)
-{
-    $sql = "CREATE DATABASE myDB";
-}
-if ($conn->query($sql) === TRUE) {
-    echo "Database created successfully";
-  } else {
-    echo "Error creating database: " . $conn->error;
-  }
+            echo strval($response);
 $conn->close();
         } else {
             echo "<script type='text/javascript'> alert('Sorry, there was an error uploading your file.');</script>";

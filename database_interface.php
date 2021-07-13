@@ -17,8 +17,11 @@ switch($_POST['operation'])
         $sql = "CREATE DATABASE myDB";
         break;
 }
-
-$conn->query($sql);
+if ($conn->query($sql) === TRUE) {
+    echo "<script type='text/javascript'> alert('Database created!');</script>";
+  } else {
+    echo "<script type='text/javascript'> alert('Error!');</script>";
+  }
 $conn->close();
 
 ?>

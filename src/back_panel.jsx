@@ -113,6 +113,7 @@ class BackPanel extends React.Component
             var id = this.music_data[i].id;
             var name = this.music_data[i].name;
 
+            //NOTE: You need to move the delete button to music interface
             playlist.push(
             <div id={id+"_div"}>
                 {name}<br/>

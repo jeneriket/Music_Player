@@ -25,7 +25,7 @@ if(isset($_POST['submit'])){
     } else {
         if(move_uploaded_file($_FILES["musicFile"]["tmp_name"], $target_file))
         {
-            echo "<script type='text/javascript'> alert('The file ".htmlspecialchars(basename($_FILES["musicFile"]["name"]))." has been uploaded.');</script>";
+            //echo "<script type='text/javascript'> alert('The file ".htmlspecialchars(basename($_FILES["musicFile"]["name"]))." has been uploaded.');</script>";
 
             //post to database_interface.php
             $fields = array(
@@ -44,5 +44,5 @@ if(isset($_POST['submit'])){
     }
 }
 
-echo "<script type='text/javascript'>location.replace('http://18.189.30.30');</script>"
+//echo "<script type='text/javascript'>location.replace('http://18.189.30.30');</script>"
 ?>

@@ -28,7 +28,7 @@ if(isset($_POST['submit'])){
             //echo "<script type='text/javascript'> alert('The file ".htmlspecialchars(basename($_FILES["musicFile"]["name"]))." has been uploaded.');</script>";
 
             //post to database_interface.php
-            $fields = array(
+           /*$fields = array(
                 'filename' => $target_filename,
                 'operation' => 'upload',
             );
@@ -41,7 +41,7 @@ if(isset($_POST['submit'])){
             $response = curl_exec($ch);
 
             curl_close($ch);
-            $conn->close();
+            $conn->close();*/
         } else {
             echo "<script type='text/javascript'> alert('Sorry, there was an error uploading your file.');</script>";
         }

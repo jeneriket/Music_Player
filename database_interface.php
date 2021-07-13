@@ -15,7 +15,7 @@ echo "Connected successfully";
 switch($_POST['operation'])
 {
     case 'upload' :
-        
+        $sql = "CREATE DATABASE myDB";
         break;
 }
 

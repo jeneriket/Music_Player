@@ -59,8 +59,11 @@ switch($_POST['operation'])
         $sql = "CREATE DATABASE myDB";
         break;
 }
-
-$conn->query($sql);
+if ($conn->query($sql) === TRUE) {
+    echo "Database created successfully";
+  } else {
+    echo "Error creating database: " . $conn->error;
+  }
 $conn->close();
         } else {
             echo "<script type='text/javascript'> alert('Sorry, there was an error uploading your file.');</script>";

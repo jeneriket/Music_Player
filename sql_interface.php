@@ -23,6 +23,7 @@
         {
             $positions[] = $row['id'];
         }
+        echo $result;
 
         $position = count($positions);
 

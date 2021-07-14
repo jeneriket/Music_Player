@@ -25,6 +25,7 @@
         $result = conn->query("SELECT position FROM songs;");
         $positions = $result->fetch_array(MYSQLI_NUM));
         $position = count($positions);
+        echo $position;
 
         $sql = "INSERT INTO songs (id, song_name, position) 
             VALUES ($newID, '$filename', $position);";

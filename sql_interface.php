@@ -10,8 +10,8 @@
         $conn = new mysqli($servername, $username, $password, 'Music_Player');
         
         if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-            return false;
+            echo "<script type='text/javascript'> alert('Connection failed: " . $conn->connect_error."');</script>";
+            return;
         }
 
         //get the id

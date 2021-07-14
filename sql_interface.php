@@ -1,7 +1,7 @@
 <?php
     $ids = [];
 
-    function uploadSong($filename)
+    /*function uploadSong($filename)
     {
         if(!connectToServer())
             return;
@@ -29,7 +29,7 @@
         $sql = "USE Music_Player; INSERT INTO songs ($newID, $filename, $position);";
         
         interface($sql);
-    }
+    }*/
 
     function interface(&$s)
     {

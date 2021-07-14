@@ -18,6 +18,7 @@
         $result = $conn->query("SELECT id FROM songs;");
         while ($row = $result->fetch_array(MYSQLI_NUM))
         {
+            echo $row[0]."; ";
             array_push($ids, $row[0]);
         }
         echo $ids[1];

@@ -4,7 +4,7 @@
     function uploadSong($filename)
     {
         if(!connectToServer())
-            return();
+            return;
 
         //get the id
         $result = mysqli_query("USE Music_Player;

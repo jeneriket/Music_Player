@@ -1,6 +1,6 @@
 <?php
 
-//include 'sql_interface.php';
+include 'sql_interface.php';
 
 //TODO: Prevent special characters from being uploaded
 $target_dir = "/var/www/html/uploads/";
@@ -30,7 +30,7 @@ if(isset($_POST['submit'])){
         {
             //echo "<script type='text/javascript'> alert('The file ".htmlspecialchars(basename($_FILES["musicFile"]["name"]))." has been uploaded.');</script>";
 
-            //uploadSong();
+            uploadSong();
             //generate song id
             //get all id values
             

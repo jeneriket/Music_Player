@@ -34,6 +34,7 @@
 
     function interfaceDatabase($sqlString, &$conn)
     {
+        echo($conn);
         $conn->query($sqlString);
         $conn->close();
     }

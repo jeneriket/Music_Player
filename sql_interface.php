@@ -52,7 +52,7 @@
             return false;
         }
 
-        return $conn;
+        return &$conn;
     }
 
     

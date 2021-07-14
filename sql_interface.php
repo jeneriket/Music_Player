@@ -6,6 +6,7 @@
         if(!connectToServer())
             return;
 
+            /*
         //get the id
         $result = mysqli_query("USE Music_Player;
         SELECT id FROM songs;");
@@ -28,7 +29,7 @@
 
         $sql = "USE Music_Player; INSERT INTO songs ($newID, $filename, $position);";
         
-        interfaceDatabase($sql);
+        interfaceDatabase($sql);*/
 
     }
 

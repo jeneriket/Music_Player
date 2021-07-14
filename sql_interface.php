@@ -18,9 +18,9 @@
         $result = $conn->query("SELECT id FROM songs;");
         while ($row = $result->fetch_array(MYSQLI_NUM))
         {
-            $ids[] = $row['id'];
+            array_push($ids, $row['id']);
         }
-        echo $ids[0];
+        echo $ids[1];
 
         $newID = generateID();
 

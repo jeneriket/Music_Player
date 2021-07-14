@@ -32,7 +32,7 @@
         }
         $position = count($positions);
 
-        $sql = "USE Music_Player; INSERT INTO songs ($newID, $filename, $position);";
+        $sql = "USE Music_Player; INSERT INTO songs ($newID, \"$filename\", $position);";
         
         $conn->query($sql);
         $conn->close();

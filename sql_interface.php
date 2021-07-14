@@ -15,20 +15,15 @@
         }
 
         //get the id
-        $result = mysqli_query("SELECT id FROM songs;");
-        while($row = mysqli_fetch_array($result, MYSQL_ASSOC))
-        {
-            $ids[] = $row['id'];
-        }
+        $result = conn->query("SELECT id FROM songs;");
+        $ids = $result->fetch_array(MYSQLI_NUM));
+        echo $ids[0];
 
         $newID = generateID();
 
         //get the position
-        $result = mysqli_query("USE Music_Player; SELECT position FROM songs;");
-        while($row = mysqli_fetch_array($result, MYSQL_ASSOC))
-        {
-            $positions[] = $row['id'];
-        }
+        $result = conn->query("SELECT position FROM songs;");
+        $positions = $result->fetch_array(MYSQLI_NUM));
         $position = count($positions);
 
         $sql = "INSERT INTO songs (id, song_name, position) 

@@ -8,6 +8,8 @@
         $password = "bigjumbo999";
         
         $conn = new mysqli($servername, $username, $password, 'Music_Player');
+
+        $ids = [];
         
         if ($conn->connect_error) {
             echo "<script type='text/javascript'> alert('Connection failed: " . $conn->connect_error."');</script>";

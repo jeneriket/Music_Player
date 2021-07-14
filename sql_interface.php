@@ -10,6 +10,7 @@
         $conn = new mysqli($servername, $username, $password, 'Music_Player');
 
         $ids = [];
+        $positions = [];
         
         if ($conn->connect_error) {
             echo "<script type='text/javascript'> alert('Connection failed: " . $conn->connect_error."');</script>";
@@ -17,21 +18,15 @@
         }
 
         //get the id
-        $result = $conn->query("SELECT id FROM songs;");
+        $result = $conn->query("SELECT id, position FROM songs;");
         while ($row = $result->fetch_array(MYSQLI_NUM))
         {
-            echo $row[0]."; ";
             array_push($ids, $row[0]);
+            array_push($positions, $row[1]);
         }
-        echo $ids[1];
 
         $newID = generateID();
-
-        //get the position
-        $result = $conn->query("SELECT position FROM songs;");
-        $positions = $result->fetch_array(MYSQLI_NUM);
         $position = count($positions);
-        //echo $position;
 
         $sql = "INSERT INTO songs (id, song_name, position) 
             VALUES ($newID, '$filename', $position);";

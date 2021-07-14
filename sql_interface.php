@@ -3,7 +3,8 @@
 
     function uploadSong($filename)
     {
-        if(!connectToServer())
+        $conn = connectToServer();
+        if(!$conn)
             return;
 
             
@@ -23,18 +24,15 @@
         {
             $positions[] = $row['id'];
         }
-        echo $result;
         $position = count($positions);
 
         $sql = "USE Music_Player; INSERT INTO songs ($newID, $filename, $position);";
         
-        echo $sql;
-/*
-        interfaceDatabase($sql);*/
+        interfaceDatabase($sql, $conn);
 
     }
 
-    function interfaceDatabase($s)
+    function interfaceDatabase($sqlString, &$conn)
     {
         $conn->query($s);
         $conn->close();
@@ -54,7 +52,7 @@
             return false;
         }
 
-        return true;
+        return $conn;
     }
 
     

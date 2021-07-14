@@ -3,11 +3,17 @@
 
     function uploadSong($filename)
     {
-        $conn = connectToServer();
-        if(!$conn)
-            return;
+        $servername = "localhost";
+        $username = "jeneriket";
+        $password = "bigjumbo999";
+        
+        $conn = new mysqli($servername, $username, $password);
+        
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+            return false;
+        }
 
-            
         //get the id
         $result = mysqli_query("USE Music_Player;
         SELECT id FROM songs;");
@@ -28,32 +34,9 @@
 
         $sql = "USE Music_Player; INSERT INTO songs ($newID, $filename, $position);";
         
-        interfaceDatabase($sql, $conn);
-
-    }
-
-    function interfaceDatabase($sqlString, &$conn)
-    {
-        echo($conn);
-        $conn->query($sqlString);
+        $conn->query($sql);
         $conn->close();
-    }
 
-    function connectToServer()
-    {
-        
-        $servername = "localhost";
-        $username = "jeneriket";
-        $password = "bigjumbo999";
-        
-        $conn = new mysqli($servername, $username, $password);
-        
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-            return false;
-        }
-
-        return $conn->value;
     }
 
     

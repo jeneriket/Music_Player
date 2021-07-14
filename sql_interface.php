@@ -20,7 +20,7 @@
         {
             $ids[] = $row['id'];
         }
-        echo $ids[1];
+        echo $ids[0];
 
         $newID = generateID();
 

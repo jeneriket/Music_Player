@@ -1,6 +1,6 @@
 <?php
 
-include 'sql_interface';
+//include 'sql_interface';
 
 
 

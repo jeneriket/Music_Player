@@ -23,7 +23,7 @@
             echo $row[0]."; ";
             array_push($ids, $row[0]);
         }
-        echo $ids[0];
+        echo $ids[1];
 
         $newID = generateID();
 

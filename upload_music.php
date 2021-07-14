@@ -35,11 +35,6 @@ if(isset($_POST['submit'])){
             //get all id values
             
             //get list position
-
-            $sql = "USE Music_Player;
-            INSERT INTO songs ()";
-            $conn->query($sql);
-            $conn->close();
         } else {
             echo "<script type='text/javascript'> alert('Sorry, there was an error uploading your file.');</script>";
         }

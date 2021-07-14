@@ -24,11 +24,12 @@
             $positions[] = $row['id'];
         }
         echo $result;
-/*
         $position = count($positions);
 
         $sql = "USE Music_Player; INSERT INTO songs ($newID, $filename, $position);";
         
+        echo $sql;
+/*
         interfaceDatabase($sql);*/
 
     }

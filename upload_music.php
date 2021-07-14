@@ -41,5 +41,5 @@ if(isset($_POST['submit'])){
     }
 }
 
-//echo "<script type='text/javascript'>location.replace('http://18.189.30.30');</script>"
+echo "<script type='text/javascript'>location.replace('http://18.189.30.30');</script>"
 ?>

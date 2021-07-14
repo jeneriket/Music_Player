@@ -32,6 +32,22 @@
             VALUES ($newID, '$filename', $position);";
         
         $conn->query($sql);
+
+
+        //add to default playlist
+        $defaultPlaylistPositions = [];
+        $result = $conn->query("SELECT position FROM 0_playlist");
+        while ($row = $result->fetch_array(MYSQLI_NUM))
+        {
+            array_push($defaultPlaylistPositions, $row[0]);
+        }
+
+        $defaultPlaylistPosition = count($defaultPlaylistPositions);
+        $sql = "INSERT INTO 0_playlist (song_id, position)
+        VALUES($newID, $defaultPlaylistPosition);";
+        $conn->query($sql);
+
+        //close mysql connection
         $conn->close();
 
     }

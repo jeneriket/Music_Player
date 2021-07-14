@@ -15,14 +15,14 @@
         }
 
         //get the id
-        $result = conn->query("SELECT id FROM songs;");
+        $result = $conn->query("SELECT id FROM songs;");
         $ids = $result->fetch_array(MYSQLI_NUM));
         echo $ids[0];
 
         $newID = generateID();
 
         //get the position
-        $result = conn->query("SELECT position FROM songs;");
+        $result = $conn->query("SELECT position FROM songs;");
         $positions = $result->fetch_array(MYSQLI_NUM));
         $position = count($positions);
         echo $position;

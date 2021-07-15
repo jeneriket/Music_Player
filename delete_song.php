@@ -41,7 +41,6 @@ if(unlink("/var/www/html/uploads/".$_POST['filename']))
             $song = new PlaylistSong;
             $song->id = $row[0];
             $song->position = $row[1];
-            echo $song->id." ".$song->position;
             array_push($songs, $song);
         }
 
@@ -51,7 +50,7 @@ if(unlink("/var/www/html/uploads/".$_POST['filename']))
         {
             if($songs[$i]->id == $id)
             {
-                array_push($removePositions, $songs[$i]);
+                array_push($removePositions, $songs[$i]->position);
             }
         }
 
@@ -59,6 +58,7 @@ if(unlink("/var/www/html/uploads/".$_POST['filename']))
         foreach($removePositions as $removePosition)
         {
             array_splice($songs, $removePosition);
+            echo $removePosition. " \n";
         }
 
         //delete the table, re-add it with new data, using the array keys as positions

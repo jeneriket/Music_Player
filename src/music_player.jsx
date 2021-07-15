@@ -4,6 +4,8 @@ function PlaySong(source)
 {
     this.song=source;
     this.setState({playable: true});
+
+    await new Promise((resolve, reject) => setTimeout(resolve, 1000));
     this.PlayPauseMusic();
 }
 

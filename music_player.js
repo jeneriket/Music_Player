@@ -11,6 +11,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function PlaySong(source) {
     this.song = source;
     this.setState({ playable: true });
+
     this.PlayPauseMusic();
 }
 

@@ -50,7 +50,7 @@ if(unlink("/var/www/html/uploads/".$_POST['filename']))
         {
             if($songs[$i]->id == $id)
             {
-                echo ."ID: ". $id. "; Song ID:". $songs[$i]->id."\n";
+                echo "ID: ". $id. "; Song ID:". $songs[$i]->id."\n";
                 array_push($removePositions, $songs[$i]->position);
             }
         }

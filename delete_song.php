@@ -58,8 +58,9 @@ if(unlink("/var/www/html/uploads/".$_POST['filename']))
         foreach($removePositions as $removePosition)
         {
             array_splice($songs, $removePosition);
-            echo $removePosition. " \n";
+            
         }
+        echo count($songs);
 
         //delete the table, re-add it with new data, using the array keys as positions
         $sql = "DELETE FROM $playlistName;";

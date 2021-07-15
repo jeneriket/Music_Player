@@ -112,18 +112,20 @@ class BackPanel extends React.Component
         {
             (function() {
                 var ii = i;
-                var id = this.music_data[ii].id;
-                var name = this.music_data[ii].name;
-    
-                //NOTE: You need to move the delete button to music interface
-                playlist.push(
-                <div id={id+"_div"}>
-                    {name}<br/>
-                    <button onClick={() => {PlaySong(name)}}>Play</button>
-                    <button onClick={() =>{confirmDelete(name, id)}}>
-                        Delete?
-                    </button>
-                </div>);
+                setTimeout(function(){
+                    var id = this.music_data[ii].id;
+                    var name = this.music_data[ii].name;
+        
+                    //NOTE: You need to move the delete button to music interface
+                    playlist.push(
+                    <div id={id+"_div"}>
+                        {name}<br/>
+                        <button onClick={() => {PlaySong(name)}}>Play</button>
+                        <button onClick={() =>{confirmDelete(name, id)}}>
+                            Delete?
+                        </button>
+                    </div>);
+                }, 1000)
             })();
         }
 

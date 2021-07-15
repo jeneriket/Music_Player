@@ -131,11 +131,5 @@ class BackPanel extends React.Component
     
 }
 
-function PlaySong(source)
-{
-    $('#Music_Player_Source').attr("src",source);
-    $('#Music_Player').trigger('play');
-}
-
 const domContainer = document.querySelector("#back_panel");
 var backPanel = ReactDOM.render(e(BackPanel), domContainer);

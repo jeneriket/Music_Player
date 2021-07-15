@@ -8,6 +8,12 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+function PlaySong(source) {
+    this.setState({ playable: true });
+    $('#Music_Player_Source').attr("src", source);
+    $('#Music_Player').trigger('play');
+}
+
 var MusicPlayer = function (_React$Component) {
     _inherits(MusicPlayer, _React$Component);
 
@@ -18,77 +24,78 @@ var MusicPlayer = function (_React$Component) {
 
         _this.state = { playing: false, playable: false };
         _this.song = "No song selected.";
+        PlaySong = PlaySong.bind(_this);
         return _this;
     }
 
     _createClass(MusicPlayer, [{
-        key: "render",
+        key: 'render',
         value: function render() {
             var _this2 = this;
 
             if (this.state.playable) {
                 return React.createElement(
-                    "div",
+                    'div',
                     null,
                     React.createElement(
-                        "audio",
-                        { id: "Music_Player" },
-                        React.createElement("source", { id: "Music_Player", src: "/uploads/" + this.song })
+                        'audio',
+                        { id: 'Music_Player' },
+                        React.createElement('source', { id: 'Music_Player', src: "/uploads/" + this.song })
                     ),
                     React.createElement(
-                        "p",
+                        'p',
                         null,
                         this.song
                     ),
-                    React.createElement("br", null),
+                    React.createElement('br', null),
                     React.createElement(
-                        "button",
+                        'button',
                         { disabled: true },
-                        "Previous"
+                        'Previous'
                     ),
                     React.createElement(
-                        "button",
-                        { "class": "audio_button", onClick: function onClick() {
+                        'button',
+                        { 'class': 'audio_button', onClick: function onClick() {
                                 _this2.PlayPauseMusic();
                             } },
                         this.state.playing ? 'Pause' : 'Play'
                     ),
                     React.createElement(
-                        "button",
+                        'button',
                         { disabled: true },
-                        "Next"
+                        'Next'
                     )
                 );
             }
 
             return React.createElement(
-                "div",
+                'div',
                 null,
                 React.createElement(
-                    "p",
+                    'p',
                     null,
                     this.song
                 ),
-                React.createElement("br", null),
+                React.createElement('br', null),
                 React.createElement(
-                    "button",
+                    'button',
                     { disabled: true },
-                    "Previous"
+                    'Previous'
                 ),
                 React.createElement(
-                    "button",
-                    { "class": "audio_button", disabled: true },
-                    "Play"
+                    'button',
+                    { 'class': 'audio_button', disabled: true },
+                    'Play'
                 ),
                 React.createElement(
-                    "button",
+                    'button',
                     { disabled: true },
-                    "Next"
+                    'Next'
                 )
             );
         }
     }, {
-        key: "PlayPauseMusic",
+        key: 'PlayPauseMusic',
         value: function PlayPauseMusic() {
 
             var value = this.state.playing ? 'pause' : 'play';

@@ -1,5 +1,12 @@
 'use strict'
 
+function PlaySong(source)
+{
+    this.setState({playable: true});
+    $('#Music_Player_Source').attr("src",source);
+    $('#Music_Player').trigger('play');
+}
+
 class MusicPlayer extends React.Component
 {
 
@@ -8,6 +15,7 @@ class MusicPlayer extends React.Component
         super(_props);
         this.state = {playing: false, playable: false};
         this.song = "No song selected.";
+        PlaySong = PlaySong.bind(this);
     }
 
     render()

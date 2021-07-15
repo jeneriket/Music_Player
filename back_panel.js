@@ -162,10 +162,5 @@ var BackPanel = function (_React$Component) {
     return BackPanel;
 }(React.Component);
 
-function PlaySong(source) {
-    $('#Music_Player_Source').attr("src", source);
-    $('#Music_Player').trigger('play');
-}
-
 var domContainer = document.querySelector("#back_panel");
 var backPanel = ReactDOM.render(e(BackPanel), domContainer);

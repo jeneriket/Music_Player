@@ -125,7 +125,7 @@ class BackPanel extends React.Component
                             Delete?
                         </button>
                     </div>);
-                }, 1000)
+                }, 1000);
             })();
         }
 

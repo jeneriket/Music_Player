@@ -66,6 +66,7 @@ if(unlink("/var/www/html/uploads/".$_POST['filename']))
 
         for($i = 0; $i < count($songs); $i++)
         {
+            echo $songID." ".$i;
             $songID = $songs[$i]->id;
             $sql = "INSERT INTO $playlistName (song_id, position)
                 VALUES($songID, $i);";
@@ -75,6 +76,6 @@ if(unlink("/var/www/html/uploads/".$_POST['filename']))
     }
 
     $conn->close();
-    echo "Deleted '".$_POST['filename']."'";
+    //echo "Deleted '".$_POST['filename']."'";
 }
 ?>

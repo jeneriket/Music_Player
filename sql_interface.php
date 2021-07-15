@@ -8,7 +8,7 @@
         $conn = new mysqli($servername, $username, $password, 'Music_Player');
 
         $ids = [];
-        $positions = [];
+        //$positions = [];
         
         if ($conn->connect_error) {
             echo "<script type='text/javascript'> alert('Connection failed: " . $conn->connect_error."');</script>";
@@ -20,14 +20,14 @@
         while ($row = $result->fetch_array(MYSQLI_NUM))
         {
             array_push($ids, $row[0]);
-            array_push($positions, $row[1]);
+            //array_push($positions, $row[1]);
         }
 
         $newID = GenerateID($ids);
-        $position = count($positions);
+        //$position = count($positions);
 
-        $sql = "INSERT INTO songs (id, song_name, position) 
-            VALUES ($newID, '$filename', $position);";
+        $sql = "INSERT INTO songs (id, song_name) 
+            VALUES ($newID, '$filename');";
         
         $conn->query($sql);
 

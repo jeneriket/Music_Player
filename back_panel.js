@@ -124,34 +124,38 @@ var BackPanel = function (_React$Component) {
 
             var playlist = [];
             this.audioSources = [];
+
+            var _loop = function _loop(i) {
+                (function () {
+                    var id = this.music_data[i].id;
+                    var name = this.music_data[i].name;
+
+                    //NOTE: You need to move the delete button to music interface
+                    playlist.push(React.createElement(
+                        "div",
+                        { id: id + "_div" },
+                        name,
+                        React.createElement("br", null),
+                        React.createElement(
+                            "button",
+                            { onClick: function onClick() {
+                                    PlaySong(name);
+                                } },
+                            "Play"
+                        ),
+                        React.createElement(
+                            "button",
+                            { onClick: function onClick() {
+                                    confirmDelete(name, id);
+                                } },
+                            "Delete?"
+                        )
+                    ));
+                })();
+            };
+
             for (var i = 0; i < this.music_data.length; i++) {
-                var _id = this.music_data[i].id;
-                var _name = this.music_data[i].name;
-
-                var id = _id;
-                var name = _name;
-
-                //NOTE: You need to move the delete button to music interface
-                playlist.push(React.createElement(
-                    "div",
-                    { id: id + "_div" },
-                    name,
-                    React.createElement("br", null),
-                    React.createElement(
-                        "button",
-                        { onClick: function onClick() {
-                                PlaySong(name);
-                            } },
-                        "Play"
-                    ),
-                    React.createElement(
-                        "button",
-                        { onClick: function onClick() {
-                                confirmDelete(name, id);
-                            } },
-                        "Delete?"
-                    )
-                ));
+                _loop(i);
             }
 
             return React.createElement(

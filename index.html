@@ -7,6 +7,8 @@
     </head>
     <body>
         <div>
+            <!--div for the actual music player-->
+            <div id="player"></div>
             <div id="menu">
                 <button onclick="backPanel.ChangeCurrentState(BackPanelState.MyMusic);">My Music</button>
                 <button onclick="backPanel.ChangeCurrentState(BackPanelState.Playlists);">Playlists</button>
@@ -14,10 +16,6 @@
             </div>
             <!--Back Panel that can be changed with React-->
             <div id="back_panel"></div>
-
-            <!--Status Area for displaying statuses from PHP-->
-            <div id="status">
-            </div>
         </div>
 
         <!--Delete file function-->
@@ -53,6 +51,6 @@
 
         <!--My React script(s)-->
         <script src="back_panel.js"></script>
-        <script src="music_interface.js"></script>
+        <script src="music_player.js"></script>
     </body>
 </html>

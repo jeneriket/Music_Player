@@ -128,17 +128,19 @@ var BackPanel = function (_React$Component) {
                 var id = this.music_data[i].id;
                 var name = this.music_data[i].name;
 
+                //NOTE: You need to move the delete button to music interface
                 playlist.push(React.createElement(
                     "div",
                     { id: id + "_div" },
                     name,
                     React.createElement("br", null),
                     React.createElement(
-                        "audio",
-                        { id: id + "_audio" },
-                        React.createElement("source", { src: "/uploads/" + name })
+                        "button",
+                        { onClick: function onClick() {
+                                PlaySong(name);
+                            } },
+                        "Play"
                     ),
-                    React.createElement(MusicInterface, { id: id }),
                     React.createElement(
                         "button",
                         { onClick: function onClick() {
@@ -159,6 +161,11 @@ var BackPanel = function (_React$Component) {
 
     return BackPanel;
 }(React.Component);
+
+function PlaySong(source) {
+    $('#Music_Player_Source').attr("src", source);
+    $('#Music_Player').trigger('play');
+}
 
 var domContainer = document.querySelector("#back_panel");
 var backPanel = ReactDOM.render(e(BackPanel), domContainer);

@@ -117,8 +117,7 @@ class BackPanel extends React.Component
             playlist.push(
             <div id={id+"_div"}>
                 {name}<br/>
-                <audio id={id+"_audio"}><source src={"/uploads/"+name}/></audio>
-                <MusicInterface id={id}/>
+                <button onClick={() => {PlaySong(name)}}>Play</button>
                 <button onClick={() =>{confirmDelete(name, id)}}>
                     Delete?
                 </button>
@@ -130,6 +129,12 @@ class BackPanel extends React.Component
             </div>;
     }
     
+}
+
+function PlaySong(source)
+{
+    $('#Music_Player_Source').attr("src",source);
+    $('#Music_Player').trigger('play');
 }
 
 const domContainer = document.querySelector("#back_panel");

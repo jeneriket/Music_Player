@@ -60,20 +60,4 @@ foreach($sortedPlaylistSongs as $song)
 }
 
 $conn->close();
-
-//loop through that amount and display each song in 0_playlist according to position
-
-
-/*
-//echo "<div name='playlist' key='playlist'>";
-foreach($musicFiles as $value)
-{
-    if($value == "." || $value == "..")
-        continue;
-
-    $id = generateID();
-    echo "var data_".$id." = {id: ".$id.", name: '".$value."'};
-    this_.music_data.push(data_".$id.");";
-}*/
-//echo "</div>";
 ?>

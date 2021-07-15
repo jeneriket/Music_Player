@@ -127,4 +127,4 @@ var MusicPlayer = function (_React$Component) {
 var es = React.createElement;
 
 var domContainer = document.querySelector("#player");
-var backPanel = ReactDOM.render(es(MusicPlayer), domContainer);
+ReactDOM.render(es(MusicPlayer), domContainer);

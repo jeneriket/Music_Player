@@ -62,4 +62,4 @@ class MusicPlayer extends React.Component
 const es = React.createElement;
 
 const domContainer = document.querySelector("#player");
-var backPanel = ReactDOM.render(es(MusicPlayer), domContainer);
+ReactDOM.render(es(MusicPlayer), domContainer);

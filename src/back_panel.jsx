@@ -126,9 +126,9 @@ class BackPanel extends React.Component
             }).call(this, i);
         }
 
-        return <div id="playlist">
+        return (<div id="playlist">
             {playlist}
-            </div>;
+            </div>);
     }
     
 }

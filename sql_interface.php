@@ -1,7 +1,5 @@
 <?php
-    $ids = [];
-
-    function uploadSong($filename)
+    function UploadSong($filename)
     {
         $servername = "localhost";
         $username = "jeneriket";
@@ -25,7 +23,7 @@
             array_push($positions, $row[1]);
         }
 
-        $newID = generateID();
+        $newID = GenerateID($ids);
         $position = count($positions);
 
         $sql = "INSERT INTO songs (id, song_name, position) 
@@ -54,7 +52,7 @@
 
     
 
-    function generateID()
+    function GenerateID(&$ids)
     {
         $ID = rand();
         while(in_array($ID, $ids))

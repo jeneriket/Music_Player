@@ -6,7 +6,7 @@ function PlaySong(source)
     this.setState({playable: true});
 
     await new Promise((resolve, reject) => setTimeout(resolve, 1000));
-    this.PlayPauseMusic();
+    this.ForcePlayMusic();
 }
 
 class MusicPlayer extends React.Component
@@ -41,10 +41,16 @@ class MusicPlayer extends React.Component
 
     PlayPauseMusic()
     {
-
         var value = this.state.playing? 'pause' : 'play';
         this.setState({playing : !this.state.playing});
         $('#Music_Player').trigger(value);
+        this.forceUpdate();
+    }
+    
+    ForcePlayMusic()
+    {
+        this.setState({playing : true});
+        $('#Music_Player').trigger('play');
         this.forceUpdate();
     }
 }

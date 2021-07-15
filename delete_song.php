@@ -40,9 +40,8 @@ if(unlink("/var/www/html/uploads/".$_POST['filename']))
         {
             $song = new PlaylistSong;
             $song->id = $row[0];
-            echo $song->id;
             $song->position = $row[1];
-            array_push($songs, new PlaylistSong());
+            array_push($songs, $song);
         }
 
         //get the position of each song with a matching id
@@ -68,6 +67,7 @@ if(unlink("/var/www/html/uploads/".$_POST['filename']))
         for($i = 0; $i < count($songs); $i++)
         {
             $songID = $songs[$i]->id;
+            echo $songID;
             $sql = "INSERT INTO $playlistName (song_id, position)
                 VALUES($songID, $i);";
             $conn->query($sql);

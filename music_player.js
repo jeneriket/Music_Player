@@ -14,7 +14,6 @@ function PlaySong(source) {
     this.song = source;
     this.setState({ playable: true });
 
-    //await new Promise((resolve, reject) => setTimeout(resolve, 1000));
     this.ForcePlayMusic();
 }
 
@@ -113,7 +112,9 @@ var MusicPlayer = function (_React$Component) {
             this.setState({ playing: true });
             this.forceUpdate();
             $('#Music_Player').trigger('load');
-            $('#Music_Player').trigger('play');
+            setTimeout(function () {
+                $('#Music_Player').trigger('play');
+            }, 1000);
         }
     }]);
 

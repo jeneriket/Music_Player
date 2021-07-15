@@ -57,7 +57,8 @@ if(unlink("/var/www/html/uploads/".$_POST['filename']))
         //remove each song with a matching id
         foreach($removePositions as $removePosition)
         {
-            array_splice($songs, $removePosition, 1);
+            echo $removePosition;
+            array_splice($songs, $removePosition);
         }
 
         //delete the table, re-add it with new data, using the array keys as positions
@@ -67,7 +68,6 @@ if(unlink("/var/www/html/uploads/".$_POST['filename']))
         for($i = 0; $i < count($songs); $i++)
         {
             $songID = $songs[$i]->id;
-            echo $songID;
             $sql = "INSERT INTO $playlistName (song_id, position)
                 VALUES($songID, $i);";
             $conn->query($sql);

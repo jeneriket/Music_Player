@@ -110,18 +110,21 @@ class BackPanel extends React.Component
         this.audioSources = [];
         for(let i = 0; i < this.music_data.length; i++)
         {
-            var id = this.music_data[i].id;
-            var name = this.music_data[i].name.value;
+            _id = this.music_data[i].id;
+            _name = this.music_data[i].name;
 
             //NOTE: You need to move the delete button to music interface
             playlist.push(
             <div id={id+"_div"}>
-                {name}<br/>
-                <button onClick={() => {PlaySong(name)}}>Play</button>
-                <button onClick={() =>{confirmDelete(name, id)}}>
+                {_name}<br/>
+                <button onClick={() => {PlaySong(_name)}}>Play</button>
+                <button onClick={() =>{confirmDelete(_name, _id)}}>
                     Delete?
                 </button>
             </div>);
+
+            delete _id;
+            delete _name;
         }
 
         return <div id="playlist">

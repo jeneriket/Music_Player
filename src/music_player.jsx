@@ -2,9 +2,9 @@
 
 function PlaySong(source)
 {
+    this.song=source;
     this.setState({playable: true});
-    $('#Music_Player_Source').attr("src",source);
-    $('#Music_Player').trigger('play');
+    this.PlayPauseMusic();
 }
 
 class MusicPlayer extends React.Component

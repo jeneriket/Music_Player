@@ -60,8 +60,8 @@ if(unlink("/var/www/html/uploads/".$_POST['filename']))
         //remove each song with a matching id
         foreach($removePositions as $removePosition)
         {
-            array_splice($songs, $removePosition);
-            
+            unset($songs[$removePosition]);
+            $songs = array_values($songs); 
         }
 
         //delete the table, re-add it with new data, using the array keys as positions

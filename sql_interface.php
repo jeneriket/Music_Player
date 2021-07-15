@@ -16,15 +16,13 @@
         }
 
         //get the id
-        $result = $conn->query("SELECT id, position FROM songs;");
+        $result = $conn->query("SELECT id FROM songs;");
         while ($row = $result->fetch_array(MYSQLI_NUM))
         {
             array_push($ids, $row[0]);
-            //array_push($positions, $row[1]);
         }
 
         $newID = GenerateID($ids);
-        //$position = count($positions);
 
         $sql = "INSERT INTO songs (id, song_name) 
             VALUES ($newID, '$filename');";

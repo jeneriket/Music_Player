@@ -48,7 +48,7 @@ if(unlink("/var/www/html/uploads/".$_POST['filename']))
         $removePositions = [];
         for($i = 0; $i < count($songs); $i++)
         {
-            echo count($id);
+            echo $id;
             if($songs[$i]->id == $id)
             {
                 array_push($removePositions, $songs[$i]->position);

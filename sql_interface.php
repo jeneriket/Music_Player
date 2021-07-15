@@ -62,4 +62,11 @@
 
         return $ID;
     }
+    
+    //get the amount of songs in playlist 0_playlist
+    class PlaylistSong {
+        public $id;
+        public $posititon;
+        public $filename;
+    }
 ?>

@@ -41,6 +41,7 @@ if(unlink("/var/www/html/uploads/".$_POST['filename']))
             $song = new PlaylistSong;
             $song->id = $row[0];
             $song->position = $row[1];
+            echo $song->id." ".$song->position;
             array_push($songs, $song);
         }
 
@@ -48,7 +49,6 @@ if(unlink("/var/www/html/uploads/".$_POST['filename']))
         $removePositions = [];
         for($i = 0; $i < count($songs); $i++)
         {
-            echo $songs[$i];
             if($songs[$i]->id == $id)
             {
                 array_push($removePositions, $songs[$i]);

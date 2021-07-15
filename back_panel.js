@@ -126,7 +126,7 @@ var BackPanel = function (_React$Component) {
             this.audioSources = [];
             for (var i = 0; i < this.music_data.length; i++) {
                 var id = this.music_data[i].id;
-                var name = this.music_data[i].name.val();
+                var name = this.music_data[i].name.value;
 
                 //NOTE: You need to move the delete button to music interface
                 playlist.push(React.createElement(

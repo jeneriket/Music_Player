@@ -67,6 +67,7 @@ if(unlink("/var/www/html/uploads/".$_POST['filename']))
         for($i = 0; $i < count($songs); $i++)
         {
             $songID = $songs[$i]->id;
+            echo $songID;
             $sql = "INSERT INTO $playlistName (song_id, position)
                 VALUES($songID, $i);";
             $conn->query($sql);

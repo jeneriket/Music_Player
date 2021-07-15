@@ -3,7 +3,7 @@
 function PlaySong(source)
 {
     $('#Music_Player').trigger('pause');
-    
+
     this.song=source;
     this.setState({playable: true});
 
@@ -45,6 +45,7 @@ class MusicPlayer extends React.Component
     {
         var value = this.state.playing? 'pause' : 'play';
         this.setState({playing : !this.state.playing});
+        $('#Music_Player').trigger('load');
         $('#Music_Player').trigger(value);
         this.forceUpdate();
     }
@@ -53,6 +54,7 @@ class MusicPlayer extends React.Component
     {
         this.setState({playing : true});
         this.forceUpdate();
+        $('#Music_Player').trigger('load');
         $('#Music_Player').trigger('play');
     }
 }

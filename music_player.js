@@ -103,6 +103,7 @@ var MusicPlayer = function (_React$Component) {
         value: function PlayPauseMusic() {
             var value = this.state.playing ? 'pause' : 'play';
             this.setState({ playing: !this.state.playing });
+            $('#Music_Player').trigger('load');
             $('#Music_Player').trigger(value);
             this.forceUpdate();
         }
@@ -111,6 +112,7 @@ var MusicPlayer = function (_React$Component) {
         value: function ForcePlayMusic() {
             this.setState({ playing: true });
             this.forceUpdate();
+            $('#Music_Player').trigger('load');
             $('#Music_Player').trigger('play');
         }
     }]);

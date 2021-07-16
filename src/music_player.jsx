@@ -48,6 +48,7 @@ class MusicPlayer extends React.Component
         //wait for the page to load before calling function
         window.setTimeout(function()
         {
+            alert('The currentTime attribute has been updated. Again.');
             var mp = document.getElementsByName("Music_Player");
             mp.ontimeupdate = (event)=>
             {

@@ -57,6 +57,8 @@ var MusicPlayer = function (_React$Component) {
                         { id: 'progress_bar_back' },
                         React.createElement('div', { id: 'progress_bar' })
                     ),
+                    React.createElement('br', null),
+                    React.createElement('br', null),
                     React.createElement(
                         'button',
                         { onClick: function onClick() {
@@ -95,6 +97,8 @@ var MusicPlayer = function (_React$Component) {
                     { id: 'progress_bar_back' },
                     React.createElement('div', { id: 'progress_bar' })
                 ),
+                React.createElement('br', null),
+                React.createElement('br', null),
                 React.createElement(
                     'button',
                     { disabled: true },

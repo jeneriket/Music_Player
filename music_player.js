@@ -110,12 +110,12 @@ var MusicPlayer = function (_React$Component) {
     }, {
         key: 'componentDidMount',
         value: function componentDidMount() {
-            window.requestAnimationFrame(function () {
+            window.setTimeout(function () {
                 var mp = document.getElementsByName("Music_Player");
                 mp.ontimeupdate = function (event) {
                     console.log('The currentTime attribute has been updated. Again.');
                 };
-            });
+            }, 1000);
         }
     }, {
         key: 'PlayPauseMusic',

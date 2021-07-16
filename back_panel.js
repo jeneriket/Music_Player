@@ -4,7 +4,7 @@ Add cookie that keeps track of back panel state
 
 'use strict';
 
-//React object
+//Enum for backPanelState
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -14,16 +14,19 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var e = React.createElement;
-
-//Enum for backPanelState
 var BackPanelState = {
     MyMusic: 0,
     Playlists: 1,
     Upload: 2
 };
 
+var MUSICPLAYER = $('#Music_Player');
+var MUSICSOURCE = $('#Music_Source');
+
 var CURRENTPLAYLIST = [];
+
+//React object
+var E = React.createElement;
 
 //Class for back panel
 
@@ -43,7 +46,7 @@ var BackPanel = function (_React$Component) {
     }
 
     _createClass(BackPanel, [{
-        key: "render",
+        key: 'render',
         value: function render() {
             //use different methods to render backpanel, depending on the currentstate
             switch (this.currentState) {
@@ -56,7 +59,7 @@ var BackPanel = function (_React$Component) {
             }
         }
     }, {
-        key: "componentDidMount",
+        key: 'componentDidMount',
         value: function componentDidMount() {
             var _this2 = this;
 
@@ -86,7 +89,7 @@ var BackPanel = function (_React$Component) {
         //Function to change the current state
 
     }, {
-        key: "ChangeCurrentState",
+        key: 'ChangeCurrentState',
         value: function ChangeCurrentState(_currentState) {
             this.currentState = _currentState;
             this.forceUpdate();
@@ -95,24 +98,24 @@ var BackPanel = function (_React$Component) {
         //Function to render the backpanel as a list of playlists
 
     }, {
-        key: "RenderPlaylist",
+        key: 'RenderPlaylist',
         value: function RenderPlaylist() {
 
             return "Feature not ready yet!";
         }
     }, {
-        key: "RenderUpload",
+        key: 'RenderUpload',
         value: function RenderUpload() {
             return React.createElement(
-                "form",
-                { target: "upload_frame", action: "upload_music.php", method: "POST", encType: "multipart/form-data" },
+                'form',
+                { target: 'upload_frame', action: 'upload_music.php', method: 'POST', encType: 'multipart/form-data' },
                 React.createElement(
-                    "p",
+                    'p',
                     null,
-                    "Upload your music!"
+                    'Upload your music!'
                 ),
-                React.createElement("input", { type: "file", accept: "audio/mp3,audio/*,audio/ogg", name: "musicFile" }),
-                React.createElement("input", { type: "submit", value: "submit", name: "submit" })
+                React.createElement('input', { type: 'file', accept: 'audio/mp3,audio/*,audio/ogg', name: 'musicFile' }),
+                React.createElement('input', { type: 'submit', value: 'submit', name: 'submit' })
             )
             //TODO: Add folder upload
             ;
@@ -121,7 +124,7 @@ var BackPanel = function (_React$Component) {
         //Function to render the backpanel as the music player
 
     }, {
-        key: "RenderMusic",
+        key: 'RenderMusic',
         value: function RenderMusic() {
             if (this.music_data == null) return "Loading...";
 
@@ -138,23 +141,23 @@ var BackPanel = function (_React$Component) {
 
                     //NOTE: You need to move the delete button to music interface
                     playlist.push(React.createElement(
-                        "div",
+                        'div',
                         { id: id + "_div" },
                         name,
-                        React.createElement("br", null),
+                        React.createElement('br', null),
                         React.createElement(
-                            "button",
+                            'button',
                             { onClick: function onClick() {
                                     PlaySong(name, position);
                                 } },
-                            "Play"
+                            'Play'
                         ),
                         React.createElement(
-                            "button",
+                            'button',
                             { onClick: function onClick() {
                                     confirmDelete(name, id);
                                 } },
-                            "Delete?"
+                            'Delete?'
                         )
                     ));
                     CURRENTPLAYLIST.push(name);
@@ -162,8 +165,8 @@ var BackPanel = function (_React$Component) {
             }
 
             return React.createElement(
-                "div",
-                { id: "playlist" },
+                'div',
+                { id: 'playlist' },
                 playlist
             );
         }
@@ -173,4 +176,4 @@ var BackPanel = function (_React$Component) {
 }(React.Component);
 
 var domContainer = document.querySelector("#back_panel");
-var backPanel = ReactDOM.render(e(BackPanel), domContainer);
+var backPanel = ReactDOM.render(E(BackPanel), domContainer);

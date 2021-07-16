@@ -4,10 +4,6 @@ Add cookie that keeps track of back panel state
 
 'use strict'
 
-//React object
-const e = React.createElement;
-
-
 //Enum for backPanelState
 const BackPanelState = {
     MyMusic:0,
@@ -15,7 +11,13 @@ const BackPanelState = {
     Upload:2
 }
 
+const MUSICPLAYER = $('#Music_Player'); 
+const MUSICSOURCE = $('#Music_Source');
+
 const CURRENTPLAYLIST = [];
+
+//React object
+const E = React.createElement;
 
 //Class for back panel
 class BackPanel extends React.Component
@@ -141,4 +143,4 @@ class BackPanel extends React.Component
 }
 
 const domContainer = document.querySelector("#back_panel");
-var backPanel = ReactDOM.render(e(BackPanel), domContainer);
+var backPanel = ReactDOM.render(E(BackPanel), domContainer);

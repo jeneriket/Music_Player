@@ -28,7 +28,6 @@ class MusicPlayer extends React.Component
         {
             return (
                 <div>
-                    <audio id="Music_Player" name="Music_Player"><source id="Music_Player" src={"/uploads/"+ this.song}/></audio>
                     <p>{this.song}</p><br/>
                     <div id="progress_bar_back"><div id="progress_bar"></div></div>
                     <button onClick={() => {this.PreviousSong()}}>Previous</button>
@@ -62,17 +61,19 @@ class MusicPlayer extends React.Component
     {
         var value = this.state.playing? 'pause' : 'play';
         this.setState({playing : !this.state.playing});
-        $('#Music_Player').trigger('load');
-        $('#Music_Player').trigger(value);
+        MUSICPLAYER.trigger('load');
+        MUSICPLAYER.trigger(value);
         this.forceUpdate();
     }
     
     ForcePlayMusic()
     {
+        MUSICSOURCE.attr("src", "/uploads/"+this.song);
+
         this.setState({playing : true});
         this.forceUpdate();
-        $('#Music_Player').trigger('load');
-        setTimeout(function(){$('#Music_Player').trigger('play');}, 1000);
+        MUSICPLAYER.trigger('load');
+        setTimeout(function(){MUSICPLAYER.trigger('play');}, 1000);
     }
 
     NextSong()

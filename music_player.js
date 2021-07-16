@@ -42,11 +42,6 @@ var MusicPlayer = function (_React$Component) {
                     'div',
                     null,
                     React.createElement(
-                        'audio',
-                        { id: 'Music_Player', name: 'Music_Player' },
-                        React.createElement('source', { id: 'Music_Player', src: "/uploads/" + this.song })
-                    ),
-                    React.createElement(
                         'p',
                         null,
                         this.song
@@ -124,18 +119,20 @@ var MusicPlayer = function (_React$Component) {
         value: function PlayPauseMusic() {
             var value = this.state.playing ? 'pause' : 'play';
             this.setState({ playing: !this.state.playing });
-            $('#Music_Player').trigger('load');
-            $('#Music_Player').trigger(value);
+            MUSICPLAYER.trigger('load');
+            MUSICPLAYER.trigger(value);
             this.forceUpdate();
         }
     }, {
         key: 'ForcePlayMusic',
         value: function ForcePlayMusic() {
+            MUSICSOURCE.attr("src", "/uploads/" + this.song);
+
             this.setState({ playing: true });
             this.forceUpdate();
-            $('#Music_Player').trigger('load');
+            MUSICPLAYER.trigger('load');
             setTimeout(function () {
-                $('#Music_Player').trigger('play');
+                MUSICPLAYER.trigger('play');
             }, 1000);
         }
     }, {

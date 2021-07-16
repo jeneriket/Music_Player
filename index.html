@@ -9,7 +9,7 @@
     <body>
         <div>
             <!--the audio player-->
-            <audio id="Music_Player" currentTime="4"><source id="Music_Source"/></audio>
+            <audio id="Music_Player"><source id="Music_Source"/></audio>
             <!--div for the actual music player-->
             <div id="player"></div>
             <hr/>
@@ -49,10 +49,11 @@
         <script type="text/javascript">
             const MUSICPLAYER = $('#Music_Player'); 
             const MUSICSOURCE = $('#Music_Source');
+            var mp = document.getElementById('Music_Player');
             function MusicPlayerUpdateTime() {
-                console.log(MUSICPLAYER.attr("currentTime"));
+                console.log(mp.currentTime);
             }
-            MUSICPLAYER.bind('progress', MusicPlayerUpdateTime);
+            MUSICPLAYER.bind('timeupdate', MusicPlayerUpdateTime);
         </script>
 
         <!--React Library Scripts-->

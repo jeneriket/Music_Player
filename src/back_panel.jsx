@@ -92,7 +92,7 @@ class BackPanel extends React.Component
     {
         return (
             <iframe>
-                <form action="upload_music.php" method="POST" encType="multipart/form-data">
+                <form target ="upload_frame" action="upload_music.php" method="POST" encType="multipart/form-data">
                     <p>Upload your music!</p>
                     <input type="file" accept="audio/mp3,audio/*,audio/ogg" name="musicFile"/>
                     <input type="submit" value="submit" name="submit"/>

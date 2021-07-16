@@ -105,7 +105,7 @@ var BackPanel = function (_React$Component) {
                 null,
                 React.createElement(
                     "form",
-                    { action: "upload_music.php", method: "POST", encType: "multipart/form-data" },
+                    { target: "upload_frame", action: "upload_music.php", method: "POST", encType: "multipart/form-data" },
                     React.createElement(
                         "p",
                         null,

@@ -55,7 +55,7 @@ if(unlink("/var/www/html/uploads/".$_POST['filename']))
             }
         }
 
-        echo strval(count($removePositions));
+        //echo strval(count($removePositions));
 
         //remove each song with a matching id
         foreach($removePositions as $removePosition)
@@ -79,6 +79,6 @@ if(unlink("/var/www/html/uploads/".$_POST['filename']))
     }
 
     $conn->close();
-    //echo "Deleted '".$_POST['filename']."'";
+    echo "Deleted '".$_POST['filename']."'";
 }
 ?>

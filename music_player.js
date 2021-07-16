@@ -113,7 +113,7 @@ var MusicPlayer = function (_React$Component) {
             //wait for the page to load before calling function
             window.setTimeout(function () {
                 var mp = document.getElementsByName("Music_Player");
-                alert(mp);
+                alert(mp.name);
                 mp.ontimeupdate = function (event) {
                     alert('The currentTime attribute has been updated. Again.');
                 };

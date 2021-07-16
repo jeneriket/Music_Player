@@ -49,7 +49,7 @@ class MusicPlayer extends React.Component
         window.setTimeout(function()
         {
             var mp = document.getElementsByName("Music_Player");
-            alert(mp);
+            alert(mp.name);
             mp.ontimeupdate = (event)=>
             {
                 alert('The currentTime attribute has been updated. Again.');

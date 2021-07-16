@@ -53,7 +53,7 @@
             const MUSICSOURCE = $('#Music_Source');
 
             function MusicPlayerUpdateTime() {
-                $("#progress_bar").css("width", (this.currentTime/this.duration) * 100);
+                $("#progress_bar").css("width", (this.currentTime/this.duration) * $("#progress_bar_back").css("width"));
             }
 
             MUSICPLAYER.bind('timeupdate', MusicPlayerUpdateTime);

@@ -160,9 +160,10 @@ var MusicPlayer = function (_React$Component) {
     return MusicPlayer;
 }(React.Component);
 
+var MUSICPLAYER = $('#Music_Player');
+var MUSICSOURCE = $('#Music_Source');
+
 //React object
-
-
 var ES = React.createElement;
 
 var DOMCONTAINER = document.querySelector("#player");

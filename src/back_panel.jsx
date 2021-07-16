@@ -11,9 +11,6 @@ const BackPanelState = {
     Upload:2
 }
 
-const MUSICPLAYER = $('#Music_Player'); 
-const MUSICSOURCE = $('#Music_Source');
-
 const CURRENTPLAYLIST = [];
 
 //React object

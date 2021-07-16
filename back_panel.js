@@ -20,9 +20,6 @@ var BackPanelState = {
     Upload: 2
 };
 
-var MUSICPLAYER = $('#Music_Player');
-var MUSICSOURCE = $('#Music_Source');
-
 var CURRENTPLAYLIST = [];
 
 //React object
@@ -46,7 +43,7 @@ var BackPanel = function (_React$Component) {
     }
 
     _createClass(BackPanel, [{
-        key: 'render',
+        key: "render",
         value: function render() {
             //use different methods to render backpanel, depending on the currentstate
             switch (this.currentState) {
@@ -59,7 +56,7 @@ var BackPanel = function (_React$Component) {
             }
         }
     }, {
-        key: 'componentDidMount',
+        key: "componentDidMount",
         value: function componentDidMount() {
             var _this2 = this;
 
@@ -89,7 +86,7 @@ var BackPanel = function (_React$Component) {
         //Function to change the current state
 
     }, {
-        key: 'ChangeCurrentState',
+        key: "ChangeCurrentState",
         value: function ChangeCurrentState(_currentState) {
             this.currentState = _currentState;
             this.forceUpdate();
@@ -98,24 +95,24 @@ var BackPanel = function (_React$Component) {
         //Function to render the backpanel as a list of playlists
 
     }, {
-        key: 'RenderPlaylist',
+        key: "RenderPlaylist",
         value: function RenderPlaylist() {
 
             return "Feature not ready yet!";
         }
     }, {
-        key: 'RenderUpload',
+        key: "RenderUpload",
         value: function RenderUpload() {
             return React.createElement(
-                'form',
-                { target: 'upload_frame', action: 'upload_music.php', method: 'POST', encType: 'multipart/form-data' },
+                "form",
+                { target: "upload_frame", action: "upload_music.php", method: "POST", encType: "multipart/form-data" },
                 React.createElement(
-                    'p',
+                    "p",
                     null,
-                    'Upload your music!'
+                    "Upload your music!"
                 ),
-                React.createElement('input', { type: 'file', accept: 'audio/mp3,audio/*,audio/ogg', name: 'musicFile' }),
-                React.createElement('input', { type: 'submit', value: 'submit', name: 'submit' })
+                React.createElement("input", { type: "file", accept: "audio/mp3,audio/*,audio/ogg", name: "musicFile" }),
+                React.createElement("input", { type: "submit", value: "submit", name: "submit" })
             )
             //TODO: Add folder upload
             ;
@@ -124,7 +121,7 @@ var BackPanel = function (_React$Component) {
         //Function to render the backpanel as the music player
 
     }, {
-        key: 'RenderMusic',
+        key: "RenderMusic",
         value: function RenderMusic() {
             if (this.music_data == null) return "Loading...";
 
@@ -141,23 +138,23 @@ var BackPanel = function (_React$Component) {
 
                     //NOTE: You need to move the delete button to music interface
                     playlist.push(React.createElement(
-                        'div',
+                        "div",
                         { id: id + "_div" },
                         name,
-                        React.createElement('br', null),
+                        React.createElement("br", null),
                         React.createElement(
-                            'button',
+                            "button",
                             { onClick: function onClick() {
                                     PlaySong(name, position);
                                 } },
-                            'Play'
+                            "Play"
                         ),
                         React.createElement(
-                            'button',
+                            "button",
                             { onClick: function onClick() {
                                     confirmDelete(name, id);
                                 } },
-                            'Delete?'
+                            "Delete?"
                         )
                     ));
                     CURRENTPLAYLIST.push(name);
@@ -165,8 +162,8 @@ var BackPanel = function (_React$Component) {
             }
 
             return React.createElement(
-                'div',
-                { id: 'playlist' },
+                "div",
+                { id: "playlist" },
                 playlist
             );
         }

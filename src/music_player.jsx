@@ -99,6 +99,10 @@ class MusicPlayer extends React.Component
     }
 }
 
+
+const MUSICPLAYER = $('#Music_Player'); 
+const MUSICSOURCE = $('#Music_Source');
+
 //React object
 const ES = React.createElement;
 

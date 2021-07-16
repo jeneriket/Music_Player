@@ -10,6 +10,8 @@
         <div>
             <!--the audio player-->
             <audio id="Music_Player"><source id="Music_Source"/></audio>
+            <button id="Loop" disabled>Loop</button>
+            <button id="Mix" disabled>Mix</button>
             <!--div for the actual music player-->
             <div id="player"></div>
             <hr/>
@@ -51,12 +53,12 @@
             const MUSICSOURCE = $('#Music_Source');
 
             function MusicPlayerUpdateTime() {
-                console.log(this.currentTime);
+                console.log(this.currentTime + " / "+this.duration);
+                $("#progress_bar").css("width", this.currentTime/this.duration);
             }
+
             MUSICPLAYER.bind('timeupdate', MusicPlayerUpdateTime);
-            MUSICPLAYER.bind("ended", function() {
-                NextSong();
-            });
+            MUSICPLAYER.bind("ended", function() {NextSong();});
         </script>
 
         <!--React Library Scripts-->

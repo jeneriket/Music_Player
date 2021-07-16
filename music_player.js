@@ -91,6 +91,11 @@ var MusicPlayer = function (_React$Component) {
                 ),
                 React.createElement('br', null),
                 React.createElement(
+                    'div',
+                    { id: 'progress_bar_back' },
+                    React.createElement('div', { id: 'progress_bar' })
+                ),
+                React.createElement(
                     'button',
                     { disabled: true },
                     'Previous'
@@ -131,7 +136,6 @@ var MusicPlayer = function (_React$Component) {
     }, {
         key: 'NextSong',
         value: function NextSong() {
-            console.log("SD");
             this.song_position++;
 
             if (this.song_position >= CURRENTPLAYLIST.length) this.song_position = 0;

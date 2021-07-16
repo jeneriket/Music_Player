@@ -43,6 +43,7 @@ class MusicPlayer extends React.Component
         
         return (<div>
             <p>{this.song}</p><br/>
+            <div id="progress_bar_back"><div id="progress_bar"></div></div>
             <button disabled>Previous</button>
             <button class="audio_button" disabled>Play</button>
             <button disabled>Next</button></div>);
@@ -69,7 +70,6 @@ class MusicPlayer extends React.Component
 
     NextSong()
     {
-        console.log("SD");
         this.song_position++;
 
         if(this.song_position >= CURRENTPLAYLIST.length)

@@ -42,20 +42,6 @@ class MusicPlayer extends React.Component
             <button class="audio_button" disabled>Play</button>
             <button disabled>Next</button></div>);
     }
-    
-    componentDidMount()
-    {
-        //wait for the page to load before calling function
-        window.setTimeout(function()
-        {
-            var mp = document.getElementsByName("Music_Player")[0];
-            //alert(mp.name);
-            mp.ontimeupdate = (event)=>
-            {
-                console.log('The currentTime attribute has been updated. Again.');
-            };
-        }, 1000);
-    }
 
     PlayPauseMusic()
     {

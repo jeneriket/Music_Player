@@ -103,18 +103,6 @@ var MusicPlayer = function (_React$Component) {
             );
         }
     }, {
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            //wait for the page to load before calling function
-            window.setTimeout(function () {
-                var mp = document.getElementsByName("Music_Player")[0];
-                //alert(mp.name);
-                mp.ontimeupdate = function (event) {
-                    console.log('The currentTime attribute has been updated. Again.');
-                };
-            }, 1000);
-        }
-    }, {
         key: 'PlayPauseMusic',
         value: function PlayPauseMusic() {
             var value = this.state.playing ? 'pause' : 'play';

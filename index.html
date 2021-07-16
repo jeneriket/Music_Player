@@ -52,7 +52,7 @@
             function MusicPlayerUpdateTime() {
                 console.log(MUSICPLAYER.attr("currentTime"));
             }
-            MUSICPLAYER.bind('timeupdate', MusicPlayerUpdateTime);
+            MUSICPLAYER.bind('onprogress', MusicPlayerUpdateTime);
         </script>
 
         <!--React Library Scripts-->

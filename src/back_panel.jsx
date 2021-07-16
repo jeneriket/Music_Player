@@ -15,6 +15,8 @@ const BackPanelState = {
     Upload:2
 }
 
+const CURRENTPLAYLIST = [];
+
 //Class for back panel
 class BackPanel extends React.Component
 {
@@ -91,13 +93,11 @@ class BackPanel extends React.Component
     RenderUpload()
     {
         return (
-            <iframe>
-                <form target ="upload_frame" action="upload_music.php" method="POST" encType="multipart/form-data">
-                    <p>Upload your music!</p>
-                    <input type="file" accept="audio/mp3,audio/*,audio/ogg" name="musicFile"/>
-                    <input type="submit" value="submit" name="submit"/>
-                </form>
-            </iframe>
+            <form target="upload_frame" action="upload_music.php" method="POST" encType="multipart/form-data">
+                <p>Upload your music!</p>
+                <input type="file" accept="audio/mp3,audio/*,audio/ogg" name="musicFile"/>
+                <input type="submit" value="submit" name="submit"/>
+            </form>
             //TODO: Add folder upload
         );
     }
@@ -110,21 +110,26 @@ class BackPanel extends React.Component
 
         var playlist = [];
         this.audioSources = [];
+
+        //clear current playlist array
+        CURRENTPLAYLIST.splice(0,CURRENTPLAYLIST.length);
         for(var i = 0; i < this.music_data.length; i++)
         {
             (function(ii) {
                 var id = this.music_data[ii].id;
                 var name = this.music_data[ii].name;
+                var position = this.music_data[ii].position;
     
                 //NOTE: You need to move the delete button to music interface
                 playlist.push(
                 <div id={id+"_div"}>
                     {name}<br/>
-                    <button onClick={() => {PlaySong(name)}}>Play</button>
+                    <button onClick={() => {PlaySong(name, position)}}>Play</button>
                     <button onClick={() =>{confirmDelete(name, id)}}>
                         Delete?
                     </button>
                 </div>);
+                CURRENTPLAYLIST.push(name);
             }).call(this, i);
         }
 

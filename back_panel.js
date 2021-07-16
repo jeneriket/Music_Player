@@ -21,9 +21,12 @@ var BackPanelState = {
     MyMusic: 0,
     Playlists: 1,
     Upload: 2
-
-    //Class for back panel
 };
+
+var CURRENTPLAYLIST = [];
+
+//Class for back panel
+
 var BackPanel = function (_React$Component) {
     _inherits(BackPanel, _React$Component);
 
@@ -101,19 +104,15 @@ var BackPanel = function (_React$Component) {
         key: "RenderUpload",
         value: function RenderUpload() {
             return React.createElement(
-                "iframe",
-                null,
+                "form",
+                { target: "upload_frame", action: "upload_music.php", method: "POST", encType: "multipart/form-data" },
                 React.createElement(
-                    "form",
-                    { target: "upload_frame", action: "upload_music.php", method: "POST", encType: "multipart/form-data" },
-                    React.createElement(
-                        "p",
-                        null,
-                        "Upload your music!"
-                    ),
-                    React.createElement("input", { type: "file", accept: "audio/mp3,audio/*,audio/ogg", name: "musicFile" }),
-                    React.createElement("input", { type: "submit", value: "submit", name: "submit" })
-                )
+                    "p",
+                    null,
+                    "Upload your music!"
+                ),
+                React.createElement("input", { type: "file", accept: "audio/mp3,audio/*,audio/ogg", name: "musicFile" }),
+                React.createElement("input", { type: "submit", value: "submit", name: "submit" })
             )
             //TODO: Add folder upload
             ;
@@ -128,10 +127,14 @@ var BackPanel = function (_React$Component) {
 
             var playlist = [];
             this.audioSources = [];
+
+            //clear current playlist array
+            CURRENTPLAYLIST.splice(0, CURRENTPLAYLIST.length);
             for (var i = 0; i < this.music_data.length; i++) {
                 (function (ii) {
                     var id = this.music_data[ii].id;
                     var name = this.music_data[ii].name;
+                    var position = this.music_data[ii].position;
 
                     //NOTE: You need to move the delete button to music interface
                     playlist.push(React.createElement(
@@ -142,7 +145,7 @@ var BackPanel = function (_React$Component) {
                         React.createElement(
                             "button",
                             { onClick: function onClick() {
-                                    PlaySong(name);
+                                    PlaySong(name, position);
                                 } },
                             "Play"
                         ),
@@ -154,6 +157,7 @@ var BackPanel = function (_React$Component) {
                             "Delete?"
                         )
                     ));
+                    CURRENTPLAYLIST.push(name);
                 }).call(this, i);
             }
 

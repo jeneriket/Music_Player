@@ -50,7 +50,7 @@
     foreach($sortedPlaylistSongs as $song)
     {
         
-        echo "var data_".$song->id." = {id: ".$song->id.", name: '".$song->filename."'};
+        echo "var data_".$song->id." = {id: ".$song->id.", name: '".$song->filename."', position: $song->position};
         this_.music_data.push(data_".$song->id.");";
     }
 

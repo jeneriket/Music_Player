@@ -8,12 +8,12 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-function PlaySong(source) {
+function PlaySong(source, position) {
     $('#Music_Player').trigger('pause');
 
     this.song = source;
     this.setState({ playable: true });
-
+    this.song_position = position;
     this.ForcePlayMusic();
 }
 
@@ -27,6 +27,7 @@ var MusicPlayer = function (_React$Component) {
 
         _this.state = { playing: false, playable: false };
         _this.song = "No song selected.";
+        _this.song_position = -1;
         PlaySong = PlaySong.bind(_this);
         return _this;
     }
@@ -53,7 +54,7 @@ var MusicPlayer = function (_React$Component) {
                     React.createElement('br', null),
                     React.createElement(
                         'button',
-                        { disabled: true },
+                        { onClick: this.PreviousSong() },
                         'Previous'
                     ),
                     React.createElement(
@@ -65,7 +66,7 @@ var MusicPlayer = function (_React$Component) {
                     ),
                     React.createElement(
                         'button',
-                        { disabled: true },
+                        { onClick: this.NextSong() },
                         'Next'
                     )
                 );
@@ -111,6 +112,33 @@ var MusicPlayer = function (_React$Component) {
         value: function ForcePlayMusic() {
             this.setState({ playing: true });
             this.forceUpdate();
+            $('#Music_Player').trigger('load');
+            setTimeout(function () {
+                $('#Music_Player').trigger('play');
+            }, 1000);
+        }
+    }, {
+        key: 'NextSong',
+        value: function NextSong() {
+            this.song_position--;
+
+            if (this.song_position < 0) this.song_position = 0;
+
+            this.PlaySongAtPosition();
+        }
+    }, {
+        key: 'PreviousSong',
+        value: function PreviousSong() {
+            this.song_position++;
+
+            if (this.song_position >= CURRENTPLAYLIST.length) this.song_position = CURRENTPLAYLIST.length - 1;
+
+            this.PlaySongAtPosition();
+        }
+    }, {
+        key: 'PlaySongAtPosition',
+        value: function PlaySongAtPosition() {
+            this.song = CURRENTPLAYLIST[this.song_position];this.forceUpdate();
             $('#Music_Player').trigger('load');
             setTimeout(function () {
                 $('#Music_Player').trigger('play');

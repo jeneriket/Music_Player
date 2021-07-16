@@ -124,18 +124,18 @@ var MusicPlayer = function (_React$Component) {
     }, {
         key: 'NextSong',
         value: function NextSong() {
-            this.song_position--;
+            this.song_position++;
 
-            if (this.song_position < 0) this.song_position = 0;
+            if (this.song_position >= CURRENTPLAYLIST.length) this.song_position = 0;
 
             this.PlaySongAtPosition();
         }
     }, {
         key: 'PreviousSong',
         value: function PreviousSong() {
-            this.song_position++;
+            this.song_position--;
 
-            if (this.song_position >= CURRENTPLAYLIST.length) this.song_position = CURRENTPLAYLIST.length - 1;
+            if (this.song_position < 0) this.song_position = CURRENTPLAYLIST.length - 1;
 
             this.PlaySongAtPosition();
         }

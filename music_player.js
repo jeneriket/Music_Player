@@ -54,7 +54,9 @@ var MusicPlayer = function (_React$Component) {
                     React.createElement('br', null),
                     React.createElement(
                         'button',
-                        { onClick: this.PreviousSong() },
+                        { onClick: function onClick() {
+                                _this2.PreviousSong();
+                            } },
                         'Previous'
                     ),
                     React.createElement(
@@ -66,7 +68,9 @@ var MusicPlayer = function (_React$Component) {
                     ),
                     React.createElement(
                         'button',
-                        { onClick: this.NextSong() },
+                        { onClick: function onClick() {
+                                _this2.NextSong();
+                            } },
                         'Next'
                     )
                 );

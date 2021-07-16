@@ -29,9 +29,9 @@ class MusicPlayer extends React.Component
             return (<div>
                 <audio id="Music_Player"><source id="Music_Player" src={"/uploads/"+ this.song}/></audio>
                 <p>{this.song}</p><br/>
-                <button onClick={this.PreviousSong()}>Previous</button>
+                <button onClick={() => {this.PreviousSong()}}>Previous</button>
                 <button class="audio_button" onClick={() => {this.PlayPauseMusic()}}>{this.state.playing? 'Pause' : 'Play'}</button>
-                <button onClick={this.NextSong()}>Next</button></div>);
+                <button onClick={() => {this.NextSong()}}>Next</button></div>);
         }
         
         return (<div>

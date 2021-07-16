@@ -60,6 +60,7 @@ class MusicPlayer extends React.Component
     
     ForcePlayMusic()
     {
+        $("#progress_bar").css("width", 0);
         MUSICSOURCE.attr("src", "/uploads/"+this.song);
 
         this.setState({playing : true});
@@ -70,6 +71,7 @@ class MusicPlayer extends React.Component
 
     NextSong()
     {
+
         this.song_position++;
 
         if(this.song_position >= CURRENTPLAYLIST.length)

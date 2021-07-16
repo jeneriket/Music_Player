@@ -124,6 +124,7 @@ var MusicPlayer = function (_React$Component) {
     }, {
         key: 'ForcePlayMusic',
         value: function ForcePlayMusic() {
+            $("#progress_bar").css("width", 0);
             MUSICSOURCE.attr("src", "/uploads/" + this.song);
 
             this.setState({ playing: true });
@@ -136,6 +137,7 @@ var MusicPlayer = function (_React$Component) {
     }, {
         key: 'NextSong',
         value: function NextSong() {
+
             this.song_position++;
 
             if (this.song_position >= CURRENTPLAYLIST.length) this.song_position = 0;

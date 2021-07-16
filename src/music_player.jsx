@@ -26,7 +26,8 @@ class MusicPlayer extends React.Component
     {
         if(this.state.playable)
         {
-            return (<div>
+            return (
+                <div>
                     <audio id="Music_Player" name="Music_Player"><source id="Music_Player" src={"/uploads/"+ this.song}/></audio>
                     <p>{this.song}</p><br/>
                     <div id="progress_bar_back"><div id="progress_bar"></div></div>
@@ -48,7 +49,7 @@ class MusicPlayer extends React.Component
         //wait for the page to load before calling function
         window.setTimeout(function()
         {
-            var mp = document.getElementsByName("Music_Player");
+            var mp = document.getElementsByName("Music_Player")[0];
             alert(mp.name);
             mp.ontimeupdate = (event)=>
             {

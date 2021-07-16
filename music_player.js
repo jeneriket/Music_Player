@@ -142,11 +142,9 @@ var MusicPlayer = function (_React$Component) {
     }, {
         key: 'PlaySongAtPosition',
         value: function PlaySongAtPosition() {
-            this.song = CURRENTPLAYLIST[this.song_position];this.forceUpdate();
-            $('#Music_Player').trigger('load');
-            setTimeout(function () {
-                $('#Music_Player').trigger('play');
-            }, 1000);
+            alert(CURRENTPLAYLIST[this.song_position]);
+            this.song = CURRENTPLAYLIST[this.song_position];
+            this.ForcePlayMusic();
         }
     }]);
 

@@ -111,9 +111,9 @@ var MusicPlayer = function (_React$Component) {
         key: 'componentDidMount',
         value: function componentDidMount() {
             var mp = document.getElementsByName("Music_Player");
-            mp.addEventListener('timeupdate', function (event) {
+            mp.ontimeupdate = function (event) {
                 console.log('The currentTime attribute has been updated. Again.');
-            });
+            };
         }
     }, {
         key: 'PlayPauseMusic',

@@ -46,10 +46,10 @@ class MusicPlayer extends React.Component
     componentDidMount()
     {
         var mp = document.getElementsByName("Music_Player");
-        mp.addEventListener('timeupdate', (event)=>
+        mp.ontimeupdate = (event)=>
         {
             console.log('The currentTime attribute has been updated. Again.');
-        });
+        };
     }
 
     PlayPauseMusic()

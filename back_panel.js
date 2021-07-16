@@ -101,15 +101,19 @@ var BackPanel = function (_React$Component) {
         key: "RenderUpload",
         value: function RenderUpload() {
             return React.createElement(
-                "form",
-                { action: "upload_music.php", method: "POST", encType: "multipart/form-data" },
+                "iframe",
+                null,
                 React.createElement(
-                    "p",
-                    null,
-                    "Upload your music!"
-                ),
-                React.createElement("input", { type: "file", accept: "audio/mp3,audio/*,audio/ogg", name: "musicFile" }),
-                React.createElement("input", { type: "submit", value: "submit", name: "submit" })
+                    "form",
+                    { action: "upload_music.php", method: "POST", encType: "multipart/form-data" },
+                    React.createElement(
+                        "p",
+                        null,
+                        "Upload your music!"
+                    ),
+                    React.createElement("input", { type: "file", accept: "audio/mp3,audio/*,audio/ogg", name: "musicFile" }),
+                    React.createElement("input", { type: "submit", value: "submit", name: "submit" })
+                )
             )
             //TODO: Add folder upload
             ;

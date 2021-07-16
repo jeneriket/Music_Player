@@ -91,11 +91,13 @@ class BackPanel extends React.Component
     RenderUpload()
     {
         return (
-            <form action="upload_music.php" method="POST" encType="multipart/form-data">
-                <p>Upload your music!</p>
-                <input type="file" accept="audio/mp3,audio/*,audio/ogg" name="musicFile"/>
-                <input type="submit" value="submit" name="submit"/>
-            </form>
+            <iframe>
+                <form action="upload_music.php" method="POST" encType="multipart/form-data">
+                    <p>Upload your music!</p>
+                    <input type="file" accept="audio/mp3,audio/*,audio/ogg" name="musicFile"/>
+                    <input type="submit" value="submit" name="submit"/>
+                </form>
+            </iframe>
             //TODO: Add folder upload
         );
     }

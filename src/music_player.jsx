@@ -100,7 +100,12 @@ class MusicPlayer extends React.Component
 }
 
 //React object
-const es = React.createElement;
+const ES = React.createElement;
 
-const domContainer = document.querySelector("#player");
-ReactDOM.render(es(MusicPlayer), domContainer);
+const DOMCONTAINER = document.querySelector("#player");
+ReactDOM.render(ES(MusicPlayer), DOMCONTAINER);
+
+function MusicPlayerUpdateTime() {
+    console.log("D");
+}
+MUSICPLAYER.bind('timeupdate', MusicPlayerUpdateTime);

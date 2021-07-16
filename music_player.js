@@ -163,7 +163,12 @@ var MusicPlayer = function (_React$Component) {
 //React object
 
 
-var es = React.createElement;
+var ES = React.createElement;
 
-var domContainer = document.querySelector("#player");
-ReactDOM.render(es(MusicPlayer), domContainer);
+var DOMCONTAINER = document.querySelector("#player");
+ReactDOM.render(ES(MusicPlayer), DOMCONTAINER);
+
+function MusicPlayerUpdateTime() {
+    console.log("D");
+}
+MUSICPLAYER.bind('timeupdate', MusicPlayerUpdateTime);

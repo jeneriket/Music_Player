@@ -55,7 +55,7 @@ var MusicPlayer = function (_React$Component) {
                     React.createElement(
                         'div',
                         { id: 'progress_bar_back' },
-                        React.createElement('div', { id: 'progress_bar' })
+                        React.createElement('div', { id: 'progress_bar', style: 'width:0px' })
                     ),
                     React.createElement(
                         'button',
@@ -93,7 +93,7 @@ var MusicPlayer = function (_React$Component) {
                 React.createElement(
                     'div',
                     { id: 'progress_bar_back' },
-                    React.createElement('div', { id: 'progress_bar' })
+                    React.createElement('div', { id: 'progress_bar', style: 'width:0px' })
                 ),
                 React.createElement(
                     'button',

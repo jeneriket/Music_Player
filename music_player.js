@@ -127,6 +127,7 @@ var MusicPlayer = function (_React$Component) {
     }, {
         key: 'NextSong',
         value: function NextSong() {
+            console.log("SD");
             this.song_position++;
 
             if (this.song_position >= CURRENTPLAYLIST.length) this.song_position = 0;

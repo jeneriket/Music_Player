@@ -65,6 +65,7 @@ class MusicPlayer extends React.Component
 
     NextSong()
     {
+        console.log("SD");
         this.song_position++;
 
         if(this.song_position >= CURRENTPLAYLIST.length)

@@ -27,11 +27,13 @@ class MusicPlayer extends React.Component
         if(this.state.playable)
         {
             return (<div>
-                <audio id="Music_Player"><source id="Music_Player" src={"/uploads/"+ this.song}/></audio>
-                <p>{this.song}</p><br/>
-                <button onClick={() => {this.PreviousSong()}}>Previous</button>
-                <button class="audio_button" onClick={() => {this.PlayPauseMusic()}}>{this.state.playing? 'Pause' : 'Play'}</button>
-                <button onClick={() => {this.NextSong()}}>Next</button></div>);
+                    <audio id="Music_Player" name="Music_Player"><source id="Music_Player" src={"/uploads/"+ this.song}/></audio>
+                    <p>{this.song}</p><br/>
+                    <div id="progress_bar_back"><div id="progress_bar"></div></div>
+                    <button onClick={() => {this.PreviousSong()}}>Previous</button>
+                    <button class="audio_button" onClick={() => {this.PlayPauseMusic()}}>{this.state.playing? 'Pause' : 'Play'}</button>
+                    <button onClick={() => {this.NextSong()}}>Next</button>
+                </div>);
         }
         
         return (<div>
@@ -39,6 +41,15 @@ class MusicPlayer extends React.Component
             <button disabled>Previous</button>
             <button class="audio_button" disabled>Play</button>
             <button disabled>Next</button></div>);
+    }
+    
+    componentDidMount()
+    {
+        var mp = document.getElementsByName("Music_Player");
+        mp.addEventListener('timeupdate', (event)=>
+        {
+            console.log('The currentTime attribute has been updated. Again.');
+        });
     }
 
     PlayPauseMusic()
@@ -65,7 +76,8 @@ class MusicPlayer extends React.Component
         if(this.song_position >= CURRENTPLAYLIST.length)
             this.song_position = 0;
 
-        this.PlaySongAtPosition();
+        this.song = CURRENTPLAYLIST[this.song_position];
+        this.ForcePlayMusic();
     }
 
     PreviousSong()
@@ -75,12 +87,6 @@ class MusicPlayer extends React.Component
         if(this.song_position < 0)
             this.song_position = CURRENTPLAYLIST.length-1;
         
-        this.PlaySongAtPosition();
-    }
-
-    PlaySongAtPosition()
-    {
-        alert(CURRENTPLAYLIST[this.song_position]);
         this.song = CURRENTPLAYLIST[this.song_position];
         this.ForcePlayMusic();
     }

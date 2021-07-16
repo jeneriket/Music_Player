@@ -43,7 +43,7 @@ var MusicPlayer = function (_React$Component) {
                     null,
                     React.createElement(
                         'audio',
-                        { id: 'Music_Player' },
+                        { id: 'Music_Player', name: 'Music_Player' },
                         React.createElement('source', { id: 'Music_Player', src: "/uploads/" + this.song })
                     ),
                     React.createElement(
@@ -52,6 +52,11 @@ var MusicPlayer = function (_React$Component) {
                         this.song
                     ),
                     React.createElement('br', null),
+                    React.createElement(
+                        'div',
+                        { id: 'progress_bar_back' },
+                        React.createElement('div', { id: 'progress_bar' })
+                    ),
                     React.createElement(
                         'button',
                         { onClick: function onClick() {
@@ -103,6 +108,14 @@ var MusicPlayer = function (_React$Component) {
             );
         }
     }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var mp = document.getElementsByName("Music_Player");
+            mp.addEventListener('timeupdate', function (event) {
+                console.log('The currentTime attribute has been updated. Again.');
+            });
+        }
+    }, {
         key: 'PlayPauseMusic',
         value: function PlayPauseMusic() {
             var value = this.state.playing ? 'pause' : 'play';
@@ -128,7 +141,8 @@ var MusicPlayer = function (_React$Component) {
 
             if (this.song_position >= CURRENTPLAYLIST.length) this.song_position = 0;
 
-            this.PlaySongAtPosition();
+            this.song = CURRENTPLAYLIST[this.song_position];
+            this.ForcePlayMusic();
         }
     }, {
         key: 'PreviousSong',
@@ -137,12 +151,6 @@ var MusicPlayer = function (_React$Component) {
 
             if (this.song_position < 0) this.song_position = CURRENTPLAYLIST.length - 1;
 
-            this.PlaySongAtPosition();
-        }
-    }, {
-        key: 'PlaySongAtPosition',
-        value: function PlaySongAtPosition() {
-            alert(CURRENTPLAYLIST[this.song_position]);
             this.song = CURRENTPLAYLIST[this.song_position];
             this.ForcePlayMusic();
         }

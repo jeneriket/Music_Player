@@ -1,0 +1,10 @@
+#progress_bar_back {
+    background-color:burlywood;
+    width: 100px;
+    height: 2px;
+}
+
+#progress_bar {
+    background-color: deeppink;
+    height: 2px;
+}

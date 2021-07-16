@@ -110,6 +110,7 @@ var MusicPlayer = function (_React$Component) {
     }, {
         key: 'componentDidMount',
         value: function componentDidMount() {
+            //wait for the page to load before calling function
             window.setTimeout(function () {
                 var mp = document.getElementsByName("Music_Player");
                 mp.ontimeupdate = function (event) {

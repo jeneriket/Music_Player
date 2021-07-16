@@ -45,6 +45,7 @@ class MusicPlayer extends React.Component
     
     componentDidMount()
     {
+        //wait for the page to load before calling function
         window.setTimeout(function()
         {
             var mp = document.getElementsByName("Music_Player");

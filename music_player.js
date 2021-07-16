@@ -169,6 +169,6 @@ var DOMCONTAINER = document.querySelector("#player");
 ReactDOM.render(ES(MusicPlayer), DOMCONTAINER);
 
 function MusicPlayerUpdateTime() {
-    console.log(MUSICPLAYER.currentTime);
+    console.log(MUSICPLAYER.attr("currentTime"));
 }
 MUSICPLAYER.bind('timeupdate', MusicPlayerUpdateTime);

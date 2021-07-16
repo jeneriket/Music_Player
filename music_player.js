@@ -17,6 +17,10 @@ function PlaySong(source, position) {
     this.ForcePlayMusic();
 }
 
+function NextSong() {
+    this.NextSong();
+}
+
 var MusicPlayer = function (_React$Component) {
     _inherits(MusicPlayer, _React$Component);
 
@@ -29,7 +33,7 @@ var MusicPlayer = function (_React$Component) {
         _this.song = "No song selected.";
         _this.song_position = -1;
         PlaySong = PlaySong.bind(_this);
-        MUSICPLAYER.bind("ended", _this.NextSong);
+        NextSong = NextSong.bind(_this);
         return _this;
     }
 

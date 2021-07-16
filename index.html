@@ -54,6 +54,9 @@
                 console.log(this.currentTime);
             }
             MUSICPLAYER.bind('timeupdate', MusicPlayerUpdateTime);
+            MUSICPLAYER.bind("ended", function() {
+                NextSong();
+            });
         </script>
 
         <!--React Library Scripts-->

@@ -10,6 +10,10 @@ function PlaySong(source, position)
     this.ForcePlayMusic();
 }
 
+function NextSong() {
+    this.NextSong()
+}
+
 class MusicPlayer extends React.Component
 {
 
@@ -20,7 +24,7 @@ class MusicPlayer extends React.Component
         this.song = "No song selected.";
         this.song_position = -1;
         PlaySong = PlaySong.bind(this);
-        MUSICPLAYER.bind("ended", this.NextSong);
+        NextSong = NextSong.bind(this);
     }
 
     render()

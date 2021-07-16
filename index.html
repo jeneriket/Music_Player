@@ -54,7 +54,7 @@
 
             function MusicPlayerUpdateTime() {
                 console.log(this.currentTime + " / "+this.duration+ " time: "+ this.currentTime/this.duration);
-                $("#progress_bar").css("width", this.currentTime/this.duration);
+                $("#progress_bar").css("width", (this.currentTime/this.duration) * 100);
             }
 
             MUSICPLAYER.bind('timeupdate', MusicPlayerUpdateTime);

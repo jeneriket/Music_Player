@@ -44,6 +44,15 @@
                 }
             }
         </script>
+        <!--Script defining the music player and music source constants-->
+        <script type="text/javascript">
+            const MUSICPLAYER = $('#Music_Player'); 
+            const MUSICSOURCE = $('#Music_Source');
+            function MusicPlayerUpdateTime() {
+                console.log(MUSICPLAYER.attr("currentTime"));
+            }
+            MUSICPLAYER.bind('timeupdate', MusicPlayerUpdateTime);
+        </script>
 
         <!--React Library Scripts-->
         <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>

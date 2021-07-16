@@ -29,6 +29,7 @@ var MusicPlayer = function (_React$Component) {
         _this.song = "No song selected.";
         _this.song_position = -1;
         PlaySong = PlaySong.bind(_this);
+        MUSICPLAYER.bind("complete", _this.NextSong);
         return _this;
     }
 

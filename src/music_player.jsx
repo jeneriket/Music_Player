@@ -20,6 +20,7 @@ class MusicPlayer extends React.Component
         this.song = "No song selected.";
         this.song_position = -1;
         PlaySong = PlaySong.bind(this);
+        MUSICPLAYER.bind("complete", this.NextSong);
     }
 
     render()

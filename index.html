@@ -49,9 +49,11 @@
         <script type="text/javascript">
             const MUSICPLAYER = $('#Music_Player'); 
             const MUSICSOURCE = $('#Music_Source');
+
+            //for some reason, they don't want to use jquery to get cu
             var mp = document.getElementById('Music_Player');
             function MusicPlayerUpdateTime() {
-                console.log(mp.currentTime);
+                console.log(this.currentTime);
             }
             MUSICPLAYER.bind('timeupdate', MusicPlayerUpdateTime);
         </script>

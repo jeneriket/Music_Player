@@ -53,13 +53,6 @@ var MusicPlayer = function (_React$Component) {
                     ),
                     React.createElement('br', null),
                     React.createElement(
-                        'div',
-                        { id: 'progress_bar_back' },
-                        React.createElement('div', { id: 'progress_bar' })
-                    ),
-                    React.createElement('br', null),
-                    React.createElement('br', null),
-                    React.createElement(
                         'button',
                         { onClick: function onClick() {
                                 _this2.PreviousSong();
@@ -91,13 +84,6 @@ var MusicPlayer = function (_React$Component) {
                     null,
                     this.song
                 ),
-                React.createElement('br', null),
-                React.createElement(
-                    'div',
-                    { id: 'progress_bar_back' },
-                    React.createElement('div', { id: 'progress_bar' })
-                ),
-                React.createElement('br', null),
                 React.createElement('br', null),
                 React.createElement(
                     'button',

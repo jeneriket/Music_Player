@@ -1,3 +1,9 @@
+#m_player {
+    position: sticky;
+    top: 0;
+    background-color: lightblue;
+}
+
 #progress_bar_back {
     background-color:burlywood;
     width: 500px;
@@ -8,4 +14,23 @@
     background-color: deeppink;
     height: 2px;
     width: 0px;
+}
+
+#slider {
+    background-color: deeppink;
+    top: -2px;
+    width: 8px;
+    height: 8px;
+}
+
+#slider:hover, #bar_holder:hover #slider {
+    transform: scale(2,2);
+}
+
+#progress_bar_back:hover, #bar_holder:hover #progress_bar_back  {
+    height: 4px;
+}
+
+#progress_bar:hover, #bar_holder:hover #progress_bar {
+    height: 4px;
 }

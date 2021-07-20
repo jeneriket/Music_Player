@@ -34,9 +34,6 @@ class MusicPlayer extends React.Component
             return (
                 <div>
                     <p>{this.song}</p><br/>
-                    <div id="progress_bar_back"><div id="progress_bar"></div></div>
-                    <br/>
-                    <br/>
                     <button onClick={() => {this.PreviousSong()}}>Previous</button>
                     <button class="audio_button" onClick={() => {this.PlayPauseMusic()}}>{this.state.playing? 'Pause' : 'Play'}</button>
                     <button onClick={() => {this.NextSong()}}>Next</button>
@@ -45,9 +42,6 @@ class MusicPlayer extends React.Component
         
         return (<div>
             <p>{this.song}</p><br/>
-            <div id="progress_bar_back"><div id="progress_bar"></div></div>
-            <br/>
-            <br/>
             <button disabled>Previous</button>
             <button class="audio_button" disabled>Play</button>
             <button disabled>Next</button></div>);

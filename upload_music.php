@@ -3,7 +3,7 @@
 include 'sql_interface.php';
 
 //TODO: Prevent special characters from being uploaded
-$target_dir = "/var/www/html/uploads/";
+$target_dir = "uploads/";
 $target_filename = basename($_FILES["musicFile"]["name"]);
 
 $target_file = $target_dir.$target_filename;

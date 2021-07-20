@@ -4,17 +4,26 @@
 
         <!--include jquery-->
         <script type="text/javascript" src="jquery-3.6.0.js"></script>
+        <script type="text/javascript" src="jquery-ui.js"></script>
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="jquery-ui.css"/>
     </head>
     <body>
-        <div>
+        <div id="m_player">
             <!--the audio player-->
             <audio id="Music_Player"><source id="Music_Source"/></audio>
-            <button id="Loop" disabled>Loop</button>
-            <button id="Mix" disabled>Mix</button>
             <!--div for the actual music player-->
             <div id="player"></div>
+            <button id="Loop" disabled>Loop</button>
+            <button id="Mix" disabled>Mix</button>
+            <div id="bar_holder">
+            <br/>
+            <div id="progress_bar_back"><div id="progress_bar"><div id="slider" class="ui-draggable"></div></div></div>
+            <br/>
+            </div>
             <hr/>
+        </div>
+        <div>
             <div id="menu">
                 <button onclick="backPanel.ChangeCurrentState(BackPanelState.MyMusic);">My Music</button>
                 <button onclick="backPanel.ChangeCurrentState(BackPanelState.Playlists);">Playlists</button>
@@ -22,7 +31,83 @@
             </div>
             <!--Back Panel that can be changed with React-->
             <div id="back_panel"></div>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
         </div>
+        
+        <!--Script defining the music player and music source constants-->
+        <script type="text/javascript">
+            const MUSICPLAYER = $('#Music_Player'); 
+            const MUSICSOURCE = $('#Music_Source');
+
+            var dragging = false;
+            var duration = -1;
+            var currentTime = -1;
+            var setCurrentTime = -1;
+
+            function MusicPlayerUpdateTime() {
+                if(setCurrentTime != -1)
+                {
+                    this.currentTime = setCurrentTime;
+                    setCurrentTime = -1;
+                }
+
+                currentTime = this.currentTime;
+
+                var progress = (this.currentTime/this.duration) * parseInt($("#progress_bar_back").css("width"));
+                $("#progress_bar").css("width", progress);
+
+                if(!dragging)
+                    $("#slider").css("left", progress);
+            }
+
+            MUSICPLAYER.bind('timeupdate', MusicPlayerUpdateTime);
+            MUSICPLAYER.bind("ended", function() {NextSong();});
+            MUSICPLAYER.bind("play", function(){
+                duration = this.duration;
+            });
+                
+        </script>
 
         <!--Delete file function-->
         <script type="text/javascript">
@@ -47,18 +132,23 @@
                 }
             }
         </script>
-        <!--Script defining the music player and music source constants-->
-        <script type="text/javascript">
-            const MUSICPLAYER = $('#Music_Player'); 
-            const MUSICSOURCE = $('#Music_Source');
 
-            function MusicPlayerUpdateTime() {
-                console.log($("#progress_bar_back").css("width"));
-                $("#progress_bar").css("width", (this.currentTime/this.duration) * parseInt($("#progress_bar_back").css("width")));
-            }
-
-            MUSICPLAYER.bind('timeupdate', MusicPlayerUpdateTime);
-            MUSICPLAYER.bind("ended", function() {NextSong();});
+        <!--makes the slider draggable-->
+        <script type="text/javascript">$(function() {
+            $("#slider").draggable( {
+                axis: "x",
+                containment: "#progress_bar_back",
+                start : function()
+                {
+                    dragging = true;
+                },
+                stop: function()
+                {
+                    dragging = false;
+                    setCurrentTime = (parseInt($("#slider").css("left"))/parseInt($("#progress_bar_back").css("width"))) * duration;
+                }
+            });
+        });
         </script>
 
         <!--React Library Scripts-->

@@ -57,7 +57,7 @@ class MusicPlayer extends React.Component
     }
     
     ForcePlayMusic()
-    {
+    { 
         $("#progress_bar").css("width", 0);
         MUSICSOURCE.attr("src", "/uploads/"+this.song);
 

@@ -120,3 +120,6 @@ dist
 #ignore batch files
 npx_babel.bat
 start_server.bat
+
+#ignore uploads folder
+uploads/

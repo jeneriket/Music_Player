@@ -4,6 +4,10 @@
     background-color: lightblue;
 }
 
+#menu {
+    background-color: burlywood;
+}
+
 #progress_bar_back {
     background-color:burlywood;
     width: 500px;
@@ -33,4 +37,8 @@
 
 #progress_bar:hover, #bar_holder:hover #progress_bar {
     height: 4px;
+}
+
+#back_panel, #extra_panel {
+    float: left;
 }

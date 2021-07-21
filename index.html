@@ -21,58 +21,31 @@
             <div id="progress_bar_back"><div id="progress_bar"><div id="slider" class="ui-draggable"></div></div></div>
             <br/>
             </div>
-            <hr/>
-        </div>
-        <div>
             <div id="menu">
+                <hr/>
                 <button onclick="backPanel.ChangeCurrentState(BackPanelState.MyMusic);">My Music</button>
                 <button onclick="backPanel.ChangeCurrentState(BackPanelState.Playlists);">Playlists</button>
                 <button onclick="backPanel.ChangeCurrentState(BackPanelState.Upload);">Upload</button>
+                <hr/>
             </div>
+        </div>
+
+        <script type="text/javascript">
+            var extraPanelShown = false;
+            function ToggleExtraPanel()
+            {
+                UpdateExtraPanel();
+                $('#extra_panel').css('display',  (extraPanelShown) ? "none" : "block");
+                extraPanelShown = !extraPanelShown;
+            }
+        </script>
+        <button onclick="ToggleExtraPanel()">Add Song</button>
+        <hr>
+
+        <div>
             <!--Back Panel that can be changed with React-->
             <div id="back_panel"></div>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
+            <div style="background-color: burlywood;" id="extra_panel"></div>
         </div>
         
         <!--Script defining the music player and music source constants-->
@@ -134,21 +107,69 @@
         </script>
 
         <!--makes the slider draggable-->
-        <script type="text/javascript">$(function() {
-            $("#slider").draggable( {
-                axis: "x",
-                containment: "#progress_bar_back",
-                start : function()
-                {
-                    dragging = true;
-                },
-                stop: function()
-                {
-                    dragging = false;
-                    setCurrentTime = (parseInt($("#slider").css("left"))/parseInt($("#progress_bar_back").css("width"))) * duration;
-                }
+        <script type="text/javascript">
+            $(function() {
+                $("#slider").draggable( {
+                    axis: "x",
+                    containment: "#progress_bar_back",
+                    start : function()
+                    {
+                        dragging = true;
+                    },
+                    stop: function()
+                    {
+                        dragging = false;
+                        setCurrentTime = (parseInt($("#slider").css("left"))/parseInt($("#progress_bar_back").css("width"))) * duration;
+                    }
+                });
             });
-        });
+        </script>
+
+        <!--Cookie stuff-->
+        <script type="text/javascript">
+            function SetCookie(cname, cvalue, exdays) {
+                const d = new Date();
+                d.setTime(d.getTime() + (exdays*24*60*60*1000));
+                let expires = "expires="+ d.toUTCString();
+                document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+            }
+
+            function GetCookie(cname) {
+                let name = cname + "=";
+                let decodedCookie = decodeURIComponent(document.cookie);
+                let ca = decodedCookie.split(';');
+                for(let i = 0; i <ca.length; i++) {
+                    let c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+
+            function CheckCookie(_cookie) {
+                let cookie = GetCookie(_cookie);
+                if (cookie != "") {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            var CURRENTPLAYLISTID = "0_playlist";
+            var CURRENTPLAYLISTNAME = "All Songs";
+
+            if(CheckCookie("CurrentPlaylist"))
+            {
+                CURRENTPLAYLISTID = GetCookie("CurrentPlaylist");
+                CURRENTPLAYLISTNAME = GetCookie("CurrentPlaylistName");
+            }
+
+            SetCookie("CurrentPlaylist", CURRENTPLAYLISTID, 1000);
+            SetCookie("CurrentPlaylistName", CURRENTPLAYLISTNAME, 1000);
         </script>
 
         <!--React Library Scripts-->
@@ -161,5 +182,6 @@
         <!--My React script(s)-->
         <script src="back_panel.js"></script>
         <script src="music_player.js"></script>
+        <script src="extra_panel.js"></script>
     </body>
 </html>

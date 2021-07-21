@@ -2,7 +2,7 @@
 
 include 'sql_interface.php';
 
-if(unlink("/var/www/html/uploads/".$_POST['filename']))
+if(unlink("uploads/".$_POST['filename']))
 {
     //remove from sql database
     $servername = "localhost";

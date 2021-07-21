@@ -1,5 +1,6 @@
 <?php
-    function UploadSong($filename)
+    //note 
+    function AddSongToPlaylist($filename, $playlistName, $songID = -1)
     {
         $servername = "localhost";
         $username = "jeneriket";
@@ -22,25 +23,26 @@
             array_push($ids, $row[0]);
         }
 
-        $newID = GenerateID($ids);
+        if($songID == -1)
+            $songID = GenerateID($ids);
 
         $sql = "INSERT INTO songs (id, song_name) 
-            VALUES ($newID, '$filename');";
+            VALUES ($songID, '$filename');";
         
         $conn->query($sql);
 
 
         //add to default playlist
         $defaultPlaylistPositions = [];
-        $result = $conn->query("SELECT position FROM 0_playlist");
+        $result = $conn->query("SELECT position FROM $playlistName");
         while ($row = $result->fetch_array(MYSQLI_NUM))
         {
             array_push($defaultPlaylistPositions, $row[0]);
         }
 
         $defaultPlaylistPosition = count($defaultPlaylistPositions);
-        $sql = "INSERT INTO 0_playlist (song_id, position)
-        VALUES($newID, $defaultPlaylistPosition);";
+        $sql = "INSERT INTO $playlistName (song_id, position)
+        VALUES($songID, $defaultPlaylistPosition);";
         $conn->query($sql);
 
         //close mysql connection
@@ -66,5 +68,11 @@
         public $id;
         public $posititon;
         public $filename;
+    }
+
+    class PlaylistData {
+        public $id;
+        public $name;
+        public $posititon;
     }
 ?>

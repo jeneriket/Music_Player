@@ -8,10 +8,9 @@
     $conn = new mysqli($servername, $username, $password, 'Music_Player');
 
     $playlistSongs = [];
-    //TODO: Change to be dynamic
-    $playlist = "0_playlist";
+    $playlist = $_GET['playlist'];
 
-    $result = $conn->query("SELECT song_id, position FROM 0_playlist;");
+    $result = $conn->query("SELECT song_id, position FROM $playlist;");
     while ($row = $result->fetch_array(MYSQLI_NUM))
     {
         $song = new PlaylistSong();
@@ -49,9 +48,8 @@
 
     foreach($sortedPlaylistSongs as $song)
     {
-        
         echo "var data_".$song->id." = {id: ".$song->id.", name: '".$song->filename."', position: $song->position};
-        this_.music_data.push(data_".$song->id.");";
+        reactComp.music_data.push(data_".$song->id.");";
     }
 
     $conn->close();

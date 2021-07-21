@@ -1,7 +1,3 @@
-/*TODO:
-Add cookie that keeps track of back panel state
-*/
-
 'use strict';
 
 //Enum for backPanelState
@@ -25,6 +21,28 @@ var CURRENTPLAYLIST = [];
 //React object
 var E = React.createElement;
 
+function XHRRequest(url, reactComp) {
+    var xhr = new XMLHttpRequest();
+
+    xhr.addEventListener("readystatechange", function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status == 200) {
+                //request successful
+                reactComp.music_data = new Array();
+                reactComp.playlist_data = new Array();
+                eval(xhr.response);
+                reactComp.forceUpdate();
+            } else {
+                if (status == "error") {
+                    alert(xhr.status + " " + xhr.statusText);
+                }
+            }
+        }
+    });
+    xhr.open("GET", url, true);
+    xhr.send();
+}
+
 //Class for back panel
 
 var BackPanel = function (_React$Component) {
@@ -33,12 +51,12 @@ var BackPanel = function (_React$Component) {
     function BackPanel(_props) {
         _classCallCheck(this, BackPanel);
 
+        //have a state for if we are viewing the playlist
         var _this = _possibleConstructorReturn(this, (BackPanel.__proto__ || Object.getPrototypeOf(BackPanel)).call(this, _props));
 
-        _this.playlist = null;
-
-        //have a state for if we are viewing the playlist
+        _this.updating = true;
         _this.currentState = BackPanelState.MyMusic;
+        _this.componentDidMount = _this.componentDidUpdate;
         return _this;
     }
 
@@ -48,7 +66,7 @@ var BackPanel = function (_React$Component) {
             //use different methods to render backpanel, depending on the currentstate
             switch (this.currentState) {
                 case BackPanelState.Playlists:
-                    return this.RenderPlaylist();
+                    return this.RenderPlaylistList();
                 case BackPanelState.Upload:
                     return this.RenderUpload();
                 default:
@@ -56,31 +74,20 @@ var BackPanel = function (_React$Component) {
             }
         }
     }, {
-        key: "componentDidMount",
-        value: function componentDidMount() {
-            var _this2 = this;
-
-            this.playlist = null;
-            var xhr = new XMLHttpRequest();
-
-            xhr.addEventListener("readystatechange", function () {
-                if (xhr.readyState === 4) {
-                    if (xhr.status == 200) {
-
-                        //request successful
-                        _this2.music_data = new Array();
-                        var this_ = _this2;
-                        eval(xhr.response);
-                        _this2.forceUpdate();
-                    } else {
-                        if (status == "error") {
-                            alert(xhr.status + " " + xhr.statusText);
-                        }
-                    }
+        key: "componentDidUpdate",
+        value: function componentDidUpdate() {
+            if (this.updating) {
+                switch (this.currentState) {
+                    case BackPanelState.Playlists:
+                        XHRRequest("/retrieve_playlists.php", this);
+                        break;
+                    default:
+                        XHRRequest("/playlist_displayer.php?playlist=" + CURRENTPLAYLISTID, this);
+                        break;
                 }
-            });
-            xhr.open("GET", "/playlist_displayer.php", true);
-            xhr.send();
+
+                this.updating = false;
+            }
         }
 
         //Function to change the current state
@@ -88,6 +95,8 @@ var BackPanel = function (_React$Component) {
     }, {
         key: "ChangeCurrentState",
         value: function ChangeCurrentState(_currentState) {
+            this.updating = true;
+            $("#extra_panel").css("display", "none");
             this.currentState = _currentState;
             this.forceUpdate();
         }
@@ -95,27 +104,70 @@ var BackPanel = function (_React$Component) {
         //Function to render the backpanel as a list of playlists
 
     }, {
-        key: "RenderPlaylist",
-        value: function RenderPlaylist() {
+        key: "RenderPlaylistList",
+        value: function RenderPlaylistList() {
+            var _this3 = this;
 
-            return "Feature not ready yet!";
-        }
-    }, {
-        key: "RenderUpload",
-        value: function RenderUpload() {
+            if (this.playlist_data == null) return "Loading...";
+
+            var list = [];
+
+            for (var i = 0; i < this.playlist_data.length; i++) {
+                (function (ii) {
+                    var _this2 = this;
+
+                    var id = this.playlist_data[ii].id;
+                    var name = this.playlist_data[ii].name;
+                    var position = this.playlist_data[ii].position;
+
+                    list.push(React.createElement(
+                        "div",
+                        { id: id + "_playlist_div" },
+                        name,
+                        React.createElement("br", null),
+                        React.createElement(
+                            "button",
+                            { onClick: function onClick() {
+                                    _this2.SelectPlaylist(id, name);
+                                } },
+                            "Select"
+                        ),
+                        " ",
+                        React.createElement(
+                            "button",
+                            { disabled: true },
+                            "Shuffle Play"
+                        ),
+                        React.createElement("br", null),
+                        React.createElement(
+                            "button",
+                            { disabled: true },
+                            "Delete"
+                        ),
+                        React.createElement("hr", null)
+                    ));
+                }).call(this, i);
+            }
+
             return React.createElement(
-                "form",
-                { target: "upload_frame", action: "upload_music.php", method: "POST", encType: "multipart/form-data" },
+                "div",
+                { id: "playlist" },
                 React.createElement(
-                    "p",
-                    null,
-                    "Upload your music!"
+                    "button",
+                    { onClick: function onClick() {
+                            _this3.CreatePlaylist();
+                        } },
+                    "Create Playlist"
                 ),
-                React.createElement("input", { type: "file", accept: "audio/mp3,audio/*,audio/ogg", name: "musicFile" }),
-                React.createElement("input", { type: "submit", value: "submit", name: "submit" })
-            )
-            //TODO: Add folder upload
-            ;
+                React.createElement(
+                    "button",
+                    { disabled: true },
+                    "Add Song"
+                ),
+                React.createElement("br", null),
+                React.createElement("br", null),
+                list
+            );
         }
 
         //Function to render the backpanel as the music player
@@ -125,8 +177,9 @@ var BackPanel = function (_React$Component) {
         value: function RenderMusic() {
             if (this.music_data == null) return "Loading...";
 
+            if (this.music_data.length == 0) return "No songs in playlist";
+
             var playlist = [];
-            this.audioSources = [];
 
             //clear current playlist array
             CURRENTPLAYLIST.splice(0, CURRENTPLAYLIST.length);
@@ -151,21 +204,76 @@ var BackPanel = function (_React$Component) {
                         ),
                         React.createElement(
                             "button",
+                            { disabled: true },
+                            "Remove"
+                        ),
+                        React.createElement(
+                            "button",
                             { onClick: function onClick() {
                                     confirmDelete(name, id);
                                 } },
-                            "Delete?"
-                        )
+                            "Delete From Website?"
+                        ),
+                        React.createElement("hr", null)
                     ));
                     CURRENTPLAYLIST.push(name);
                 }).call(this, i);
             }
 
+            //TODO: Add title
             return React.createElement(
                 "div",
                 { id: "playlist" },
+                React.createElement(
+                    "h1",
+                    null,
+                    CURRENTPLAYLISTNAME
+                ),
                 playlist
             );
+        }
+    }, {
+        key: "RenderUpload",
+        value: function RenderUpload() {
+            return React.createElement(
+                "form",
+                { target: "upload_frame", action: "upload_music.php", method: "POST", encType: "multipart/form-data" },
+                React.createElement(
+                    "p",
+                    null,
+                    "Upload your music!"
+                ),
+                React.createElement("input", { type: "file", accept: "audio/mp3,audio/*,audio/ogg", name: "musicFile" }),
+                React.createElement("input", { type: "submit", value: "submit", name: "submit" })
+            )
+            //TODO: Add folder upload
+            ;
+        }
+    }, {
+        key: "CreatePlaylist",
+        value: function CreatePlaylist() {
+            var playlistName = prompt("Name of playlist:");
+
+            if (playlistName != null) {
+                $.ajax({
+                    type: "POST",
+                    url: 'create_playlist.php',
+                    data: { 'name': playlistName },
+                    success: function success(response) {
+                        alert(response);
+                    },
+                    error: function error(response) {
+                        alert("Error creating " + playlistName);
+                    }
+                });
+            }
+        }
+    }, {
+        key: "SelectPlaylist",
+        value: function SelectPlaylist(id, name) {
+            SetCookie("CurrentPlaylist", id + "_playlist", 1000);
+            SetCookie("CurrentPlaylistName", name, 1000);
+            location.replace('index.html');
         }
     }]);
 

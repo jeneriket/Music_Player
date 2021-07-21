@@ -30,7 +30,7 @@ if(isset($_POST['submit'])){
         {
             //echo "<script type='text/javascript'> alert('The file ".htmlspecialchars(basename($_FILES["musicFile"]["name"]))." has been uploaded.');</script>";
 
-            UploadSong($target_filename);
+            AddSongToPlaylist($target_filename, "0_playlist");
             //generate song id
             //get all id values
             
@@ -41,5 +41,5 @@ if(isset($_POST['submit'])){
     }
 }
 
-//echo "<script type='text/javascript'>location.replace('http://18.189.30.30');</script>"
+echo "<script type='text/javascript'>location.replace('index.html');</script>"
 ?>

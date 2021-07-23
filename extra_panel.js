@@ -9,9 +9,17 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var EXTRAPANELSHOWN = false;
+
 function UpdateExtraPanel() {
     this.updating = true;
     this.forceUpdate();
+}
+
+function ToggleExtraPanel() {
+    UpdateExtraPanel();
+    $('#extra_panel').css('display', EXTRAPANELSHOWN ? "none" : "block");
+    EXTRAPANELSHOWN = !EXTRAPANELSHOWN;
 }
 
 var ExtraPanel = function (_React$Component) {
@@ -28,7 +36,7 @@ var ExtraPanel = function (_React$Component) {
     }
 
     _createClass(ExtraPanel, [{
-        key: "render",
+        key: 'render',
         value: function render() {
             if (this.music_data == null) {
                 return "Loading Songs...";
@@ -40,34 +48,40 @@ var ExtraPanel = function (_React$Component) {
                 (function (ii) {
                     var _this2 = this;
 
-                    var name = this.music_data[ii].name;
+                    var name = this.music_data[ii].title;
+                    var artist = this.music_data[ii].artist;
 
                     //NOTE: You need to move the delete button to music interface
                     songs.push(React.createElement(
-                        "div",
+                        'div',
                         null,
                         name,
-                        React.createElement("br", null),
                         React.createElement(
-                            "button",
+                            'p',
+                            { 'class': 'subtext' },
+                            artist
+                        ),
+                        React.createElement('br', null),
+                        React.createElement(
+                            'button',
                             { onClick: function onClick() {
                                     _this2.AddSong(_this2.music_data[ii]);
                                 } },
-                            "Add Song"
+                            'Add Song'
                         ),
-                        React.createElement("hr", null)
+                        React.createElement('hr', null)
                     ));
                 }).call(this, i);
             }
 
             return React.createElement(
-                "div",
-                { id: "add_songs" },
+                'div',
+                { id: 'add_songs', 'class': 'padded' },
                 songs
             );
         }
     }, {
-        key: "componentDidUpdate",
+        key: 'componentDidUpdate',
         value: function componentDidUpdate() {
             if (this.updating) {
                 XHRRequest("/playlist_displayer.php?playlist=0_playlist", this);
@@ -75,7 +89,7 @@ var ExtraPanel = function (_React$Component) {
             }
         }
     }, {
-        key: "AddSong",
+        key: 'AddSong',
         value: function AddSong(data) {
             $.ajax({
                 type: "POST",

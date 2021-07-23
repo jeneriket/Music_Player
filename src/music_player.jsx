@@ -1,8 +1,14 @@
 'use strict'
 
-function PlaySong(source, position)
+function PlaySong(source, position, title, artist, album, year)
 {
     $('#Music_Player').trigger('pause');
+
+    //set metadata
+    this.title = title;
+    this.artist = artist;
+    this.album = album;
+    this.year = year;
 
     this.song=source;
     this.setState({playable: true});
@@ -21,7 +27,12 @@ class MusicPlayer extends React.Component
     {
         super(_props);
         this.state = {playing: false, playable: false};
-        this.song = "No song selected.";
+        this.song = (<div>
+            <h1>No song selected.</h1>
+            <h2 class="subtext">No song selected.</h2>
+            <h3 class="subtext">No song selected.</h3>
+            <h4 class="subtext">No song selected.</h4><br/>
+            </div>);
         this.song_position = -1;
         PlaySong = PlaySong.bind(this);
         NextSong = NextSong.bind(this);
@@ -33,7 +44,10 @@ class MusicPlayer extends React.Component
         {
             return (
                 <div>
-                    <p>{this.song}</p><br/>
+                    <h1>{this.title}</h1>
+                    <h2 class="subtext">{this.artist}</h2>
+                    <h3 class="subtext">{this.album}</h3>
+                    <h4 class="subtext">{this.year}</h4><br/>
                     <button onClick={() => {this.PreviousSong()}}>Previous</button>
                     <button class="audio_button" onClick={() => {this.PlayPauseMusic()}}>{this.state.playing? 'Pause' : 'Play'}</button>
                     <button onClick={() => {this.NextSong()}}>Next</button>
@@ -41,7 +55,7 @@ class MusicPlayer extends React.Component
         }
         
         return (<div>
-            <p>{this.song}</p><br/>
+            {this.song}
             <button disabled>Previous</button>
             <button class="audio_button" disabled>Play</button>
             <button disabled>Next</button></div>);

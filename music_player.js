@@ -8,8 +8,14 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-function PlaySong(source, position) {
+function PlaySong(source, position, title, artist, album, year) {
     $('#Music_Player').trigger('pause');
+
+    //set metadata
+    this.title = title;
+    this.artist = artist;
+    this.album = album;
+    this.year = year;
 
     this.song = source;
     this.setState({ playable: true });
@@ -30,7 +36,31 @@ var MusicPlayer = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (MusicPlayer.__proto__ || Object.getPrototypeOf(MusicPlayer)).call(this, _props));
 
         _this.state = { playing: false, playable: false };
-        _this.song = "No song selected.";
+        _this.song = React.createElement(
+            'div',
+            null,
+            React.createElement(
+                'h1',
+                null,
+                'No song selected.'
+            ),
+            React.createElement(
+                'h2',
+                { 'class': 'subtext' },
+                'No song selected.'
+            ),
+            React.createElement(
+                'h3',
+                { 'class': 'subtext' },
+                'No song selected.'
+            ),
+            React.createElement(
+                'h4',
+                { 'class': 'subtext' },
+                'No song selected.'
+            ),
+            React.createElement('br', null)
+        );
         _this.song_position = -1;
         PlaySong = PlaySong.bind(_this);
         NextSong = NextSong.bind(_this);
@@ -47,9 +77,24 @@ var MusicPlayer = function (_React$Component) {
                     'div',
                     null,
                     React.createElement(
-                        'p',
+                        'h1',
                         null,
-                        this.song
+                        this.title
+                    ),
+                    React.createElement(
+                        'h2',
+                        { 'class': 'subtext' },
+                        this.artist
+                    ),
+                    React.createElement(
+                        'h3',
+                        { 'class': 'subtext' },
+                        this.album
+                    ),
+                    React.createElement(
+                        'h4',
+                        { 'class': 'subtext' },
+                        this.year
                     ),
                     React.createElement('br', null),
                     React.createElement(
@@ -79,12 +124,7 @@ var MusicPlayer = function (_React$Component) {
             return React.createElement(
                 'div',
                 null,
-                React.createElement(
-                    'p',
-                    null,
-                    this.song
-                ),
-                React.createElement('br', null),
+                this.song,
                 React.createElement(
                     'button',
                     { disabled: true },

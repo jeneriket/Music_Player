@@ -30,6 +30,7 @@ function XHRRequest(url, reactComp) {
                 //request successful
                 reactComp.music_data = new Array();
                 reactComp.playlist_data = new Array();
+                //$("#report").html("<p>"+xhr.response+"</p>");
                 eval(xhr.response);
                 reactComp.forceUpdate();
             } else {
@@ -117,18 +118,19 @@ var BackPanel = function (_React$Component) {
                     var _this2 = this;
 
                     var id = this.playlist_data[ii].id;
-                    var name = this.playlist_data[ii].name;
+                    var fileName = this.playlist_data[ii].name;
                     var position = this.playlist_data[ii].position;
+                    var name = this.playlist_data[ii].title;
 
                     list.push(React.createElement(
                         "div",
                         { id: id + "_playlist_div" },
-                        name,
+                        fileName,
                         React.createElement("br", null),
                         React.createElement(
                             "button",
                             { onClick: function onClick() {
-                                    _this2.SelectPlaylist(id, name);
+                                    _this2.SelectPlaylist(id, fileName);
                                 } },
                             "Select"
                         ),
@@ -151,18 +153,13 @@ var BackPanel = function (_React$Component) {
 
             return React.createElement(
                 "div",
-                { id: "playlist" },
+                { id: "playlist", "class": "paddedLess" },
                 React.createElement(
                     "button",
                     { onClick: function onClick() {
                             _this3.CreatePlaylist();
                         } },
                     "Create Playlist"
-                ),
-                React.createElement(
-                    "button",
-                    { disabled: true },
-                    "Add Song"
                 ),
                 React.createElement("br", null),
                 React.createElement("br", null),
@@ -177,7 +174,28 @@ var BackPanel = function (_React$Component) {
         value: function RenderMusic() {
             if (this.music_data == null) return "Loading...";
 
-            if (this.music_data.length == 0) return "No songs in playlist";
+            if (this.music_data.length == 0) return React.createElement(
+                "div",
+                { id: "playlistTitle" },
+                React.createElement(
+                    "h1",
+                    null,
+                    CURRENTPLAYLISTNAME
+                ),
+                React.createElement(
+                    "button",
+                    { onClick: function onClick() {
+                            ToggleExtraPanel();
+                        } },
+                    "Add Song"
+                ),
+                React.createElement("hr", null),
+                React.createElement(
+                    "div",
+                    { "class": "left" },
+                    "No songs in playlist."
+                )
+            );
 
             var playlist = [];
 
@@ -188,17 +206,26 @@ var BackPanel = function (_React$Component) {
                     var id = this.music_data[ii].id;
                     var name = this.music_data[ii].name;
                     var position = this.music_data[ii].position;
+                    var title = this.music_data[ii].title;
+                    var artist = this.music_data[ii].artist;
+                    var album = this.music_data[ii].album;
+                    var year = this.music_data[ii].year;
 
                     //NOTE: You need to move the delete button to music interface
                     playlist.push(React.createElement(
                         "div",
                         { id: id + "_div" },
-                        name,
+                        title,
+                        React.createElement(
+                            "p",
+                            { "class": "subtext" },
+                            artist
+                        ),
                         React.createElement("br", null),
                         React.createElement(
                             "button",
                             { onClick: function onClick() {
-                                    PlaySong(name, position);
+                                    PlaySong(name, position, title, artist, album, year);
                                 } },
                             "Play"
                         ),
@@ -225,11 +252,27 @@ var BackPanel = function (_React$Component) {
                 "div",
                 { id: "playlist" },
                 React.createElement(
-                    "h1",
-                    null,
-                    CURRENTPLAYLISTNAME
+                    "div",
+                    { id: "playlistTitle" },
+                    React.createElement(
+                        "h1",
+                        null,
+                        CURRENTPLAYLISTNAME
+                    ),
+                    React.createElement(
+                        "button",
+                        { onClick: function onClick() {
+                                ToggleExtraPanel();
+                            } },
+                        "Add Song"
+                    ),
+                    React.createElement("hr", null)
                 ),
-                playlist
+                React.createElement(
+                    "div",
+                    { "class": "padded" },
+                    playlist
+                )
             );
         }
     }, {
@@ -237,7 +280,7 @@ var BackPanel = function (_React$Component) {
         value: function RenderUpload() {
             return React.createElement(
                 "form",
-                { target: "upload_frame", action: "upload_music.php", method: "POST", encType: "multipart/form-data" },
+                { "class": "paddedLess", target: "upload_frame", action: "upload_music.php", method: "POST", encType: "multipart/form-data" },
                 React.createElement(
                     "p",
                     null,

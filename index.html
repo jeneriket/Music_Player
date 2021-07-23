@@ -5,6 +5,7 @@
         <!--include jquery-->
         <script type="text/javascript" src="jquery-3.6.0.js"></script>
         <script type="text/javascript" src="jquery-ui.js"></script>
+
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="jquery-ui.css"/>
     </head>
@@ -30,23 +31,17 @@
             </div>
         </div>
 
-        <script type="text/javascript">
-            var extraPanelShown = false;
-            function ToggleExtraPanel()
-            {
-                UpdateExtraPanel();
-                $('#extra_panel').css('display',  (extraPanelShown) ? "none" : "block");
-                extraPanelShown = !extraPanelShown;
-            }
-        </script>
-        <button onclick="ToggleExtraPanel()">Add Song</button>
-        <hr>
-
-        <div>
-            <!--Back Panel that can be changed with React-->
-            <div id="back_panel"></div>
-            <div style="background-color: burlywood;" id="extra_panel"></div>
+        <div id="container">
+            <!--used to output php errors-->
+            <div id="report"></div>
+    
+            <div>
+                <!--Back Panel that can be changed with React-->
+                <div id="back_panel"></div>
+                <div style="background-color: burlywood;" id="extra_panel"></div>
+            </div>
         </div>
+        
         
         <!--Script defining the music player and music source constants-->
         <script type="text/javascript">

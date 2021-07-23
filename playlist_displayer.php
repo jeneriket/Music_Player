@@ -1,5 +1,6 @@
 <?php
     include 'sql_interface.php';
+    include 'getid3/getid3.php';
 
     $servername = "localhost";
     $username = "jeneriket";
@@ -46,11 +47,42 @@
         }
     }
 
+    //initialize get id3
+    $getID3 = new getID3;
+    //$file = fopen("test.txt", "w");
+
+    function ProcessTag($_tag, $propname, $defaultName)
+    {
+        $value = $defaultName;
+
+        if(isset($_tag['tags_html']['id3v2'][$propname]))
+        {
+            $value = $_tag['tags_html']['id3v2'][$propname];
+            if(is_array($value))
+                $value = implode(', ', $value);
+                
+            $value = str_replace("'", "\'", $value);
+            $value = str_replace('"', '\"', $value);
+        }
+
+        return $value;
+    }
+
     foreach($sortedPlaylistSongs as $song)
     {
-        echo "var data_".$song->id." = {id: ".$song->id.", name: '".$song->filename."', position: $song->position};
-        reactComp.music_data.push(data_".$song->id.");";
+        //get metadata from files
+        $tag = $getID3->analyze("uploads/".$song->filename);
+        $name = ProcessTag($tag, 'title', $song->filename);
+        $artist = ProcessTag($tag, 'band', "Artist Unknown");
+        $album = ProcessTag($tag, 'album', "Album Unknown");
+        $year = ProcessTag($tag, 'year', "Year Unknown");
+
+        echo "var data_".$song->id." = {id: $song->id, name: '$song->filename', 
+            position: $song->position, title: '$name', artist: '$artist', album: '$album', year: '$year'};
+        reactComp.music_data.push(data_".$song->id.");\n";
     }
+
+    //$fclose($file);
 
     $conn->close();
 ?>

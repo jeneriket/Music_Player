@@ -2,16 +2,18 @@
 
 include 'sql_interface.php';
 
-//TODO: Prevent special characters from being uploaded
-$target_dir = "uploads/";
-$target_filename = basename($_FILES["musicFile"]["name"]);
-
-$target_file = $target_dir.$target_filename;
-
-$uploadOK = 1;
-$fileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 if(isset($_POST['submit'])){
     
+    //TODO: Prevent special characters from being uploaded
+    $target_dir = "uploads/";
+    $target_filename = basename($_FILES["musicFile"]["name"]);
+    $target_filename = preg_replace("/[^a-z0-9\_\-\.]/i", '', $target_filename);
+
+    $target_file = $target_dir.$target_filename;
+
+    $uploadOK = 1;
+    $fileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
     //check if file already exitsts
     //TODO: Add asking if you want to add duplicate file name
     if(file_exists($target_file))
@@ -40,6 +42,11 @@ if(isset($_POST['submit'])){
         }
     }
 }
+else
+{
+    echo $_FILES["musicFile"]["error"];
+}
+echo var_dump($_FILES);
 
-echo "<script type='text/javascript'>location.replace('index.html');</script>"
+//echo "<script type='text/javascript'>location.replace('index.html');</script>"
 ?>

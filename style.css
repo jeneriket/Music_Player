@@ -1,7 +1,32 @@
+#container {
+    height: auto;
+    overflow:hidden;
+}
+
 #m_player {
-    position: sticky;
+    position: fixed;
     top: 0;
     background-color: lightblue;
+    width: 100%;
+}
+
+#playlistTitle {
+    position: fixed;
+    top: 280;
+    width: 100%;
+    background-color: white;
+}
+
+.padded {
+    padding-top: 410;
+}
+
+.paddedLess {
+    padding-top: 300;
+}
+
+.left {
+    float: left;
 }
 
 #menu {
@@ -41,4 +66,9 @@
 
 #back_panel, #extra_panel {
     float: left;
+}
+
+.subtext {
+    font-size: 9px;
+    color: crimson;
 }

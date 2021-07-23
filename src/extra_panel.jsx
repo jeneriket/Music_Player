@@ -1,9 +1,17 @@
 
 'use strict'
 
+var EXTRAPANELSHOWN = false;
+
 function UpdateExtraPanel() {
     this.updating = true;   
     this.forceUpdate();
+}
+
+function ToggleExtraPanel() {
+    UpdateExtraPanel();
+    $('#extra_panel').css('display',  (EXTRAPANELSHOWN) ? "none" : "block");
+    EXTRAPANELSHOWN = !EXTRAPANELSHOWN;
 }
 
 class ExtraPanel extends React.Component 
@@ -27,12 +35,15 @@ class ExtraPanel extends React.Component
         for(var i = 0; i < this.music_data.length; i++)
         {
             (function(ii) {
-                var name = this.music_data[ii].name;
+                var name = this.music_data[ii].title;
+                var artist = this.music_data[ii].artist;
     
                 //NOTE: You need to move the delete button to music interface
                 songs.push(
                 <div>
-                    {name}<br/>
+                    {name}
+                    <p class="subtext">{artist}</p>
+                    <br/>
                     <button onClick={() => {this.AddSong(this.music_data[ii])}}>Add Song</button>
                     <hr/>
                 </div>);
@@ -40,7 +51,7 @@ class ExtraPanel extends React.Component
         }
 
             
-        return <div id="add_songs">
+        return <div id="add_songs" class="padded">
         {songs}
         </div>;
     }

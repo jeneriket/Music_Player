@@ -154,7 +154,7 @@ class BackPanel extends React.Component
         {
             (function(ii) {
                 var id = this.music_data[ii].id;
-                var name = this.music_data[ii].name;
+                var source = this.music_data[ii].source;
                 var position = this.music_data[ii].position;
                 var title = this.music_data[ii].title;
                 var artist = this.music_data[ii].artist;
@@ -165,14 +165,14 @@ class BackPanel extends React.Component
                 playlist.push(
                 <div id={id+"_div"}>
                     {title}<p class="subtext">{artist}</p><br/>
-                    <button onClick={() => {PlaySong(name, position, title, artist, album, year)}}>Play</button>
+                    <button onClick={() => {PlaySong(this.music_data[ii])}}>Play</button>
                     <button disabled>Remove</button>
-                    <button onClick={() =>{confirmDelete(name, id)}}>
+                    <button onClick={() =>{confirmDelete(source, id)}}>
                         Delete From Website?
                     </button>
                     <hr/>
                 </div>);
-                CURRENTPLAYLIST.push(name);
+                CURRENTPLAYLIST.push(this.music_data[ii]);
             }).call(this, i);
         }
 

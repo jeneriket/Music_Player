@@ -8,18 +8,12 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-function PlaySong(source, position, title, artist, album, year) {
+function PlaySong(music_data) {
+    console.log(music_data);
     $('#Music_Player').trigger('pause');
 
-    //set metadata
-    this.title = title;
-    this.artist = artist;
-    this.album = album;
-    this.year = year;
-
-    this.song = source;
     this.setState({ playable: true });
-    this.song_position = position;
+    this.song_position = music_data.position;
     this.ForcePlayMusic();
 }
 
@@ -79,22 +73,22 @@ var MusicPlayer = function (_React$Component) {
                     React.createElement(
                         'h1',
                         null,
-                        this.title
+                        CURRENTPLAYLIST[this.song_position].title
                     ),
                     React.createElement(
                         'h2',
                         { 'class': 'subtext' },
-                        this.artist
+                        CURRENTPLAYLIST[this.song_position].artist
                     ),
                     React.createElement(
                         'h3',
                         { 'class': 'subtext' },
-                        this.album
+                        CURRENTPLAYLIST[this.song_position].album
                     ),
                     React.createElement(
                         'h4',
                         { 'class': 'subtext' },
-                        this.year
+                        CURRENTPLAYLIST[this.song_position].year
                     ),
                     React.createElement('br', null),
                     React.createElement(
@@ -147,7 +141,6 @@ var MusicPlayer = function (_React$Component) {
         value: function PlayPauseMusic() {
             var value = this.state.playing ? 'pause' : 'play';
             this.setState({ playing: !this.state.playing });
-            MUSICPLAYER.trigger('load');
             MUSICPLAYER.trigger(value);
             this.forceUpdate();
         }
@@ -155,7 +148,7 @@ var MusicPlayer = function (_React$Component) {
         key: 'ForcePlayMusic',
         value: function ForcePlayMusic() {
             $("#progress_bar").css("width", 0);
-            MUSICSOURCE.attr("src", "/uploads/" + this.song);
+            MUSICSOURCE.attr("src", "/uploads/" + CURRENTPLAYLIST[this.song_position].source);
 
             this.setState({ playing: true });
             this.forceUpdate();
@@ -172,7 +165,7 @@ var MusicPlayer = function (_React$Component) {
 
             if (this.song_position >= CURRENTPLAYLIST.length) this.song_position = 0;
 
-            this.song = CURRENTPLAYLIST[this.song_position];
+            this.song = CURRENTPLAYLIST[this.song_position].source;
             this.ForcePlayMusic();
         }
     }, {
@@ -182,7 +175,7 @@ var MusicPlayer = function (_React$Component) {
 
             if (this.song_position < 0) this.song_position = CURRENTPLAYLIST.length - 1;
 
-            this.song = CURRENTPLAYLIST[this.song_position];
+            this.song = CURRENTPLAYLIST[this.song_position].source;
             this.ForcePlayMusic();
         }
     }]);

@@ -77,7 +77,7 @@
         $album = ProcessTag($tag, 'album', "Album Unknown");
         $year = ProcessTag($tag, 'year', "Year Unknown");
 
-        echo "var data_".$song->id." = {id: $song->id, name: '$song->filename', 
+        echo "var data_".$song->id." = {id: $song->id, source: '$song->filename', 
             position: $song->position, title: '$name', artist: '$artist', album: '$album', year: '$year'};
         reactComp.music_data.push(data_".$song->id.");\n";
     }

@@ -1,18 +1,12 @@
 'use strict'
 
-function PlaySong(source, position, title, artist, album, year)
+function PlaySong(music_data)
 {
+    console.log(music_data);
     $('#Music_Player').trigger('pause');
 
-    //set metadata
-    this.title = title;
-    this.artist = artist;
-    this.album = album;
-    this.year = year;
-
-    this.song=source;
     this.setState({playable: true});
-    this.song_position = position;
+    this.song_position = music_data.position;
     this.ForcePlayMusic();
 }
 
@@ -44,10 +38,10 @@ class MusicPlayer extends React.Component
         {
             return (
                 <div>
-                    <h1>{this.title}</h1>
-                    <h2 class="subtext">{this.artist}</h2>
-                    <h3 class="subtext">{this.album}</h3>
-                    <h4 class="subtext">{this.year}</h4><br/>
+                    <h1>{CURRENTPLAYLIST[this.song_position].title}</h1>
+                    <h2 class="subtext">{CURRENTPLAYLIST[this.song_position].artist}</h2>
+                    <h3 class="subtext">{CURRENTPLAYLIST[this.song_position].album}</h3>
+                    <h4 class="subtext">{CURRENTPLAYLIST[this.song_position].year}</h4><br/>
                     <button onClick={() => {this.PreviousSong()}}>Previous</button>
                     <button class="audio_button" onClick={() => {this.PlayPauseMusic()}}>{this.state.playing? 'Pause' : 'Play'}</button>
                     <button onClick={() => {this.NextSong()}}>Next</button>
@@ -65,7 +59,6 @@ class MusicPlayer extends React.Component
     {
         var value = this.state.playing? 'pause' : 'play';
         this.setState({playing : !this.state.playing});
-        MUSICPLAYER.trigger('load');
         MUSICPLAYER.trigger(value);
         this.forceUpdate();
     }
@@ -73,7 +66,7 @@ class MusicPlayer extends React.Component
     ForcePlayMusic()
     { 
         $("#progress_bar").css("width", 0);
-        MUSICSOURCE.attr("src", "/uploads/"+this.song);
+        MUSICSOURCE.attr("src", "/uploads/"+CURRENTPLAYLIST[this.song_position].source);
 
         this.setState({playing : true});
         this.forceUpdate();
@@ -89,7 +82,7 @@ class MusicPlayer extends React.Component
         if(this.song_position >= CURRENTPLAYLIST.length)
             this.song_position = 0;
 
-        this.song = CURRENTPLAYLIST[this.song_position];
+        this.song = CURRENTPLAYLIST[this.song_position].source;
         this.ForcePlayMusic();
     }
 
@@ -100,7 +93,7 @@ class MusicPlayer extends React.Component
         if(this.song_position < 0)
             this.song_position = CURRENTPLAYLIST.length-1;
         
-        this.song = CURRENTPLAYLIST[this.song_position];
+        this.song = CURRENTPLAYLIST[this.song_position].source;
         this.ForcePlayMusic();
     }
 }

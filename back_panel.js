@@ -203,8 +203,10 @@ var BackPanel = function (_React$Component) {
             CURRENTPLAYLIST.splice(0, CURRENTPLAYLIST.length);
             for (var i = 0; i < this.music_data.length; i++) {
                 (function (ii) {
+                    var _this4 = this;
+
                     var id = this.music_data[ii].id;
-                    var name = this.music_data[ii].name;
+                    var source = this.music_data[ii].source;
                     var position = this.music_data[ii].position;
                     var title = this.music_data[ii].title;
                     var artist = this.music_data[ii].artist;
@@ -225,7 +227,7 @@ var BackPanel = function (_React$Component) {
                         React.createElement(
                             "button",
                             { onClick: function onClick() {
-                                    PlaySong(name, position, title, artist, album, year);
+                                    PlaySong(_this4.music_data[ii]);
                                 } },
                             "Play"
                         ),
@@ -237,13 +239,13 @@ var BackPanel = function (_React$Component) {
                         React.createElement(
                             "button",
                             { onClick: function onClick() {
-                                    confirmDelete(name, id);
+                                    confirmDelete(source, id);
                                 } },
                             "Delete From Website?"
                         ),
                         React.createElement("hr", null)
                     ));
-                    CURRENTPLAYLIST.push(name);
+                    CURRENTPLAYLIST.push(this.music_data[ii]);
                 }).call(this, i);
             }
 

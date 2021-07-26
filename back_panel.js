@@ -43,6 +43,20 @@ function XHRRequest(url, reactComp) {
     xhr.open("GET", url, true);
     xhr.send();
 }
+function RemoveSong(song_id, playlist_id, song_name) {
+    $.ajax({
+        type: "POST",
+        url: 'remove_song.php',
+        data: { 'song_id': song_id, 'playlist_id': playlist_id },
+        success: function success(response) {
+            alert(song_name + " removed.");
+            $("#" + song_id + "_div").remove();
+        },
+        error: function error(response) {
+            alert("Error removing " + song_name);
+        }
+    });
+}
 
 //Class for back panel
 
@@ -233,13 +247,15 @@ var BackPanel = function (_React$Component) {
                         ),
                         React.createElement(
                             "button",
-                            { disabled: true },
+                            { onClick: function onClick() {
+                                    RemoveSong(id, CURRENTPLAYLISTID, title);
+                                } },
                             "Remove"
                         ),
                         React.createElement(
                             "button",
                             { onClick: function onClick() {
-                                    confirmDelete(source, id);
+                                    ConfirmDelete(source, id);
                                 } },
                             "Delete From Website?"
                         ),

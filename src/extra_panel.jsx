@@ -70,9 +70,10 @@ class ExtraPanel extends React.Component
         $.ajax({
             type :"POST",
             url: 'add_song.php',
-            data : {'filename':data.name, 'id': data.id, playlist: CURRENTPLAYLISTID},
+            data : {'filename':data.title, 'id': data.id, playlist: CURRENTPLAYLISTID},
             success: function(response) 
             { 
+                console.log(data.title);
                 alert(response); 
                 location.replace('index.html');
             }, 

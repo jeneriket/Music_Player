@@ -1,7 +1,6 @@
 <?php
 
 include 'sql_interface.php';
-
 if(isset($_POST['submit'])){
     
     //TODO: Prevent special characters from being uploaded
@@ -30,7 +29,7 @@ if(isset($_POST['submit'])){
     } else {
         if(move_uploaded_file($_FILES["musicFile"]["tmp_name"], $target_file))
         {
-            //echo "<script type='text/javascript'> alert('The file ".htmlspecialchars(basename($_FILES["musicFile"]["name"]))." has been uploaded.');</script>";
+            echo "<script type='text/javascript'> alert('The file ".htmlspecialchars(basename($_FILES["musicFile"]["name"]))." has been uploaded.');</script>";
 
             AddSongToPlaylist($target_filename, "0_playlist");
             //generate song id

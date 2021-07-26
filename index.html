@@ -24,22 +24,21 @@
             </div>
             <div id="menu">
                 <hr/>
-                <button onclick="backPanel.ChangeCurrentState(BackPanelState.MyMusic);">My Music</button>
-                <button onclick="backPanel.ChangeCurrentState(BackPanelState.Playlists);">Playlists</button>
-                <button onclick="backPanel.ChangeCurrentState(BackPanelState.Upload);">Upload</button>
+                <button onClick="backPanel.ChangeCurrentState(BackPanelState.MyMusic);">My Music</button>
+                <button onClick="backPanel.ChangeCurrentState(BackPanelState.Playlists);">Playlists</button>
+                <button onClick="backPanel.ChangeCurrentState(BackPanelState.Upload);">Upload</button>
                 <hr/>
             </div>
         </div>
 
-        <div id="container">
-            <!--used to output php errors-->
-            <div id="report"></div>
-    
+        <div id="container">    
             <div>
                 <!--Back Panel that can be changed with React-->
                 <div id="back_panel"></div>
                 <div style="background-color: burlywood;" id="extra_panel"></div>
             </div>
+            <!--used to output php errors-->
+            <div style="position: absolute" id="report"></div>
         </div>
         
         
@@ -79,7 +78,7 @@
 
         <!--Delete file function-->
         <script type="text/javascript">
-            function confirmDelete(fileName, id)
+            function ConfirmDelete(fileName, id)
             {
                 if(confirm("Delete "+fileName + "?"))
                 {

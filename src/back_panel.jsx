@@ -40,6 +40,22 @@ function XHRRequest(url, reactComp) {
     xhr.open("GET", url, true);
     xhr.send();
 }
+function RemoveSong(song_id, playlist_id, song_name) {
+    $.ajax({
+        type :"POST",
+        url: 'remove_song.php',
+        data : {'song_id':song_id, 'playlist_id':playlist_id},
+        success: function(response) 
+        { 
+            alert(song_name+" removed.");
+            $("#"+song_id+"_div").remove();
+        }, 
+        error: function(response) 
+        { 
+            alert("Error removing " + song_name); 
+        } 
+    });
+}
 
 //Class for back panel
 class BackPanel extends React.Component
@@ -166,8 +182,8 @@ class BackPanel extends React.Component
                 <div id={id+"_div"}>
                     {title}<p class="subtext">{artist}</p><br/>
                     <button onClick={() => {PlaySong(this.music_data[ii])}}>Play</button>
-                    <button disabled>Remove</button>
-                    <button onClick={() =>{confirmDelete(source, id)}}>
+                    <button onClick={() => {RemoveSong(id, CURRENTPLAYLISTID, title)}}>Remove</button>
+                    <button onClick={() =>{ConfirmDelete(source, id)}}>
                         Delete From Website?
                     </button>
                     <hr/>
@@ -193,7 +209,7 @@ class BackPanel extends React.Component
             <form class="paddedLess" target="upload_frame" action="upload_music.php" method="POST" encType="multipart/form-data">
                 <p>Upload your music!</p>
                 <input type="file" accept="audio/mp3,audio/*,audio/ogg" name="musicFile"/>
-                <input type="submit" value="submit" name="submit"/>
+                <input type="submit" value="submit" name="submit"/> 
             </form>
             //TODO: Add folder upload
         );
